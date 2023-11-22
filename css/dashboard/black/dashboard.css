@@ -1,0 +1,85 @@
+/* Dark Mode */
+.dark-mode {
+    background-color: #111;
+    color: #fff;
+  }
+  
+  .dark-mode .app-name {
+    color: #fff;
+  }
+  
+  .dark-mode .app-name-subtitle {
+    color: #ddd;
+  }
+  
+  .dark-mode .dashboard-heading {
+    color: #fff;
+  }
+  
+  .dark-mode .project-card {
+    background-color: #222;
+    color: #fff;
+    border-color: #333;
+  }
+  
+  .dark-mode .project-title {
+    color: #fff;
+  }
+  
+  .dark-mode .project-status {
+    color: #bbb;
+  }
+  
+  .dark-mode .project-details {
+    color: #bbb;
+  }
+  
+  .dark-mode .project-description {
+    color: #ccc;
+  }
+  
+  .dark-mode .project-date {
+    color: #ccc;
+  }
+  
+  .dark-mode .button.secondary {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+  }
+  
+  .dark-mode .button.secondary:hover {
+    background-color: #333;
+    border-color: #333;
+  }
+  
+  .dark-mode .dropdown-menu {
+    background-color: #222;
+    color: #fff;
+    border-color: #333;
+  }
+  
+  .dark-mode .dropdown-item {
+    color: #fff;
+  }
+  
+  .dark-mode .dropdown-item:hover {
+    background-color: #333;
+  }
+  
+  .dark-mode-switch label:before {
+    background-color: #111;
+  }
+  
+  .dark-mode-switch input:checked + label {
+    background-color: #FFCE00;
+  }
+  
+  .dark-mode-switch label:after {
+    background-color: #fff;
+  }
+  
+  .dark-mode-switch input:checked + label:after {
+    background-color: #FFCE00;
+  }
+  

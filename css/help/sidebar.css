@@ -1,0 +1,11 @@
+/* Additional styles for the sidebar */
+#sidebar.active {
+    left: 0;
+}
+
+#sidebarToggle {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}

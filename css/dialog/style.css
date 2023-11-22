@@ -1,0 +1,103 @@
+/* Dialog Wrapper */
+.dialog-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Dialog Content */
+  .dialog-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Dialog Title */
+  .dialog-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Fields */
+  .dialog-content input[type="text"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Submit Button */
+  .dialog-content button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dialog-content button:hover {
+    background-color: #0056b3;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .location-input {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .dropdown-button {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    border: none;
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .dropdown-button:hover {
+    color: #ff0000; /* Add hover color if desired */
+  }
+  
+  .dropdown-button:focus {
+    outline: none;
+  }
+  
+  .bottom-button{
+    margin-right: 20px;
+    margin-top: 30px;
+  }

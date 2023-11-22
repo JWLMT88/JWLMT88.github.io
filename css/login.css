@@ -1,0 +1,135 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+	background: #333;
+  }
+  
+  .login-form {
+    width: 400px;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    animation: fade-in 0.5s ease-in-out;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #005A9E;
+  }
+  
+  .submit-button {
+    background-color: #005A9E;
+    border: none;
+    color: white;
+    padding: 8px 0;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .label-input input::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  
+  .label-input input:focus {
+    background-color: #e0e0e0;
+    outline: none;
+  }
+  
+  
+  .submit-button:hover {
+    background-color: #221674;
+  }
+
+  .dialog-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .dialog-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dialog-content.success {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .dialog-content.error {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .dialog-content h2 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .dialog-content p {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  

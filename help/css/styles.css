@@ -1,0 +1,120 @@
+
+
+/* Styles for the collapsible questions */
+.question {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative; /* Add this line */
+    transition: background-color 0.3s, transform 0.3s; /* Add transitions for background-color and transform */
+}
+.question h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Initially hide the answer */
+.question .answer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Style for the active (open) answer */
+.question.active .answer {
+    max-height: 1000px; /* Adjust to a suitable maximum height */
+    opacity: 1;
+}
+
+/* Style for the answer container within the question */
+.question .answer-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px; /* Add margin to separate it from the question */
+}
+
+
+.question .answer-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px; /* Add margin to separate it from the question */
+}
+
+/* Style for the logo with floating animation */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background: linear-gradient(to right, #0073e6, #00b0ff);
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 100; /* Start with opacity 0 */
+    transition: opacity 1s ease-in; /* Add a fade-in transition */
+}
+
+@keyframes floatIn {
+    0% {
+        transform: translateY(-100px); /* Initial position above the viewport */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translateY(0); /* Final position at its place */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Style for the answer container within the question */
+.question .answer-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px; /* Add margin to separate it from the question */
+}
+
+/* Style for the unordered list (ul) and ordered list (ol) */
+.question .answer-container ul,
+.question .answer-container ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Style for the list items (li) */
+.question .answer-container ul li,
+.question .answer-container ol li {
+    margin: 5px 0;
+    padding-left: 20px; /* Add left padding to create a bullet effect */
+    position: relative;
+}
+
+/* Style for the list item bullet */
+.question .answer-container ul li::before,
+.question .answer-container ol li::before {
+    content: '\2022'; /* Unicode bullet character */
+    position: absolute;
+    left: 0;
+    color: #333; /* Color of the bullet */
+}
+
+.question-header i {
+    font-size: 24px;
+    margin-right: 10px;
+    border: 2px solid #ece6e6;
+    border-radius: 10%; /* Makes the icon circular */
+    padding: 8px;
+    background-color: #ffffff;
+    color: #000000;
+}

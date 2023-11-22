@@ -1,0 +1,472 @@
+/* Add your WinUI-specific styles here */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #000000;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.app-name-subtitle {
+  font-size: 15px;
+  color: #e2e2e2;
+  margin-left: 20px;
+}
+
+table {
+  border-radius: 4px;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+table th,
+table td {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+table th {
+  background-color: #737070;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #474646;
+}
+
+.download-link {
+  background-color: #007bff;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-link:hover {
+  background-color: #0056b3;
+  opacity: 0.9;
+}
+
+.header {
+  background-color: #007bff;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.content {
+  padding: 20px;
+}
+
+/* Buttons */
+.button {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  outline: none;
+}
+
+.primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.secondary {
+  background-color: #007bff;
+  color: #ffffff;
+  border: 1px solid #dddddd;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Menu button */
+.menu-button {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 8px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.menu-button:hover {
+  opacity: 0.8;
+}
+
+/* Add File button */
+.add-file-button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-file-button:hover {
+  background-color: #0056b3;
+}
+
+
+.switch-container {
+  display: flex;
+  align-items: center;
+}
+
+.switch-label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.switch-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.switch-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.switch-checkbox input:checked + .switch-slider {
+  background-color: #0078D7;
+}
+
+.switch-checkbox input:checked + .switch-slider:before {
+  transform: translateX(24px);
+}
+
+.switch-checkbox:not(:checked) + .switch-slider:before {
+  transform: translateX(0);
+}
+
+.switch-checkbox:checked + .switch-slider:before {
+  animation: switch-slide 0.3s linear;
+}
+
+@keyframes switch-slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(24px);
+  }
+  100% {
+    transform: translateX(24px);
+  }
+}
+
+/* Button Icons */
+.button.secondary .gg-moon {
+  color: #FFD700;
+}
+
+.button.secondary .gg-sun {
+  color: #0078D7;
+}
+
+.button.secondary .gg-moon,
+.button.secondary .gg-sun {
+  font-size: 24px;
+}
+
+.search-bar {
+  position: relative;
+  margin-right: 10px;
+}
+
+/* Animation for fade and slide in */
+@keyframes fadeInSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for fade and slide out */
+@keyframes fadeOutSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+    display: none;
+  }
+}
+
+/* Animation for loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation for success checkmark */
+@keyframes drawCheck {
+  0% {
+    stroke-dashoffset: 28;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* CSS for download wrapper */
+.download-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  animation: fadeInSlideIn 0.5s ease-in-out;
+}
+
+/* CSS for loading spinner */
+.spinner {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-top-color: #6c757d;
+  animation: spin 1s infinite linear;
+}
+
+/* CSS for success checkmark */
+.checkmark {
+  box-sizing: content-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  stroke: #28a745;
+  stroke-width: 2;
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: drawCheck 0.5s ease-in-out;
+}
+
+/* CSS for success checkmark icon */
+.checkmark i {
+  font-size: 26px;
+  vertical-align: middle;
+}
+
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#searchInput {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+  width: 200px;
+}
+
+#searchButton {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Dialog Wrapper */
+.dialog-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dialog Content */
+.dialog-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Dialog Title */
+.dialog-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.dialog-content input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Submit Button */
+.dialog-content button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-content button:hover {
+  background-color: #0056b3;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.location-input {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dropdown-button {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dropdown-button:hover {
+  color: #ff0000; /* Add hover color if desired */
+}
+
+.dropdown-button:focus {
+  outline: none;
+}
+
+.bottom-button{
+  margin-right: 20px;
+  margin-top: 30px;
+}

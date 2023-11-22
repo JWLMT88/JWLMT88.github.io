@@ -1,0 +1,144 @@
+/* Reset some default styles */
+body, h1, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Modern header styles */
+.header {
+    background: linear-gradient(to right, #0078D4, #00B4D8);
+    color: #fff;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px; /* Add margins to the header */
+    animation: slideInTop 0.7s ease-out;
+}
+
+@keyframes slideInTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.app-name-subtitle {
+    font-size: 15px;
+    color: #e2e2e2;
+    margin-left: 20px;
+  }
+
+.header div {
+    display: flex;
+    align-items: center;
+  }
+
+.header h1 {
+    font-size: 15px;
+    font-size: 2rem;
+    margin-bottom: 0;
+    font-family: 'Segoe UI', sans-serif; /* Specify fallback fonts */
+}
+
+.header p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+.file-info {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', Arial, sans-serif; /* Specify fallback fonts */
+    text-align: left;
+}
+
+/* Main content styles */
+.content {
+    width: auto;
+    margin: 20px; /* Add margins to the header */
+    padding: 2rem;
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+    border-radius: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: bounceIn 0.7s ease-out;
+    background-color: #fff;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* CKEditor styles */
+#editor {
+    flex-grow: 2;
+    height: 100%;
+    background-color: #fff;
+}
+
+/* Open in Text Editor button */
+.open-in-text-editor {
+    background: linear-gradient(to right, #0078D4, #00B4D8);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1rem auto 0;
+    transition: background 0.3s, transform 0.3s;
+    font-family: 'Poppins', Arial, sans-serif; /* Specify fallback fonts */
+    animation: bounceIn 0.7s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.open-in-text-editor:hover {
+    background: linear-gradient(to right, #005fa3, #0089B5);
+    transform: scale(1.05);
+}
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    .file-info {
+        font-size: 0.9rem;
+    }
+    .content {
+        padding: 0.5rem;
+    }
+    .open-in-text-editor {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
