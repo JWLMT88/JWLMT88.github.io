@@ -44,8 +44,8 @@
         <p class="loading-text">Hey, welcome again!</p>
     </div>
     <nav class="navbar navbar-white navbar-expand-lg">
-        <a class="navbar-brand">
-            <img src="https://core.swapix.fun/media/icons/logo.png" alt="SwapiX Logo" class="svg-logo">
+        <a class="navbar-brand" onclick="BackToMainPage();">
+            <img src="https://core.swapix.fun/media/icons/logo.png"  alt="SwapiX Logo" class="svg-logo">
             SwapiX<small ></small>
         </a>
         <button class="navbar-toggler white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,10 +54,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/?page=inbox"><span class="material-symbols-outlined">near_me</span></a>
+                    <a class="nav-link" onclick="SetPage('inbox');"><span class="material-symbols-outlined">near_me</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/?page=alerts"><span class="material-symbols-outlined">
+                    <a class="nav-link" onclick="SetPage('alerts');"><span class="material-symbols-outlined">
                         favorite
                         </span></a>
                 </li>

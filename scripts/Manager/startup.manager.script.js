@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async function()
         await FillInContent();
         qm.deleteParam("usr");
         qm.deleteParam("key");
+        qm.deleteParam("action");
         setTimeout(() => 
         {
             document.body.classList.add('loaded');
