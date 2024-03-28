@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', async function()
 {
     if(qm.getParam("action") == "login")
     {
-        await login(qm.getParam("usr"),qm.getParam("pwd"));
+        setCookie("swpKey",qm.getParam("key"));
+        setCookie("profileID",qm.getParam("usr"));
         await FillInContent();
         qm.deleteParam("usr");
         qm.deleteParam("pwd");
