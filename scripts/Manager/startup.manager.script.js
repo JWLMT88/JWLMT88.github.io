@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async function()
         setCookie("profileID",qm.getParam("usr"));
         await FillInContent();
         qm.deleteParam("usr");
-        qm.deleteParam("pwd");
+        qm.deleteParam("key");
         setTimeout(() => 
         {
             document.body.classList.add('loaded');
