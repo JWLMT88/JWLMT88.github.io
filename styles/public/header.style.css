@@ -1,0 +1,96 @@
+.navbar-brand {
+    font-weight: bold;
+    color: #000; /* Schwarze Schriftfarbe */
+}
+.navbar 
+{
+    transition: background-color 0.3s ease;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    position:  fixed;
+    align-items: baseline;
+    background-color: #fff; /* Weiße Hintergrundfarbe */
+    box-decoration-break: 0 4px 4px rgba(0, 0, 0, 0.1); /* Schatten */
+    border-bottom: 1px solid #eee; /* Unterstrich */
+}
+
+.navbar-toggler {
+    border-color: transparent;
+    color: #ffffff; /* Durchsichtiger Toggle-Button-Rahmen */
+}
+
+
+.navbar-nav {
+    text-align: right;
+    margin-left: auto;
+}
+
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-enabled{
+    color: #262560;
+}
+
+.nav-link {
+    color: #000; /* Schwarze Schriftfarbe */
+    transition: all 0.3s ease; /* Fließende Übergänge */
+    position: relative;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #6c63ff; /* Akzentfarbe für Unterstrich */
+    transform: scaleX(0); /* Anfangszustand: unsichtbar */
+    transition: transform 0.3s ease; /* Fließende Übergänge */
+}
+
+.nav-link:hover::before {
+    transform: scaleX(1); /* Unterstrich erscheint beim Hover */
+}
+
+
+.btn-primary {
+    background: linear-gradient(195deg, #252587, #284c9f); ;
+    transition: all 0.3s ease; /* Fließende Übergänge */
+    border-color: #425efc; /* Pink border on hover */
+    color: #fff; 
+    transition: all 0.5s ease-in-out; /* Fließende Übergänge */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(95deg, #252587, #284c9f); 
+}
+
+/* SVG-Logo im Header */
+.svg-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    transition: transform 0.3s ease; /* Fließende Übergänge */
+}
+
+.navbar-toggler:hover .svg-logo {
+    transform: scale(1.2); /* Vergrößern des Logos beim Hover über den Toggle-Button */
+}
+.profile-image-placeholder {
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide overflow */
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.profile-image {
+    width: 100%; /* Ensure image fills the container */
+    height: 100%; /* Ensure image fills the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
