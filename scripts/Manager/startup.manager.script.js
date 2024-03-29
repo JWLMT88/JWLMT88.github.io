@@ -1,7 +1,15 @@
 const qm = new QueryManager();
-
+var pager = null;
 document.addEventListener('DOMContentLoaded', async function() 
 {
+     pager = new PageQueryManager({
+        observedParams: ['page']
+      });
+      
+      pager.addParamChangeHandler('page', (oldValue, newValue) => {
+        console.log(`Page changed from ${oldValue} to ${newValue}`);
+      });
+
     if(qm.getParam("action") == "login")
     {
         setCookie("swpKey",qm.getParam("key"));
@@ -16,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function()
             setTimeout(() => 
             {
                 document.body.classList.add('loaded-hidden');
-                showRelevantPage();
+               
             }, 500);
         }, 2000);
     }
@@ -33,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function()
             setTimeout(() => 
             {
                 document.body.classList.add('loaded-hidden');
-                showRelevantPage();
+             
             }, 500);
         }, 200);
     }

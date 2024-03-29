@@ -24,6 +24,7 @@
     <script src="/scripts/Manager/query.manager.script.js"></script>
     <script src="/scripts/Manager/login.manager.script.js"></script>
     <script src="/scripts/Manager/startup.manager.script.js"></script>
+    <script src="/scripts/Manager/page.manager.script.js"></script>
 
     <!--STYLE SHEETS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -62,12 +63,20 @@
                         </span></a>
                 </li>
                 <li class="nav-item">
-                    <div class="profile-image-placeholder">
+                    <div class="profile-image-placeholder" onclick="toggleDropdown()">
                         <img src="none" alt="Profile Image" id="header-profile-manager" class="profile-image">
+                       
                     </div>
+                    
                 </li>
             </ul>
         </div>
+        <div id="dropdown-menu" class="dropdown-menu">
+            <a href="#"><i class="material-icons">account_circle</i> Profile</a>
+            <a href="#"><i class="material-icons">settings</i> Settings</a>
+            <a href="#"><i class="material-icons">exit_to_app</i> Logout</a>
+        </div>
     </nav>
+    
 </body>
 </html>

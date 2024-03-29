@@ -1,10 +1,11 @@
 .navbar-brand {
+    cursor: pointer;
     font-weight: bold;
     color: #000; /* Schwarze Schriftfarbe */
 }
 
 .navbar-brand:hover {
-    cursor: auto;
+    cursor: pointer;
     font-weight: bold;
     color: #000; /* Schwarze Schriftfarbe */
 }
@@ -35,6 +36,7 @@
 
 .nav-item {
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .nav-enabled{
@@ -91,7 +93,8 @@
     width: 40px; /* Adjust width as needed */
     height: 40px; /* Adjust height as needed */
     border-radius: 50%; /* Make it circular */
-    overflow: hidden; /* Hide overflow */
+    overflow: hidden; 
+    cursor: pointer;
     margin-right: 10px; /* Adjust margin as needed */
 }
 
@@ -99,4 +102,34 @@
     width: 100%; /* Ensure image fills the container */
     height: 100%; /* Ensure image fills the container */
     object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-image-placeholder {
+    position: relative;
+    cursor: pointer;
 }
