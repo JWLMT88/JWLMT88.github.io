@@ -25,11 +25,14 @@
     <script src="/scripts/Manager/login.manager.script.js"></script>
     <script src="/scripts/Manager/startup.manager.script.js"></script>
     <script src="/scripts/Manager/page.manager.script.js"></script>
+    <script src="/scripts/Manager/sidebar.manager.js"></script>
 
     <!--STYLE SHEETS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/styles/public/header.style.css"> 
     <link rel="stylesheet" href="/styles/public/root.style.css"> 
+    <link rel="stylesheet" href="/styles/public/component_colors.css"> 
+    <link rel="stylesheet" href="/styles/public/sidebar.style.css"> 
     <link rel="stylesheet" href="/styles/components/loader/spinner.style.css"> 
     <link rel="stylesheet" href="/styles/components/error-container.style.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -68,12 +71,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" onclick="SetPage('inbox');"><span class="material-symbols-outlined">near_me</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" onclick="SetPage('alerts');"><span class="material-symbols-outlined">
-                        favorite
-                        </span></a>
+                    <button class="sidebar-button">
+                        <span class="material-symbols-outlined">add</span>
+                        <span class="sidebar-button-text">Create Post</span>
+                    </button>
                 </li>
                 <li class="nav-item dropdown">
                     <div class="profile-image-placeholder" onclick="toggleDropdown();" id="profile-image-placeholder" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +84,7 @@
                         <div class="dropdown-header">
                             <h6>Hey, again.</h6>
                         </div>
-                        <div class="user-info">
+                        <div class="user-info hkcm_bg">
                             <span id="header-dropdown-username"class="username"></span>
                             <span id="header-dropdown-email" class="email"></span>
                         </div>
@@ -92,13 +93,54 @@
                         <a class="dropdown-item" onclick="logoutMainUser()">Logout</a>
                         <div class="dropdown-divider"></div>
                         <div class="version-info">
-                            <small>SwapiX (A) v0.0.1</small>
+                            <small>SwapiX (A) v0.0.2</small>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-    
+    <div class="sidebar">
+        <div class="sidebar-header">
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="sidebar-text">Home</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">whatshot</span>
+                    <span class="sidebar-text">Hot</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">search</span>
+                    <span class="sidebar-text">Search</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">groups</span>
+                    <span class="sidebar-text">Communities</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">trending_up</span>
+                    <span class="sidebar-text">Trending</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="sidebar-text">Notifications</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

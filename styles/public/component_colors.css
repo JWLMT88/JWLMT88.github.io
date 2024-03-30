@@ -1,0 +1,22 @@
+.pale-blue-bg {
+    background-color: #f4f7ff;
+}
+.pale-blue-darker-bg {
+    background-color: #d9e2fc;
+}
+.hkcm_bg{
+    background-image: url("https://d178cgmue8nngv.cloudfront.net/66ea25f0-c3d6-463a-91e7-a72fbe34d85d/hkcm/images/auth.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+:root {
+    --body-color: #4a4a4a;
+    --primary-color: #343e61;
+    --secondary-color: #346dff;
+    --tersiary-color: #ff6854;
+    --white-color: white;
+    --subtitle-color: #292929;
+    --pale-blue-color: #f4f7ff;
+}
