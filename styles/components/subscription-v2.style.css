@@ -1,0 +1,366 @@
+.spacer-80 {
+    height: 80px;
+  }
+  .spacer-50 {
+    height: 50px;
+  }
+  .single-price-table {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    transition: all 0.24s ease-in-out;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+  }
+.little-backdrop{
+    box-shadow: 0 14px 28px rgba(126, 126, 126, 0.25), 0 10px 10px rgba(95, 95, 95, 0.22);
+}
+
+  .single-price-table .price-design-elemnts {
+    position: absolute;
+    visibility: hidden;
+    transition: all 0.24s ease-in-out;
+    opacity: 0;
+    border-radius: 50%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+  .single-price-table .price-design-elemnts.one {
+    line-height: 145px;
+    top: -30px;
+    left: -50px;
+    width: 145px;
+    height: 145px;
+    background-color: #346bf0;
+  }
+  .single-price-table .price-design-elemnts.two {
+    line-height: 86px;
+    bottom: 60px;
+    left: -30px;
+    width: 86px;
+    height: 86px;
+    background-color: #eea634;
+  }
+  .single-price-table .price-design-elemnts.three {
+    line-height: 145px;
+    right: -50px;
+    bottom: -30px;
+    width: 145px;
+    height: 145px;
+    background-color: #435ed6;
+  }
+  .single-price-table .price-design-elemnts.four {
+    line-height: 44px;
+    top: 50px;
+    right: 50px;
+    width: 44px;
+    height: 44px;
+    background-color: #31e1a1;
+  }
+  .single-price-table .price-header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    transition: all 0.24s ease-in-out;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #fbfbfb;
+  }
+  .single-price-table .price-header span.package-title {
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 30px;
+    color: #132150;
+  }
+  .single-price-table .price-header span.package-amount {
+    font-size: 60px;
+    font-weight: 600;
+    color: #176cec;
+  }
+
+  .single-price-table .price-header span.lite-amount {
+    font-size: 60px;
+    font-weight: 600;
+    color: #3a3a3a;
+  }
+
+  .single-price-table .price-header span.lite-amount span {
+    font-weight: 400;
+    color: #494a54;
+  }
+  .single-price-table .price-header span.lite-amount span:nth-child(1) {
+    font-size: 34px;
+  }
+  .single-price-table .price-header span.lite-amount span:nth-child(2) {
+    font-size: 18px;
+  }
+
+  .single-price-table .price-header span.premium-amount {
+    font-size: 60px;
+    font-weight: 600;
+    color: #ec3e17;
+  }
+
+  .single-price-table .price-header span.premium-amount span {
+    font-weight: 400;
+    color: #494a54;
+  }
+  .single-price-table .price-header span.premium-amount span:nth-child(1) {
+    font-size: 34px;
+  }
+  .single-price-table .price-header span.premium-amount span:nth-child(2) {
+    font-size: 18px;
+  }
+
+  .single-price-table .price-header span.package-amount span {
+    font-weight: 400;
+    color: #494a54;
+  }
+  .single-price-table .price-header span.package-amount span:nth-child(1) {
+    font-size: 34px;
+  }
+  .single-price-table .price-header span.package-amount span:nth-child(2) {
+    font-size: 18px;
+  }
+  .single-price-table .price-body {
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+  .single-price-table .price-body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .single-price-table .price-body ul li {
+    display: block;
+    padding: 0 0 8px;
+  }
+  .single-price-table .price-body ul li:last-child {
+    padding-bottom: 0;
+  }
+  .single-price-table .price-footer {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; 
+    padding-bottom: 40px;
+  }
+  .single-price-table .price-footer a {
+    padding: 16px 48px;
+    text-transform: uppercase;
+  }
+  .single-price-table:hover {
+    background-color: #31348c;
+  }
+  .single-price-table:hover .price-header {
+    background-color: #31348c;
+  }
+  .single-price-table:hover .price-header span.package-title {
+    color: #fff;
+  }
+  .single-price-table:hover .price-header span.package-amount {
+    color: #fff;
+  }
+  .single-price-table:hover .price-header span.package-amount span {
+    color: #fff;
+  }
+  .single-price-table:hover .price-body ul li {
+    color: #fff;
+  }
+  .single-price-table:hover .price-design-elemnts {
+    visibility: visible;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+  }
+  .single-price-table:hover .price-design-elemnts.one {
+    transition-delay: 0.1s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  .single-price-table:hover .price-design-elemnts.three {
+    transition-delay: 0.1s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  .single-price-table:hover .price-design-elemnts.two {
+    transition-delay: 0.3s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  .single-price-table:hover .price-design-elemnts.four {
+    transition-delay: 0.3s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  
+  .single-price-table.active {
+    background-color: #31348c;
+  }
+  .single-price-table.active .price-header {
+    background-color: #31348c;
+  }
+  .single-price-table.active .price-header span.package-title {
+    color: #fff;
+  }
+  .single-price-table.active .price-header span.package-amount {
+    color: #fff;
+  }
+  .single-price-table.active .price-header span.package-amount span {
+    color: #fff;
+  }
+  .single-price-table.active .price-body ul li {
+    color: #fff;
+  }
+  .single-price-table.active .price-design-elemnts {
+    visibility: visible;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+  }
+  .single-price-table.active .price-design-elemnts.one {
+    transition-delay: 0.1s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  .single-price-table.active .price-design-elemnts.three {
+    transition-delay: 0.1s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  .single-price-table.active .price-design-elemnts.two {
+    transition-delay: 0.3s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  .single-price-table.active .price-design-elemnts.four {
+    transition-delay: 0.3s;
+    -webkit-animation: zoomIn 400ms ease-in-out;
+    animation: zoomIn 400ms ease-in-out;
+  }
+  
+  .single-price-table.layout-two .price-header span.package-amount {
+    color: #0d9ce8;
+  }
+  .single-price-table.layout-two:hover {
+    background-color: transparent;
+    background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
+  }
+  .single-price-table.layout-two:hover .price-header {
+    background-color: transparent;
+    background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
+  }
+  .single-price-table.layout-two:hover .price-header span.package-amount {
+    color: #fff;
+  }
+  
+  .single-price-table.layout-two.active {
+    background-color: transparent;
+    background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
+  }
+  .single-price-table.layout-two.active .price-header {
+    background-color: transparent;
+    background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
+  }
+  .single-price-table.layout-two.active .price-header span.package-amount {
+    color: #fff;
+  }
+  
+  .single-price-table.layout-three .price-footer a {
+    border-radius: 999px;
+  }
+  .single-price-table.layout-three .price-footer a:after {
+    border-radius: 999px;
+  }
+  .single-price-table.layout-three .price-header span.package-amount {
+    color: #684ef6;
+  }
+  .single-price-table.layout-three:hover {
+    background-color: transparent;
+    background-image: linear-gradient(to left, #2923e6, #6b69fb);
+  }
+  .single-price-table.layout-three:hover .price-header {
+    background-color: transparent;
+    background-image: linear-gradient(to left, #2923e6, #6b69fb);
+  }
+  .single-price-table.layout-three:hover .price-header span.package-amount {
+    color: #fff;
+  }
+  
+  .single-price-table.layout-three.active {
+    background-color: transparent;
+    background-image: linear-gradient(to left, #2923e6, #6b69fb);
+  }
+  .single-price-table.layout-three.active .price-header {
+    background-color: transparent;
+    background-image: linear-gradient(to left, #2923e6, #6b69fb);
+  }
+  .single-price-table.layout-three.active .price-header span.package-amount {
+    color: #fff;
+  }
+  
+  @media (max-width: 991.98px) {
+    .price-space.spacer-150 {
+      height: 70px;
+    }
+  
+    .price-area.home-two .spacer-80 {
+      height: 40pxs;
+    }
+  }
+
+  .subscription .btn{
+    font-family: "Manrope";
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    z-index: 1000;
+    width: 80%;
+    background: linear-gradient(95deg, #ebebee, #f4f7fc);; /* Green button color */
+    color: #2a2a2a; /* White text color */
+    border: #eee;
+}
+
+.subscription .btn:hover{
+    box-shadow: 0 14px 28px rgba(126, 126, 126, 0.25), 0 10px 10px rgba(95, 95, 95, 0.22);
+}
+.subscription .btn-sec{
+    margin: 20px;
+    background: linear-gradient(195deg, #eeeeef, #ffffff); 
+    color:#232222;
+}
+
+.subscription .btn-sec-premium{
+    color:#232222;
+    background: linear-gradient(195deg, #ffffe2, #ffffff); 
+    border-color: #a28a29;
+}
+
+.badge {
+    position: absolute; /* Absolute positioning for badge */
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background: linear-gradient(195deg, #252587, #284c9f); 
+    color: #fff; /* Badge text color */
+    padding: 5px 10px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 12px; /* Font size */
+    animation: pulse 1s infinite alternate; /* Animation */
+}
+
+
+.badge-premium {
+    background-color: #ffffff; /* Light gray background dow around the card */
+    font-weight: bold;
+    position: relative;
+    position: absolute; /* Absolute positioning for badge */
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background: linear-gradient(195deg, #293fa2, #0ab6e6); 
+    color: #fff; /* Badge text color */
+    padding: 5px 10px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 12px; /* Font size */
+    animation: pulse 1s infinite alternate; /* Animation */
+}

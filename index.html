@@ -30,7 +30,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/styles/public/header.style.css"> 
     <link rel="stylesheet" href="/styles/public/root.style.css"> 
-    <link rel="stylesheet" href="/styles/loader/spinner.style.css"> 
+    <link rel="stylesheet" href="/styles/components/loader/spinner.style.css"> 
+    <link rel="stylesheet" href="/styles/components/error-container.style.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -44,6 +45,18 @@
         
         <p class="loading-text">Hey, welcome again!</p>
     </div>
+
+    <div id="error-container" class="error-container">
+        <div class="error-message">
+            <h2>Error</h2>
+            <p>Oops! Something went wrong.</p>
+            <p id="error-container-ex">Please try again later.</p>
+            <div class="logout">
+                <button class="logout-button" onclick="">Retry</button>
+            </div>
+        </div>
+    </div>
+    
     <nav class="navbar navbar-white navbar-expand-lg">
         <a class="navbar-brand" onclick="BackToMainPage();">
             <img src="https://core.swapix.fun/media/icons/logo.png"  alt="SwapiX Logo" class="svg-logo">
@@ -62,19 +75,28 @@
                         favorite
                         </span></a>
                 </li>
-                <li class="nav-item">
-                    <div class="profile-image-placeholder" onclick="toggleDropdown()">
+                <li class="nav-item dropdown">
+                    <div class="profile-image-placeholder" onclick="toggleDropdown();" id="profile-image-placeholder" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="none" alt="Profile Image" id="header-profile-manager" class="profile-image">
-                       
                     </div>
-                    
+                    <div id="dropdown-menu" class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header">
+                            <h6>Hey, again.</h6>
+                        </div>
+                        <div class="user-info">
+                            <span id="header-dropdown-username"class="username"></span>
+                            <span id="header-dropdown-email" class="email"></span>
+                        </div>
+                        <a class="dropdown-item" href="https://core.swapix.fun/pages/account/?action=sub">Subscription</a>
+                        <a class="dropdown-item" href="https://core.swapix.fun/pages/account/?action=settings">Settings</a>
+                        <a class="dropdown-item" onclick="logoutMainUser()">Logout</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="version-info">
+                            <small>SwapiX (A) v0.0.1</small>
+                        </div>
+                    </div>
                 </li>
             </ul>
-        </div>
-        <div id="dropdown-menu" class="dropdown-menu">
-            <a href="#"><i class="material-icons">account_circle</i> Profile</a>
-            <a href="#"><i class="material-icons">settings</i> Settings</a>
-            <a href="#"><i class="material-icons">exit_to_app</i> Logout</a>
         </div>
     </nav>
     
