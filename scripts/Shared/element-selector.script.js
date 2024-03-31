@@ -1,4 +1,4 @@
-function $(selector) {
+function $Select(selector) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', window.location.href, true);

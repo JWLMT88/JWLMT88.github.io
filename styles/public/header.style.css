@@ -14,11 +14,13 @@
     transition: background-color 0.3s ease;
     width: 100%;
     z-index: 1000;
-    display: flex;
-    position:  fixed;
+    -webkit-backdrop-filter: blur(20px);
+    display: flex !important;
+    position:  fixed !important;
     align-items: baseline;
-    background-color: #fff; /* Weiße Hintergrundfarbe */
-    box-decoration-break: 0 4px 4px rgba(0, 0, 0, 0.1); /* Schatten */
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(20px);
+    box-decoration-break: 0 4px 4px rgba(0, 0, 0, 0.1) !important; /* Schatten */
     border-bottom: 1px solid #eee; /* Unterstrich */
 }
 
@@ -94,6 +96,7 @@
     height: 40px; /* Adjust height as needed */
     border-radius: 50%; /* Make it circular */
     overflow: hidden; 
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     margin-right: 10px; /* Adjust margin as needed */
 }
@@ -183,3 +186,6 @@
     color: #333;
   }
   
+  .space{
+    height: 80px;
+  }

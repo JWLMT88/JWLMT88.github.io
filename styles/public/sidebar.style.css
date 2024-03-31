@@ -10,11 +10,13 @@
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: width 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center items */
 }
 
 
 .sidebar-header {
-    padding: 60px;
     text-align: center;
 }
 
@@ -26,7 +28,7 @@
 
 .sidebar-item {
     position: relative;
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 
@@ -37,11 +39,12 @@
     padding: 15px 20px;
     color: #333;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     border-radius: 15px;
 }
 
 .sidebar-link:hover {
+    box-shadow: 3px 1px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.1);
     text-decoration: none;
 }
@@ -78,7 +81,7 @@
     font-weight: 500;
     height: 40px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     width: 100%;
 }
 
@@ -89,4 +92,5 @@
 
 .sidebar-button:hover {
     background-color: #555;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
 }

@@ -34,13 +34,13 @@ const PostObserver = (function() {
         $(`.post-container`).then((containers) => {
             PostRenderer.renderPosts();
             addScrollObserver();
-
+            console.log("Initialized Post Observer Succesfully! (v" + swapixVersion + ")")
             // if (PostRenderer.currentPostIndex >= PostRenderer.posts.length) {
             //     removeScrollObserver();
             // }
         });
     }
-
+    
     init();
 
     return {

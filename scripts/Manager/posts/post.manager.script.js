@@ -2,8 +2,7 @@
 const PostRenderer = (function() {
     let postId = 0; // Counter for post IDs
     let posts = []; // Array to store post data
-    let currentPostIndex = 0; // Index of the next post to be displayed
-    const postsPerLoad = 5; // Number of posts to load initially and on each scroll
+    let currentPostIndex = 0;
 
     function createPostTemplate(data) {
         postId++;
@@ -25,15 +24,15 @@ const PostRenderer = (function() {
                     <p>${data.content}</p>
                 </div>
                 <div class="post-actions">
-                    <button class="post-action-btn" onclick="PostManager.likePost(this)">
-                        <span class="material-symbols-outlined like-icon">thumb_up_off</span>
+                    <button class="post-action-btn" onclick="PostRenderer.likePost('post-${postId}')">
+                        <span class="material-symbols-outlined like-icon" id="post-${postId}-like-icon">thumb_up_off</span>
                         <span class="post-action-text">Like</span>
                     </button>
-                    <button class="post-action-btn" onclick="PostManager.commentPost(this)">
+                    <button class="post-action-btn" onclick="PostRenderer.commentPost(this)">
                         <span class="material-symbols-outlined">comment</span>
                         <span class="post-action-text">Comment</span>
                     </button>
-                    <button class="post-action-btn" onclick="PostManager.sharePost(this)">
+                    <button class="post-action-btn" onclick="PostRenderer.sharePost(this)">
                         <span class="material-symbols-outlined">share</span>
                         <span class="post-action-text">Share</span>
                     </button>
@@ -44,49 +43,52 @@ const PostRenderer = (function() {
     }
 
     function addPost(data) {
+        console.log("[PostManager (v" + swapixVersion + ")] New post data recived! : " + data)
         posts.push(data);
         renderPosts();
     }
 
     function renderPosts() {
+        
+        console.log("[PostManager (v" + swapixVersion + ")] Started rendering of new data")
         let postHTML = '';
-        const endIndex = currentPostIndex + postsPerLoad;
+        const endIndex = currentPostIndex + 1;
 
-        for (let i = currentPostIndex; i < endIndex && i < posts.length; i++) {
+        for (let i = currentPostIndex; i < endIndex && i < posts.length; i++) 
+        {
             const postTemplate = createPostTemplate(posts[i]);
             postHTML += postTemplate;
         }
 
-        $(`.post-container`).then((containers) => {
-            containers.forEach((container) => {
-                container.insertAdjacentHTML('beforeend', postHTML);
+        $(document).ready(function() {
+            $('.post-container').each(function() {
+                $(this).append(postHTML);
             });
         });
+        
+        console.log("[PostManager (v" + swapixVersion + ")] Rendering Complete")
+        
 
-        currentPostIndex += postsPerLoad;
+        currentPostIndex = currentPostIndex + 1
     }
 
 
-    function likePost(postElement) {
-        const likeIcon = postElement.querySelector('.like-icon');
+    function likePost(postID) {
+        const likeIcon = $Select(postID +'-like-icon');
         const isLiked = likeIcon.innerHTML === 'thumb_up';
 
         if (isLiked) {
             likeIcon.innerHTML = 'thumb_up_off';
-            // Add your logic for unliking a post here
         } else {
             likeIcon.innerHTML = 'thumb_up';
-            // Add your logic for liking a post here
         }
     }
 
     function commentPost(postElement) {
-        // Add your logic for commenting on a post here
         console.log('Comment post:', postElement);
     }
 
     function sharePost(postElement) {
-        // Add your logic for sharing a post here
         console.log('Share post:', postElement);
     }
 

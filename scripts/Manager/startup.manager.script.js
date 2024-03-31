@@ -15,17 +15,11 @@ document.addEventListener('DOMContentLoaded', async function()
         authorAvatar: 'https://via.placeholder.com/50',
         authorName: 'John Doe',
         timestamp: '2 hours ago',
-        content: 'This is a sample post. You can insert your post content here.'
+        content: 'TEST'
     });
     
-    // Add more posts as needed
-    PostRenderer.addPost({
-        authorAvatar: 'https://via.placeholder.com/50',
-        authorName: 'Jane Smith',
-        timestamp: '1 hour ago',
-        content: 'This is another sample post.'
-    });
-      
+    
+
     if(qm.getParam("action") == "login")
     {
         setCookie("swpKey",qm.getParam("key"));
@@ -120,4 +114,13 @@ function logoutMainUser(){
     deleteCookie("swpKey")
     deleteCookie("profileID")
     window.location.href = "https://core.swapix.fun/pages/account/?action=logout"
+}
+
+function addPost(){
+    PostRenderer.addPost({
+        authorAvatar: 'https://via.placeholder.com/50',
+        authorName: 'Jane Smith',
+        timestamp: '1 hour ago',
+        content: 'This is another sample post.'
+    });
 }
