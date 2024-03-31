@@ -10,7 +10,22 @@ document.addEventListener('DOMContentLoaded', async function()
       pager.addParamChangeHandler('page', (oldValue, newValue) => {
         console.log(`Page changed from ${oldValue} to ${newValue}`);
       });
-
+      
+      PostRenderer.addPost({
+        authorAvatar: 'https://via.placeholder.com/50',
+        authorName: 'John Doe',
+        timestamp: '2 hours ago',
+        content: 'This is a sample post. You can insert your post content here.'
+    });
+    
+    // Add more posts as needed
+    PostRenderer.addPost({
+        authorAvatar: 'https://via.placeholder.com/50',
+        authorName: 'Jane Smith',
+        timestamp: '1 hour ago',
+        content: 'This is another sample post.'
+    });
+      
     if(qm.getParam("action") == "login")
     {
         setCookie("swpKey",qm.getParam("key"));
@@ -53,6 +68,8 @@ document.addEventListener('DOMContentLoaded', async function()
             }, 500);
         }, 200);
     }
+
+    
 });
 
 async function SetCachedProfile(){

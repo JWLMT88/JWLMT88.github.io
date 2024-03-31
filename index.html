@@ -31,12 +31,14 @@
     <meta property ="twitter:image" content ="http://res.cloudinary.com/dpu5ywrox/image/upload/v1711235160/qlisyhr0blxwb2k9xr5v.png"/>
     <meta property ="og:image" content ="http://res.cloudinary.com/dpu5ywrox/image/upload/v1711235160/qlisyhr0blxwb2k9xr5v.png" />
     
-
+     <!--THIRD PARTY-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>SwapiX - Where Traders Meet!</title>
     <link rel="icon" href="https://core.swapix.fun/media/icons/logo.png" sizes="32x32">
 
     <!--SCRIPTS-->
+    <script src="/scripts/Shared/element-selector.script.js"></script>
     <script src="/scripts/Manager/header.content.manager.script.js"></script>
     <script src="/scripts/Manager/cookie.manager.script.js"></script>
     <script src="/scripts/Manager/query.manager.script.js"></script>
@@ -44,12 +46,19 @@
     <script src="/scripts/Manager/startup.manager.script.js"></script>
     <script src="/scripts/Manager/page.manager.script.js"></script>
     <script src="/scripts/Manager/sidebar.manager.js"></script>
+    <script src="/scripts/Manager/posts/post.manager.script.js"></script>
+    <script src="/scripts/Manager/posts/postobserver.manager.script.js"></script>
+
+   
 
     <!--STYLE SHEETS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link rel="stylesheet" href="/styles/public/header.style.css"> 
     <link rel="stylesheet" href="/styles/public/root.style.css"> 
     <link rel="stylesheet" href="/styles/public/component_colors.css"> 
+    <link rel="stylesheet" href="/styles/components/post/majorPost.style.css"> 
     <link rel="stylesheet" href="/styles/public/sidebar.style.css"> 
     <link rel="stylesheet" href="/styles/components/loader/spinner.style.css"> 
     <link rel="stylesheet" href="/styles/components/error-container.style.css"> 
@@ -95,7 +104,7 @@
                 <li class="nav-item">
                     <button class="sidebar-button">
                         <span class="material-symbols-outlined">add</span>
-                        <span class="sidebar-button-text">Create Post</span>
+                        <span class="sidebar-button-text">New Swap</span>
                     </button>
                 </li>
                 <li class="nav-item dropdown">
@@ -163,6 +172,10 @@
                 </a>
             </li>
         </ul>
+    </div>
+
+    <div class="post-container" id="post-container">
+        
     </div>
 </body>
 </html>
