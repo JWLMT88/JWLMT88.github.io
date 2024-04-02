@@ -18,9 +18,9 @@
     display: flex !important;
     position:  fixed !important;
     align-items: baseline;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
-    box-decoration-break: 0 4px 4px rgba(0, 0, 0, 0.1) !important; /* Schatten */
+    box-decoration-break: 0 4px 4px rgba(0, 0, 0, 0.4) !important; /* Schatten */
     border-bottom: 1px solid #eee; /* Unterstrich */
 }
 

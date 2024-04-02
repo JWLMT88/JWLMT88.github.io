@@ -36,10 +36,14 @@ const PostRenderer = (function() {
         postId++;
         const postTemplate = `
         <div class="post" id="post-${postId}">
+            
             <div class="post-image">
                 <img src="https://andrewlock.net/content/images/2024/defaultinterface.png" alt="Post Image">
             </div>
             <div class="post-content">
+                <div class="enlarge-btn">
+                    <span class="material-symbols-outlined">open_in_full</span>
+                </div>
                 <div class="post-author">
                 <div class="author-image-container glassy-design">
                     <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar-rounded">
