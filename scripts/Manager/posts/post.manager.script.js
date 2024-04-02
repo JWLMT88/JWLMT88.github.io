@@ -36,9 +36,24 @@ const PostRenderer = (function() {
         postId++;
         const postTemplate = `
         <div class="post" id="post-${postId}">
-            
             <div class="post-image">
-                <img src="https://andrewlock.net/content/images/2024/defaultinterface.png" alt="Post Image">
+                <img src="https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png" alt="Post Image">
+                <div class="post-actions">
+                    <button class="post-action-btn wide" onclick="PostRenderer.likePost('post-${postId}')">
+                        <span class="material-symbols-outlined">thumb_up_off</span>
+                        <span class="post-action-text">Like</span>
+                    </button>
+                </div> 
+                <div class="post-actions-secondary">
+                    <button class="post-action-btn-secondary" onclick="PostRenderer.commentPost(this)">
+                        <span class="material-symbols-outlined">comment</span>
+                        <span class="post-action-text">Comment</span>
+                    </button>
+                    <button class="post-action-btn-secondary" onclick="PostRenderer.sharePost(this)">
+                        <span class="material-symbols-outlined">share</span>
+                        <span class="post-action-text">Share</span>
+                    </button>
+                </div>
             </div>
             <div class="post-content">
                 <div class="enlarge-btn">
@@ -50,21 +65,28 @@ const PostRenderer = (function() {
                     <span class="author-name">${data.authorName}</span>
                 </div>
                 </div>
-                <p>${data.content}</p>
-            </div>
-            <div class="post-actions">
-                <button class="post-action-btn" onclick="PostRenderer.likePost('post-${postId}')">
-                <span class="material-symbols-outlined like-icon" id="post-${postId}-like-icon">thumb_up_off</span>
-                <span class="post-action-text">Like</span>
-                </button>
-                <button class="post-action-btn" onclick="PostRenderer.commentPost(this)">
-                <span class="material-symbols-outlined">comment</span>
-                <span class="post-action-text">Comment</span>
-                </button>
-                <button class="post-action-btn" onclick="PostRenderer.sharePost(this)">
-                <span class="material-symbols-outlined">share</span>
-                <span class="post-action-text">Share</span>
-                </button>
+                
+                <div class="post-details">
+                    <div class="post-stats">
+                        <span class="post-stat">
+                            <span class="material-symbols-outlined">visibility</span>
+                            <span class="post-stat-value">${data.views}</span>
+                        </span>
+                        <span class="post-stat">
+                            <span class="material-symbols-outlined">thumb_up</span>
+                            <span class="post-stat-value">${data.likes}</span>
+                        </span>
+                        <span class="post-stat">
+                            <span class="material-symbols-outlined">comment</span>
+                            <span class="post-stat-value">${data.comments}</span>
+                        </span>
+                    </div>
+                    <div class="post-tags">
+                        <span class="post-tag">${data.tag1}</span>
+                        <span class="post-tag">${data.tag2}</span>
+                        <span class="post-tag">${data.tag3}</span>
+                    </div>
+                </div>
             </div>
         </div>`;
         return postTemplate;
