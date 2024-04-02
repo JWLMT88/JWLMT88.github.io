@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
 :root {
     --c-blue-900: #081030;
     --c-blue-800: #111b40;
@@ -41,3 +44,4 @@
     --subtitle-color: #292929;
     --pale-blue-color: #f4f7ff;
 }
+

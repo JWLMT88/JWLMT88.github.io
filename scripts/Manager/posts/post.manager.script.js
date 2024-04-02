@@ -1,44 +1,68 @@
-// Post Manager
+/*
+   ------------------------------------------------------------------------------
+   Copyright (c) 2024 JW Limited. All rights reserved.
+
+   Project: SwapiX 
+   Module: Web Client 
+   File: post.manager.script.js
+   Company: JW Limited (licensed)
+   Author: Joey West (CEO)
+
+   This software is proprietary to JW Limited and constitutes valuable 
+   intellectual property. It is entrusted solely to employees named above
+   and may not be disclosed, copied, reproduced, transmitted, or used in 
+   any manner outside of the scope of its license without prior written
+   authorization from JW Limited.
+
+   ------------------------------------------------------------------------------
+*/
+
 const PostRenderer = (function() {
     let postId = 0; // Counter for post IDs
     let posts = []; // Array to store post data
     let currentPostIndex = 0;
 
+    /*
+    DATA Template of PostData (type: data)
+
+    authorAvatar = "string" (needs to be uri);
+    authorLink = "string" (needs to be uri)
+    authorName = "string";
+    content = "string";
+    pictureContent = "string" (needs to be uri / on swapix server)
+     */
+
     function createPostTemplate(data) {
         postId++;
         const postTemplate = `
-            <div class="post" id="post-${postId}">
-                <div class="post-header">
-                    <div class="post-author">
-                        <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar">
-                        <div class="author-info">
-                            <h4 class="author-name">${data.authorName}</h4>
-                            <small class="post-timestamp">${data.timestamp}</small>
-                        </div>
-                    </div>
-                    <div class="post-options">
-                        <span class="material-symbols-outlined">more_vert</span>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>${data.content}</p>
-                </div>
-                <div class="post-actions">
-                    <button class="post-action-btn" onclick="PostRenderer.likePost('post-${postId}')">
-                        <span class="material-symbols-outlined like-icon" id="post-${postId}-like-icon">thumb_up_off</span>
-                        <span class="post-action-text">Like</span>
-                    </button>
-                    <button class="post-action-btn" onclick="PostRenderer.commentPost(this)">
-                        <span class="material-symbols-outlined">comment</span>
-                        <span class="post-action-text">Comment</span>
-                    </button>
-                    <button class="post-action-btn" onclick="PostRenderer.sharePost(this)">
-                        <span class="material-symbols-outlined">share</span>
-                        <span class="post-action-text">Share</span>
-                    </button>
-                </div>
+        <div class="post" id="post-${postId}">
+            <div class="post-image">
+                <img src="https://andrewlock.net/content/images/2024/defaultinterface.png" alt="Post Image">
             </div>
-        `;
+            <div class="post-content">
+                <div class="post-author">
+                <div class="author-image-container glassy-design">
+                    <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar-rounded">
+                    <span class="author-name">${data.authorName}</span>
+                </div>
+                </div>
+                <p>${data.content}</p>
+            </div>
+            <div class="post-actions">
+                <button class="post-action-btn" onclick="PostRenderer.likePost('post-${postId}')">
+                <span class="material-symbols-outlined like-icon" id="post-${postId}-like-icon">thumb_up_off</span>
+                <span class="post-action-text">Like</span>
+                </button>
+                <button class="post-action-btn" onclick="PostRenderer.commentPost(this)">
+                <span class="material-symbols-outlined">comment</span>
+                <span class="post-action-text">Comment</span>
+                </button>
+                <button class="post-action-btn" onclick="PostRenderer.sharePost(this)">
+                <span class="material-symbols-outlined">share</span>
+                <span class="post-action-text">Share</span>
+                </button>
+            </div>
+        </div>`;
         return postTemplate;
     }
 
