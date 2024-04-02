@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', async function()
         authorAvatar: 'https://via.placeholder.com/50',
         authorName: 'John Doe',
         timestamp: '2 hours ago',
-        content: 'TEST'
-        
+        postDescription: 'TEST',
+        tag1: "news",
+        tag2: "politics",
+        tag2: "goals"
     });
     
     
@@ -141,6 +143,10 @@ function addPost(){
         authorAvatar: 'https://via.placeholder.com/50',
         authorName: 'Jane Smith',
         timestamp: '1 hour ago',
-        content: 'This is another sample post.'
+        content: 'This is another sample post.',
+        postDescription: 'This is another sample post.',
+        tag1: "news",
+        tag2: "politics",
+        tag2: "goals"
     });
 }

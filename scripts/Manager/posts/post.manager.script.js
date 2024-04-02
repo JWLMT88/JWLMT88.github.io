@@ -29,6 +29,10 @@ const PostRenderer = (function() {
     authorLink = "string" (needs to be uri)
     authorName = "string";
     content = "string";
+    postDescription = "sting";
+    tag1 = "string";
+    tag2 = "string";
+    tag3 = "string";
     pictureContent = "string" (needs to be uri / on swapix server)
      */
 
@@ -60,31 +64,19 @@ const PostRenderer = (function() {
                     <span class="material-symbols-outlined">open_in_full</span>
                 </div>
                 <div class="post-author">
-                <div class="author-image-container glassy-design">
-                    <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar-rounded">
-                    <span class="author-name">${data.authorName}</span>
-                </div>
-                </div>
-                
-                <div class="post-details">
-                    <div class="post-stats">
-                        <span class="post-stat">
-                            <span class="material-symbols-outlined">visibility</span>
-                            <span class="post-stat-value">${data.views}</span>
-                        </span>
-                        <span class="post-stat">
-                            <span class="material-symbols-outlined">thumb_up</span>
-                            <span class="post-stat-value">${data.likes}</span>
-                        </span>
-                        <span class="post-stat">
-                            <span class="material-symbols-outlined">comment</span>
-                            <span class="post-stat-value">${data.comments}</span>
-                        </span>
+                    <div class="author-image-container glassy-design">
+                        <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar-rounded">
+                        <span class="author-name">${data.authorName}</span>
                     </div>
-                    <div class="post-tags">
+                </div>
+                <div class="post-details">
+                    <div class="post-description">
+                        <p>${data.postDescription}</p>
+                        <div class="post-tags">
                         <span class="post-tag">${data.tag1}</span>
                         <span class="post-tag">${data.tag2}</span>
                         <span class="post-tag">${data.tag3}</span>
+                    </div>
                     </div>
                 </div>
             </div>
