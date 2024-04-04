@@ -65,8 +65,7 @@ function _OpenSearch()
 function _OpenNotifications(){
 
     const notiContainer = document.getElementById('notifications-container');
-    addNotification('Notification Title 1', 'Notification Message 1', 'alert-info');
-    addNotification('Notification Title 2', 'Notification Message 2', 'alert-warning');
+    
     if(!notificationsOpen)
     {
         notificationsOpen = true;
@@ -77,13 +76,25 @@ function _OpenNotifications(){
         document.getElementById("sidebar-noti-link").classList.add("link-selected");
 
         notiContainer.innerHTML = `
-        <div class="search-label">Notifications</div>
-        <div class="notification">
-                <div class="notification-title">Stay focused!</div>
-                <div class="notification-message">Hey my friend we saw that you have serious golas lets keep track on that!</div>
-        </div>
         `;
+
+        
+        var notificationManager = NotificationManager.getInstance();
+        notificationManager.addNotification('Notification Title 1', 'Notification Message 1', 'alert-info');
+        notificationManager.addNotification('Notification Title 2', 'Notification Message 2', 'alert-warning');
         notiContainer.classList.add('show');
+
+        
+    }
+
+    else
+    {
+        notificationsOpen = false;
+        document.getElementById("sidebar").classList.remove("active-item");
+        document.getElementById("sidebar-noti-link").classList.remove("link-selected");
+
+        notiContainer.innerHTML = '';
+        notiContainer.classList.remove('show');
 
         $(document).ready(function() {
             $('.notification').click(function() {
@@ -96,15 +107,5 @@ function _OpenNotifications(){
                 });
             });
         });
-    }
-
-    else
-    {
-        notificationsOpen = false;
-        document.getElementById("sidebar").classList.remove("active-item");
-        document.getElementById("sidebar-noti-link").classList.remove("link-selected");
-
-        notiContainer.innerHTML = '';
-        notiContainer.classList.remove('show');
     }
 }
