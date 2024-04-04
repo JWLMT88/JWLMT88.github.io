@@ -11,13 +11,15 @@
     overflow: hidden;
     transition: width 0.3s ease-in-out;
     display: flex;
+    z-index: 999;
     flex-direction: column;
-    justify-content: center; /* Vertically center items */
+
 }
 
 
 .sidebar-header {
     text-align: center;
+    padding-top: 75px !important;
 }
 
 .sidebar-menu {
@@ -28,23 +30,35 @@
 
 .sidebar-item {
     position: relative;
+    overflow: hidden;
     margin: 20px 0;
 }
 
-
 .sidebar-link {
+    max-height: 52px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin: 10px;
     padding: 15px 20px;
     color: #333;
+    overflow: hidden;
     text-decoration: none;
     transition: all 0.3s ease;
     border-radius: 15px;
+    border: 1px solid  #eeeeeeaf;
+}
+
+.active-item{
+    width: 80px;
+}
+
+.link-selected{
+    background-color: rgba(18, 9, 103, 0.1);
+    text-decoration: none;
 }
 
 .sidebar-link:hover {
-    box-shadow: 3px 1px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.1);
     text-decoration: none;
 }
@@ -55,6 +69,7 @@
 }
 
 .sidebar-text {
+    overflow: hidden;
     font-weight: 500;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;

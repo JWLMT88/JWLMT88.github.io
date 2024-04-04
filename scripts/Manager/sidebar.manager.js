@@ -19,8 +19,41 @@
 
 const sidebarToggleBtn = document.querySelector('.sidebar-toggle-btn');
 const sidebar = document.querySelector('.sidebar');
+var searchIsOpen = false;
+let lastSearchQuery = '';
 
-sidebarToggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-    sidebarToggleBtn.classList.toggle('open');
-});
+function registerSidebarElements()
+{
+    document.getElementById("sidebar-search").addEventListener('click', () => _OpenSearch())
+}
+
+function _OpenSearch()
+{
+    const searchContainer = document.getElementById('search-container');
+
+    if(!searchIsOpen)
+    {
+        searchIsOpen = true;
+        document.getElementById("sidebar").classList.add("active-item");
+        document.getElementById("sidebar-search-link").classList.add("link-selected");
+
+        searchContainer.innerHTML = `
+            <div class="search-label">Search</div>
+            <div class="search-form">
+                <input type="text" class="search-input" placeholder="Search here...">
+                <button class="search-button"><span class="material-symbols-outlined">search</span></button>
+            </div>
+        `;
+        searchContainer.classList.add('show');
+    }
+
+    else
+    {
+        searchIsOpen = false;
+        document.getElementById("sidebar").classList.remove("active-item");
+        document.getElementById("sidebar-search-link").classList.remove("link-selected");
+        
+        searchContainer.innerHTML = '';
+        searchContainer.classList.remove('show');
+    }
+}

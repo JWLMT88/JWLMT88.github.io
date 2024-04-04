@@ -41,11 +41,11 @@ const PostRenderer = (function() {
         const postTemplate = `
         <div class="post" id="post-${postId}">
             <div class="post-image">
-                <img src="https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png" alt="Post Image">
+                <img src="${data.pictureURI}" alt="Post Image">
                 <div class="post-actions">
                     <button class="post-action-btn wide" onclick="PostRenderer.likePost('post-${postId}')">
                         <span class="material-symbols-outlined">thumb_up_off</span>
-                        <span class="post-action-text">Like</span>
+                        <span class="post-action-text">${data.likeCount}</span>
                     </button>
                 </div> 
                 <div class="post-actions-secondary">
@@ -73,9 +73,9 @@ const PostRenderer = (function() {
                     <div class="post-description">
                         <p>${data.postDescription}</p>
                         <div class="post-tags">
-                        <span class="post-tag">${data.tag1}</span>
-                        <span class="post-tag">${data.tag2}</span>
-                        <span class="post-tag">${data.tag3}</span>
+                        <span onClick="window.location.href = '/tags?value=${data.tag1}'" class="post-tag">${data.tag1}</span>
+                        <span onClick="window.location.href = '/tags?value=${data.tag2}'" class="post-tag">${data.tag2}</span>
+                        <span onClick="window.location.href = '/tags?value=${data.tag3}'" class="post-tag">${data.tag3}</span>
                     </div>
                     </div>
                 </div>
