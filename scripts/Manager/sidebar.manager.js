@@ -20,6 +20,7 @@
 const sidebarToggleBtn = document.querySelector('.sidebar-toggle-btn');
 const sidebar = document.querySelector('.sidebar');
 var searchIsOpen = false;
+var notificationsOpen = false;
 let lastSearchQuery = '';
 
 function registerSidebarElements()
@@ -34,6 +35,9 @@ function _OpenSearch()
     if(!searchIsOpen)
     {
         searchIsOpen = true;
+
+        if(notificationsOpen) _OpenNotifications();
+
         document.getElementById("sidebar").classList.add("active-item");
         document.getElementById("sidebar-search-link").classList.add("link-selected");
 
@@ -55,5 +59,26 @@ function _OpenSearch()
         
         searchContainer.innerHTML = '';
         searchContainer.classList.remove('show');
+    }
+}
+
+function _OpenNotifications(){
+    const notiContainer = document.getElementById('notifications-container');
+
+    if(!notificationsOpen)
+    {
+        notificationsOpen = true;
+        
+        if(searchIsOpen) _OpenSearch();
+
+        document.getElementById("sidebar").classList.add("active-item");
+        document.getElementById("sidebar-noti-link").classList.add("link-selected");
+    }
+
+    else
+    {
+        notificationsOpen = false;
+        document.getElementById("sidebar").classList.remove("active-item");
+        document.getElementById("sidebar-noti-link").classList.remove("link-selected");
     }
 }

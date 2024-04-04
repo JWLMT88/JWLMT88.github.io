@@ -17,10 +17,11 @@
    ------------------------------------------------------------------------------
 */
 
-class QueryManager {
-    constructor() {
+class QueryManager 
+{
+    constructor() 
+    {
       this.queryParams = new URLSearchParams(window.location.search);
-      
     }
   
     /**
@@ -28,7 +29,8 @@ class QueryManager {
      * @param {string} key - The key of the query parameter.
      * @returns {string|null} The value of the query parameter, or null if not found.
      */
-    getParam(key) {
+    getParam(key) 
+    {
       return this.queryParams.get(key) || null;
     }
   
@@ -37,7 +39,8 @@ class QueryManager {
      * @param {string} key - The key of the query parameter.
      * @param {string} value - The value to set for the query parameter.
      */
-    setParam(key, value) {
+    setParam(key, value) 
+    {
       this.queryParams.set(key, value);
       this.updateUrl();
     }
@@ -46,10 +49,12 @@ class QueryManager {
    * Get all query parameters as an object.
    * @returns {Object} An object containing all query parameters and their values.
    */
-    getAllParams() {
+    getAllParams() 
+    {
         const params = {};
-        for (const [key, value] of this.queryParams.entries()) {
-        params[key] = value;
+        for (const [key, value] of this.queryParams.entries()) 
+        {
+          params[key] = value;
         }
         return params;
     }
@@ -58,16 +63,18 @@ class QueryManager {
    * Get all query parameters as a single string in the format "?query=value&query2=value2".
    * @returns {string} A string representing all query parameters and their values.
    */
-    getQueryString() {
-        return `?${this.queryParams.toString()}`;
-      }
+    getQueryString() 
+    {
+      return `?${this.queryParams.toString()}`;
+    }
     
   
     /**
      * Delete a specific query parameter.
      * @param {string} key - The key of the query parameter to delete.
      */
-    deleteParam(key) {
+    deleteParam(key) 
+    {
       this.queryParams.delete(key);
       this.updateUrl();
     }
@@ -75,10 +82,11 @@ class QueryManager {
     /**
      * Update the URL with the current query parameters.
      */
-    updateUrl() {
+    updateUrl() 
+    {
       const newUrl = `${window.location.origin}${window.location.pathname}?${this.queryParams.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
-  }
+}
 
   
