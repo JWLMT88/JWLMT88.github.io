@@ -63,8 +63,10 @@ function _OpenSearch()
 }
 
 function _OpenNotifications(){
-    const notiContainer = document.getElementById('notifications-container');
 
+    const notiContainer = document.getElementById('notifications-container');
+    addNotification('Notification Title 1', 'Notification Message 1', 'alert-info');
+    addNotification('Notification Title 2', 'Notification Message 2', 'alert-warning');
     if(!notificationsOpen)
     {
         notificationsOpen = true;
@@ -73,6 +75,27 @@ function _OpenNotifications(){
 
         document.getElementById("sidebar").classList.add("active-item");
         document.getElementById("sidebar-noti-link").classList.add("link-selected");
+
+        notiContainer.innerHTML = `
+        <div class="search-label">Notifications</div>
+        <div class="notification">
+                <div class="notification-title">Stay focused!</div>
+                <div class="notification-message">Hey my friend we saw that you have serious golas lets keep track on that!</div>
+        </div>
+        `;
+        notiContainer.classList.add('show');
+
+        $(document).ready(function() {
+            $('.notification').click(function() {
+                $(this).slideUp(400, function() 
+                {
+                    document.getElementById("sidebar").classList.remove("active-item");
+                    document.getElementById("sidebar-noti-link").classList.remove("link-selected")
+                    notiContainer.innerHTML = '';
+                    notiContainer.classList.remove('show');
+                });
+            });
+        });
     }
 
     else
@@ -80,5 +103,8 @@ function _OpenNotifications(){
         notificationsOpen = false;
         document.getElementById("sidebar").classList.remove("active-item");
         document.getElementById("sidebar-noti-link").classList.remove("link-selected");
+
+        notiContainer.innerHTML = '';
+        notiContainer.classList.remove('show');
     }
 }
