@@ -5,7 +5,7 @@
     background-color: #d9e2fc;
 }
 .hkcm_bg{
-    background-image: url("https://d178cgmue8nngv.cloudfront.net/66ea25f0-c3d6-463a-91e7-a72fbe34d85d/hkcm/images/auth.png");
+    background-image: url("/media/backgrounds/auth.png");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
