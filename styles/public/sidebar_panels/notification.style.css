@@ -34,11 +34,6 @@
     cursor: pointer;
     transition: all 0.4s ease;
   }
-
-  .notification:hover{
-    background-color: #e7e7e770;
-    box-shadow: 1px rgba(140, 140, 140, 0.1);
-  }
   .notification-title {
     font-weight: bold;
     margin-bottom: 5px;
@@ -83,11 +78,47 @@
 }
 
 .delete-notification-btn .material-icons {
+    margin-top: 3px;
     transition: all 0.4s ease-in-out;
     font-size: 24px;
     color: rgb(75, 98, 130);
 }
 
 .delete-notification-btn:hover .material-icons{
+    color: rgb(130, 26, 47);
+}
+
+.action-button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-right: 50px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.4s ease-in-out;
+}
+
+.action-button:hover{
     color: rgb(26, 69, 130);
+    background-color: #e7e7e7e1;
+    box-shadow: 1px rgba(140, 140, 140, 0.1);
+}
+
+.action-button:hover .material-icons{
+    color: rgb(38, 130, 26);
+}
+.action-button .material-icons {
+    margin-top: 3px;
+    font-size: 24px;
+    color: rgb(75, 98, 130);
+}
+
+.action-button:after {
+    content: '';
+    border-color: black transparent transparent transparent;
+    transform: translateY(-100%) translateX(100%);
 }

@@ -35,7 +35,10 @@ var NotificationManager = (function()
             <div class="notification" id="nfID-${notification.id}">
                 <div class="notification-title">${notification.title}</div>
                 <div class="notification-message">${notification.message}</div>
-                <button class="delete-notification-btn" onclick="NotificationManager.getInstance().removeNotification(${notification.id});"><span class="material-icons">delete</span></button>
+                <div class="notification-actions">
+                    <button class="action-button"><span class="material-icons" onclick="NotificationManager.getInstance().interactWithNotification(${notification.id});">arrow_outward</span></button>
+                    <button class="delete-notification-btn" onclick="NotificationManager.getInstance().removeNotification(${notification.id});"><span class="material-icons">delete</span></button>
+                </div>
             </div>`;
             return notificationTemplate;
         }
@@ -53,22 +56,7 @@ var NotificationManager = (function()
                 }
             });
         }
-
-        this.addNotification = function(title, message, type) 
-        {
-            var notification = 
-            {
-                title: title,
-                message: message,
-                type: type,
-                id: generateUniqueId(),
-                shown: true
-            };
-            notifications.push(notification);
-            updateNotifications();
-        };
-
-        this.removeNotification = function(id) 
+        function removeNotification(id)
         {
             var index = notifications.findIndex(function(notification) 
             {
@@ -83,7 +71,52 @@ var NotificationManager = (function()
             {
                 console.info("[NOTIFY MANGER] Couldnt find data to nfID")
             }
+        }
+
+        async function interactWithNotification(id)
+        {
+            await removeNotification(id);
+            
+            const notiContainer = document.getElementById('notifications-container');
+            document.getElementById("sidebar").classList.remove("active-item");
+            document.getElementById("sidebar-noti-link").classList.remove("link-selected")
+            notiContainer.innerHTML = '';
+            notiContainer.classList.remove('show');
+
+            var index = notifications.findIndex(function(notification) 
+            {
+                return notification.id === id;
+            });
+            if(notifications[index].type == "linked")
+            {
+                window.location.href = notifications[index].link;
+            }
+        }
+
+        this.addNotification = function(title, message, type, link) 
+        {
+            var notification = 
+            {
+                title: title,
+                message: message,
+                type: type,
+                id: generateUniqueId(),
+                shown: true,
+                link: link
+            };
+            notifications.push(notification);
+            updateNotifications();
         };
+
+        this.removeNotification = function(id) 
+        {
+            removeNotification(id);
+        };
+
+        this.interactWithNotification = function(id)
+        {
+            interactWithNotification(id);
+        }
 
         this.getNotifications = function() 
         {

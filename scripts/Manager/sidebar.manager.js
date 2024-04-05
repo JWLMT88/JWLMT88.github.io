@@ -23,11 +23,6 @@ var searchIsOpen = false;
 var notificationsOpen = false;
 let lastSearchQuery = '';
 
-function registerSidebarElements()
-{
-    document.getElementById("sidebar-search").addEventListener('click', () => _OpenSearch())
-}
-
 function _OpenSearch()
 {
     const searchContainer = document.getElementById('search-container');
@@ -74,38 +69,26 @@ function _OpenNotifications(){
 
         document.getElementById("sidebar").classList.add("active-item");
         document.getElementById("sidebar-noti-link").classList.add("link-selected");
-
-        notiContainer.innerHTML = `
-        `;
-
         
-        var notificationManager = NotificationManager.getInstance();
-        notificationManager.addNotification('Notification Title 1', 'Notification Message 1', 'alert-info');
-        notificationManager.addNotification('Notification Title 2', 'Notification Message 2', 'alert-warning');
         notiContainer.classList.add('show');
 
-        
+        // $(document).ready(function() {
+        //     $('.notification').click(function() {
+        //         $(this).slideUp(400, function() 
+        //         {
+        //             document.getElementById("sidebar").classList.remove("active-item");
+        //             document.getElementById("sidebar-noti-link").classList.remove("link-selected")
+        //             notiContainer.innerHTML = '';
+        //             notiContainer.classList.remove('show');
+        //         });
+        //     });
+        // });
     }
-
     else
     {
         notificationsOpen = false;
         document.getElementById("sidebar").classList.remove("active-item");
         document.getElementById("sidebar-noti-link").classList.remove("link-selected");
-
-        notiContainer.innerHTML = '';
         notiContainer.classList.remove('show');
-
-        $(document).ready(function() {
-            $('.notification').click(function() {
-                $(this).slideUp(400, function() 
-                {
-                    document.getElementById("sidebar").classList.remove("active-item");
-                    document.getElementById("sidebar-noti-link").classList.remove("link-selected")
-                    notiContainer.innerHTML = '';
-                    notiContainer.classList.remove('show');
-                });
-            });
-        });
     }
 }

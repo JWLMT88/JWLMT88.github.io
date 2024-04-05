@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', async function()
 
     if(qm.getParam("action") == "login")
     {
-        setCookie("swpKey",qm.getParam("key"));
-        setCookie("profileID",qm.getParam("usr"));
+        CookieManager.getInstance().setCookie("swpKey",qm.getParam("key"));
+        CookieManager.getInstance().setCookie("profileID",qm.getParam("usr"));
 
         qm.deleteParam("usr");
         qm.deleteParam("key");
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async function()
     }
     else 
     {
-        if(getCookie("swpKey") == null || getCookie("profileID") == null){
+        if(CookieManager.getInstance().getCookie("swpKey") == null || CookieManager.getInstance().getCookie("profileID") == null){
             window.location.href = "https://core.swapix.fun/pages/v2/auth/?referal=web-app&action=login&key=webApp"; 
         }
 
@@ -86,12 +86,10 @@ document.addEventListener('DOMContentLoaded', async function()
             }, 500);
         }, 200);
     }
-
-    registerSidebarElements();
-    
 });
 
-async function SetCachedProfile(){
+async function SetCachedProfile()
+{
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("content-type", "application/json");
@@ -103,7 +101,7 @@ async function SetCachedProfile(){
         redirect: "follow"
     };
 
-    await fetch(requestURL + "trader/" + getCookie("profileID") + "?apiKey=" + getCookie("swpKey"), requestOptions)
+    await fetch(requestURL + "trader/" + CookieManager.getInstance().getCookie("profileID") + "?apiKey=" + CookieManager.getInstance().getCookie("swpKey"), requestOptions)
         .then(response => {
             if (response.ok) {
               return response.json();
@@ -114,21 +112,26 @@ async function SetCachedProfile(){
           })
         .then(data => {
             
-            setCookie("__swp_cgb_account-name", data.firstName);
-            setCookie("__swp_cgb_account-email", data.email);
-            setCookie("__swp_cgb_account-username", data.userName);
-            setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName);
-            setCookie("__swp_cgb_account-resident", data.location);
-            setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A");
-            setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A")
+            CookieManager.getInstance().setCookie("__swp_cgb_account-name", data.firstName);
+            CookieManager.getInstance().setCookie("__swp_cgb_account-email", data.email);
+            CookieManager.getInstance().setCookie("__swp_cgb_account-username", data.userName);
+            CookieManager.getInstance().setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName);
+            CookieManager.getInstance().setCookie("__swp_cgb_account-resident", data.location);
+            CookieManager.getInstance().setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A");
+            CookieManager.getInstance().setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A")
         })
         .catch(error => {
             showError(error);
             console.error(error);
         }); 
+
+        var notificationManager = NotificationManager.getInstance();
+        notificationManager.addNotification('New Login!', 'We successfully logged you in, so no worry!',  "linked", "/");
+        notificationManager.addNotification('New Follower!', 'https.marv followed you yesterday!',  "linked", "/?account=https.marv");
 }
 
-function showError(ex) {
+function showError(ex) 
+{
     const errorContainer = document.getElementById("error-container");
     errorContainer.style.display = "block";
     const errorContainerex = document.getElementById("error-container-ex");
@@ -136,13 +139,15 @@ function showError(ex) {
 }
 
 function logoutMainUser(){
-    deleteCookie("swpKey")
-    deleteCookie("profileID")
+    CookieManager.getInstance().deleteCookie("swpKey")
+    CookieManager.getInstance().deleteCookie("profileID")
     window.location.href = "https://core.swapix.fun/pages/account/?action=logout"
 }
 
-function addPost(){
-    PostRenderer.addPost({
+function addPost()
+{
+    PostRenderer.addPost(
+    {
         authorAvatar: 'https://via.placeholder.com/50',
         authorName: 'Jane Smith',
         timestamp: '1 hour ago',
