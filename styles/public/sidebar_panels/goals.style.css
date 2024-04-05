@@ -1,0 +1,106 @@
+.goals-container{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 77px; 
+    width: 400px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-top: 105px !important;
+    box-sizing: border-box;
+    z-index: 100;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.goal-header{
+    display: flex;
+    flex-direction:row;
+    align-items: stretch;
+}
+
+.goal-label {
+    width: 90%;
+    font-family: "Manrope";
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
+.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.goal {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.navigate-to-goals-btn-top {
+    height: 37px;
+    width: 10%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.delete-goal-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.navigate-to-goals-btn .material-icons, .navigate-to-goals-btn-top .material-icons, .delete-goal-btn .material-icons {
+    font-size: 24px;
+    color: black;
+}
+
+.goal-content {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.goal-actions {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.delete-goal-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.delete-goal-btn .material-icons {
+    font-size: 24px;
+    color: black;
+}
+
+
+.goal-actions {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navigate-to-goals-btn, .delete-goal-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.navigate-to-goals-btn .material-icons, .delete-goal-btn .material-icons {
+    font-size: 24px;
+    color: black;
+}

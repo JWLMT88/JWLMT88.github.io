@@ -41,6 +41,7 @@
     <!--SCRIPTS-->
     <script src="/scripts/Shared/element-selector.script.js"></script>
     <script src="/scripts/Manager/account/notifications/notification.manager.script.js"></script>
+    <script src="/scripts/Manager/account/goals/goal.manager.script.js"></script>
     <script src="/scripts/Manager/header.content.manager.script.js"></script>
     <script src="/scripts/Manager/cookie.manager.script.js"></script>
     <script src="/scripts/Manager/query.manager.script.js"></script>
@@ -60,8 +61,12 @@
     <link rel="stylesheet" href="/styles/components/post/post-popup.style.css"> 
     <link rel="stylesheet" href="/styles/public/root.style.css"> 
     <link rel="stylesheet" href="/styles/public/component_colors.css"> 
+
+    <!--SidePannels-->
     <link rel="stylesheet" href="/styles/public/sidebar_panels/search.style.css">
     <link rel="stylesheet" href="/styles/public/sidebar_panels/notification.style.css">
+    <link rel="stylesheet" href="/styles/public/sidebar_panels/goals.style.css">
+    
     <link rel="stylesheet" href="/styles/components/post/majorPost.style.css"> 
     <link rel="stylesheet" href="/styles/public/sidebar.style.css"> 
     <link rel="stylesheet" href="/styles/components/loader/spinner.style.css"> 
@@ -164,8 +169,8 @@
                     <span class="sidebar-text">Communities</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a href="/account/goals" class="sidebar-link">
+            <li class="sidebar-item" onclick="_OpenGoals()">
+                <a class="sidebar-link" id="sidebar-goals-link">
                   <span class="material-symbols-outlined">assignment</span>
                   <span class="sidebar-text">My Goals</span>
                 </a>
@@ -180,6 +185,8 @@
     </div>
     <div class="search-container" id="search-container"></div>
     <div class="notifications-container" id="notifications-container"></div>
+    <div class="goals-container" id="goals-container"></div>
+    
     <div class="space"></div>
     <div class="post-container" id="post-container">
         <!--CONTENT AREA-->

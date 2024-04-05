@@ -18,3 +18,5 @@
 */
 
 const swapixVersion = "0.1.3";
+const authenticationClientURI = "https://core.swapix.fun/pages/v2/auth/?referal=web-app&action=login&key=webApp";
+const apiURI = "https://mutual-loved-filly.ngrok-free.app/api/";

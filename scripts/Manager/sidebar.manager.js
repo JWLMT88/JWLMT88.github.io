@@ -21,6 +21,7 @@ const sidebarToggleBtn = document.querySelector('.sidebar-toggle-btn');
 const sidebar = document.querySelector('.sidebar');
 var searchIsOpen = false;
 var notificationsOpen = false;
+var goalsOpen = false;
 let lastSearchQuery = '';
 
 function _OpenSearch()
@@ -32,7 +33,7 @@ function _OpenSearch()
         searchIsOpen = true;
 
         if(notificationsOpen) _OpenNotifications();
-
+        if(goalsOpen) _OpenGoals();
         document.getElementById("sidebar").classList.add("active-item");
         document.getElementById("sidebar-search-link").classList.add("link-selected");
 
@@ -57,7 +58,8 @@ function _OpenSearch()
     }
 }
 
-function _OpenNotifications(){
+function _OpenNotifications()
+{
 
     const notiContainer = document.getElementById('notifications-container');
     
@@ -66,6 +68,7 @@ function _OpenNotifications(){
         notificationsOpen = true;
         
         if(searchIsOpen) _OpenSearch();
+        if(goalsOpen) _OpenGoals();
 
         document.getElementById("sidebar").classList.add("active-item");
         document.getElementById("sidebar-noti-link").classList.add("link-selected");
@@ -90,5 +93,32 @@ function _OpenNotifications(){
         document.getElementById("sidebar").classList.remove("active-item");
         document.getElementById("sidebar-noti-link").classList.remove("link-selected");
         notiContainer.classList.remove('show');
+    }
+}
+
+function _OpenGoals()
+{
+    const goalContainer = document.getElementById('goals-container');
+
+    if(!goalsOpen)
+    {
+        goalsOpen = true;
+        
+        if(searchIsOpen) _OpenSearch();
+        if(notificationsOpen) _OpenNotifications();
+
+        GoalManager.getInstance().init();
+
+        document.getElementById("sidebar").classList.add("active-item");
+        document.getElementById("sidebar-goals-link").classList.add("link-selected");
+        
+        goalContainer.classList.add('show');
+    }
+    else
+    {
+        goalsOpen = false;
+        document.getElementById("sidebar").classList.remove("active-item");
+        document.getElementById("sidebar-goals-link").classList.remove("link-selected");
+        goalContainer.classList.remove('show');
     }
 }
