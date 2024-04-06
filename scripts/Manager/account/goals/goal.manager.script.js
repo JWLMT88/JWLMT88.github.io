@@ -5,7 +5,8 @@ var GoalManager = (function() {
     {
         var goals = [];
 
-        function generateUniqueId() {
+        function generateUniqueId() 
+        {
             return Math.floor(Math.random() * 100000); 
         }
 
@@ -44,7 +45,6 @@ var GoalManager = (function() {
                 removeGoal(id);
             });
             $('.navigate-to-goals-btn, .navigate-to-goals-btn-top').click(function() {
-                // Redirect to goals page
                 window.location.href = '/account/goals';
             });
         }
@@ -95,7 +95,6 @@ var GoalManager = (function() {
         
         getInstance: function() 
         {
-
             if (!instance) 
             {
                 instance = new GoalManager();

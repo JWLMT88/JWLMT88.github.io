@@ -32,8 +32,8 @@
     <meta property ="twitter:image" content ="http://res.cloudinary.com/dpu5ywrox/image/upload/v1711235160/qlisyhr0blxwb2k9xr5v.png"/>
     <meta property ="og:image" content ="http://res.cloudinary.com/dpu5ywrox/image/upload/v1711235160/qlisyhr0blxwb2k9xr5v.png" />
     
-     <!--THIRD PARTY-->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--THIRD PARTY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>SwapiX - Be different!</title>
     <link rel="icon" href="https://core.swapix.fun/media/icons/logo.png" sizes="32x32">
@@ -52,6 +52,7 @@
     <script src="/scripts/Manager/posts/post.manager.script.js"></script>
     <script src="/scripts/Manager/posts/postobserver.manager.script.js"></script>
     <script src="/scripts/JW Limited/root.script.js"></script>
+    <script src="/scripts/JW Limited/router.script.js"></script>
    
     <!--STYLE SHEETS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -158,13 +159,13 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="/explore" class="sidebar-link">
+                <a href="/#/explore" class="sidebar-link">
                   <span class="material-symbols-outlined">explore</span>
                   <span class="sidebar-text">Explore</span>
                 </a>
               </li>
             <li class="sidebar-item">
-                <a href="/groups" class="sidebar-link">
+                <a href="/#/groups" class="sidebar-link">
                     <span class="material-symbols-outlined">groups</span>
                     <span class="sidebar-text">Communities</span>
                 </a>
@@ -188,8 +189,12 @@
     <div class="goals-container" id="goals-container"></div>
     
     <div class="space"></div>
-    <div class="post-container" id="post-container">
-        <!--CONTENT AREA-->
+
+    <div id="content">
+        <div class="post-container" id="post-container">
+
+        </div>
     </div>
+
 </body>
 </html>

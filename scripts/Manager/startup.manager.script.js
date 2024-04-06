@@ -18,10 +18,14 @@
 */
 
 const qm = new QueryManager();
+var pageManager = null;
 var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
+    window.addEventListener('hashchange', router);
+    window.addEventListener('load', router);
+
      pager = new PageQueryManager({
         observedParams: ['page']
       });
