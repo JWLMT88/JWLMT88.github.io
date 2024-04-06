@@ -36,8 +36,7 @@ function SetPage(page){
 }
 
 function BackToMainPage(){
-    const qm = new QueryManager();
-    qm.deleteParam("page");
+    window.location.href = "/#/"
 }
 
 

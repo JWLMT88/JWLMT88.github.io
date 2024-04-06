@@ -45,7 +45,7 @@ var GoalManager = (function() {
                 removeGoal(id);
             });
             $('.navigate-to-goals-btn, .navigate-to-goals-btn-top').click(function() {
-                window.location.href = '/account/goals';
+                window.location.href = '/#/account/goals';
             });
         }
 
@@ -87,7 +87,7 @@ var GoalManager = (function() {
             `);
             $('.navigate-to-goals-btn, .navigate-to-goals-btn-top').click(function() 
             {
-                window.location.href = '/account/goals';
+                window.location.href = '/#/account/goals';
             });
         }
     }

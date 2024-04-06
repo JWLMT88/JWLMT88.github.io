@@ -80,7 +80,6 @@ var NotificationManager = (function()
             const notiContainer = document.getElementById('notifications-container');
             document.getElementById("sidebar").classList.remove("active-item");
             document.getElementById("sidebar-noti-link").classList.remove("link-selected")
-            notiContainer.innerHTML = '';
             notiContainer.classList.remove('show');
 
             var index = notifications.findIndex(function(notification) 

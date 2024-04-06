@@ -23,8 +23,7 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
-    window.addEventListener('hashchange', router);
-    window.addEventListener('load', router);
+    
 
      pager = new PageQueryManager({
         observedParams: ['page']
@@ -90,6 +89,14 @@ document.addEventListener('DOMContentLoaded', async function()
             }, 500);
         }, 200);
     }
+
+    if(!window.location.href.toString().includes("#"))
+    {
+        window.location.href ="/#/"
+    }
+
+    window.addEventListener('hashchange', router);
+    window.addEventListener('load', router);
 });
 
 async function SetCachedProfile()
@@ -130,8 +137,8 @@ async function SetCachedProfile()
         }); 
 
         var notificationManager = NotificationManager.getInstance();
-        notificationManager.addNotification('New Login!', 'We successfully logged you in, so no worry!',  "linked", "/");
-        notificationManager.addNotification('New Follower!', 'https.marv followed you yesterday!',  "linked", "/?account=https.marv");
+        notificationManager.addNotification('New Login!', 'We successfully logged you in, so no worry!',  "linked", "/#/");
+        notificationManager.addNotification('New Follower!', 'https.marv followed you yesterday!',  "linked", "/#/@https.marv");
 }
 
 function showError(ex) 

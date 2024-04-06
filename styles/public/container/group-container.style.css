@@ -1,0 +1,7 @@
+.groups-container {
+    margin-left: 260px;
+    padding: 20px;
+    align-items: center;
+    display: grid;
+    justify-content: space-around;
+  }
