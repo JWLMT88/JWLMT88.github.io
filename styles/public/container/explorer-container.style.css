@@ -4,4 +4,29 @@
     align-items: center;
     display: grid;
     justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .explorer-container.post {
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .explorer-container.load-more-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
   }

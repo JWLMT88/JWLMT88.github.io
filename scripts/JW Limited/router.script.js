@@ -30,9 +30,10 @@ var groupsPageContent = `
 `;
 
 var explorerPageContent = `
-  <div class="explorer-container">
-    <!-- Group H page content goes here -->
-  </div>
+    <div class="explorer-container" id="explorer-container">
+    <div class="post-grid" id="post-grid"></div>
+    <div class="load-more-btn">Load More</div>
+    </div>
 `;
 
 // Initialize variables
@@ -61,10 +62,45 @@ function router()
   }
 }
 
+async function animateContentWrapper() {
+    content.classList.remove('animate-in', 'animate-out');
+    void content.offsetWidth; // Trigger reflow
+    this.content.classList.add('animate-out');
+    await setTimeout(() => {
+        content.classList.remove('animate-out');
+      void content.offsetWidth; // Trigger reflow
+      content.classList.add('animate-in');
+    }, 500); // Wait for the fade-out animation to complete
+  }
+
 // Render page function
-function renderPage(pageContent, pageName) {
-  currentPage = pageName;
-  content.innerHTML = pageContent;
+async function renderPage(pageContent, pageName) 
+{
+
+    await animateContentWrapper();
+    await setTimeout(() => {
+        currentPage = pageName;
+        content.innerHTML = pageContent;
+
+        if (pageName === 'explorer') 
+        {
+            const posts = [
+                // Replace with your actual post data
+                { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+                { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+                { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+                { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+                { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+                { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+                // Add more posts here
+            ];
+            
+            const explorerManager = new ExplorerManager(posts);
+            explorerManager.renderPosts(content);
+            explorerManager.setupLoadMoreButton(content);
+        }
+    }, 500); 
+    
 }
 
 
