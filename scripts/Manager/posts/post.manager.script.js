@@ -17,7 +17,8 @@
    ------------------------------------------------------------------------------
 */
 
-const PostRenderer = (function() {
+const PostRenderer = (function() 
+{
     let postId = 0; // Counter for post IDs
     let posts = []; // Array to store post data
     let currentPostIndex = 0;
@@ -73,9 +74,9 @@ const PostRenderer = (function() {
                     <div class="post-description">
                         <p>${data.postDescription}</p>
                         <div class="post-tags">
-                        <span onClick="window.location.href = '/tags?value=${data.tag1}'" class="post-tag">${data.tag1}</span>
-                        <span onClick="window.location.href = '/tags?value=${data.tag2}'" class="post-tag">${data.tag2}</span>
-                        <span onClick="window.location.href = '/tags?value=${data.tag3}'" class="post-tag">${data.tag3}</span>
+                        <span onClick="window.location.href = '/#/tags?value=${data.tag1}'" class="post-tag">${data.tag1}</span>
+                        <span onClick="window.location.href = '/#/tags?value=${data.tag2}'" class="post-tag">${data.tag2}</span>
+                        <span onClick="window.location.href = '/#/tags?value=${data.tag3}'" class="post-tag">${data.tag3}</span>
                     </div>
                     </div>
                 </div>
@@ -84,13 +85,15 @@ const PostRenderer = (function() {
         return postTemplate;
     }
 
-    function addPost(data) {
+    function addPost(data) 
+    {
         console.log("[PostManager (v" + swapixVersion + ")] New post data recived! : " + data)
         posts.push(data);
         renderPosts();
     }
 
-    function renderPosts() {
+    function renderPosts() 
+    {
         
         console.log("[PostManager (v" + swapixVersion + ")] Started rendering of new data")
         let postHTML = '';
@@ -115,7 +118,8 @@ const PostRenderer = (function() {
     }
 
 
-    function likePost(postID) {
+    function likePost(postID) 
+    {
         const likeIcon = $Select(postID +'-like-icon');
         const isLiked = likeIcon.innerHTML === 'thumb_up';
 
@@ -126,24 +130,29 @@ const PostRenderer = (function() {
         }
     }
 
-    function commentPost(postElement) {
+    function commentPost(postElement) 
+    {
         console.log('Comment post:', postElement);
     }
 
-    function sharePost(postElement) {
+    function sharePost(postElement) 
+    {
         console.log('Share post:', postElement);
     }
 
-    function removePost(postId) {
+    function removePost(postId) 
+    {
         const post = document.getElementById(`post-${postId}`);
         if (post) {
             post.remove();
         }
     }
 
-    function hidePost(postId) {
+    function hidePost(postId) 
+    {
         const post = document.getElementById(`post-${postId}`);
-        if (post) {
+        if (post) 
+        {
             post.style.display = 'none';
         }
     }

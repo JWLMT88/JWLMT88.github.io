@@ -1,0 +1,30 @@
+.not-found-container {
+    margin-left: 260px;
+    padding: 20px;
+    align-items: center;
+    display: grid;
+    justify-content: space-around;
+  }
+  
+  .not-found-message {
+    text-align: center;
+    margin-right: 50px;
+  }
+  
+  .not-found-graphic {
+    
+  }
+  
+  .go-back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .go-back-btn:hover {
+    background-color: #0056b3;
+  } 

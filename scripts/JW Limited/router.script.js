@@ -17,6 +17,19 @@
    ------------------------------------------------------------------------------
 */
 
+var notFoundContent = `
+<div class="not-found-container">
+  <div class="not-found-message">
+    <h2>Oops! This side doesn't exist.</h2>
+    <p>Please go back to youre <span class="side-name">Main Feed</span>.</p>
+    <div onclick="window.location.href = '/#/'" class="go-back-btn">Go Back</div>
+  </div>
+  <div class="not-found-graphic">
+    <!-- Add your graphics or animations here -->
+  </div>
+</div>
+`;
+
 var homePageContent = `
   <div class="post-container" id="post-container">
     <!-- Home page content goes here -->
@@ -56,52 +69,54 @@ function router()
     case '/explore':
       renderPage(explorerPageContent, 'explorer');
       break;
-    default:
+    case '/':
       renderPage(homePageContent, 'home');
+      break;
+    default:
+      this.renderPage(notFoundContent, 'not-found');
       break;
   }
 }
-
-async function animateContentWrapper() {
+  async function animateContentWrapper() 
+  {
     content.classList.remove('animate-in', 'animate-out');
-    void content.offsetWidth; // Trigger reflow
+    void content.offsetWidth;
     this.content.classList.add('animate-out');
-    await setTimeout(() => {
-        content.classList.remove('animate-out');
-      void content.offsetWidth; // Trigger reflow
+    await setTimeout(() => 
+    {
+      content.classList.remove('animate-out');
+      void content.offsetWidth;
       content.classList.add('animate-in');
-    }, 500); // Wait for the fade-out animation to complete
+    }, 500);
+
   }
+  async function renderPage(pageContent, pageName) 
+  {
 
-// Render page function
-async function renderPage(pageContent, pageName) 
-{
+      await animateContentWrapper();
+      await setTimeout(() => {
+          currentPage = pageName;
+          content.innerHTML = pageContent;
 
-    await animateContentWrapper();
-    await setTimeout(() => {
-        currentPage = pageName;
-        content.innerHTML = pageContent;
+          if (pageName === 'explorer') 
+          {
 
-        if (pageName === 'explorer') 
-        {
-            const posts = [
-                // Replace with your actual post data
-                { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
-                { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
-                { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
-                { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
-                { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
-                { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
-                // Add more posts here
-            ];
-            
-            const explorerManager = new ExplorerManager(posts);
-            explorerManager.renderPosts(content);
-            explorerManager.setupLoadMoreButton(content);
-        }
-    }, 500); 
-    
-}
+              const posts = [
+                  { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+                  { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+                  { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+                  { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+                  { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+                  { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+              ];
+              
+              const explorerManager = new ExplorerManager(posts);
+              explorerManager.renderPosts(content);
+              explorerManager.setupLoadMoreButton(content);
+          }
+      }, 500); 
+      
+  }
 
 
   function savePage() 
