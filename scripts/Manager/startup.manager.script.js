@@ -23,7 +23,8 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
-    
+    var scMng = new AccountDataManager();
+    scMng.fetchTraderStats();
 
      pager = new PageQueryManager({
         observedParams: ['page']
@@ -72,8 +73,9 @@ document.addEventListener('DOMContentLoaded', async function()
     }
     else 
     {
-        if(CookieManager.getInstance().getCookie("swpKey") == null || CookieManager.getInstance().getCookie("profileID") == null){
-            window.location.href = "https://core.swapix.fun/pages/v2/auth/?referal=web-app&action=login&key=webApp"; 
+        if(CookieManager.getInstance().getCookie("swpKey") == null || CookieManager.getInstance().getCookie("profileID") == null)
+        {
+            window.location.href = authenticationClientURI; 
         }
 
         await FillInContent();

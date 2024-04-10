@@ -49,7 +49,17 @@ var explorerPageContent = `
     </div>
 `;
 
-// Initialize variables
+var tagPageContent = `
+<div class="tag-container" id="tag-container">
+  <!-- Tag page content goes here -->
+</div>
+`
+var accountPageContent = `
+<div class="account-container" id="account-container">
+  <!-- Tag page content goes here -->
+</div>
+`
+
 var currentPage = "home";
 var content = document.getElementById('content');
 
@@ -64,16 +74,27 @@ function router()
   switch (hash) 
   {
     case '/groups':
+
       renderPage(groupsPageContent, 'groups');
       break;
     case '/explore':
+
       renderPage(explorerPageContent, 'explorer');
       break;
     case '/':
+
       renderPage(homePageContent, 'home');
       break;
+    case '/tag':
+      renderPage(tagPageContent, 'tags')
     default:
-      this.renderPage(notFoundContent, 'not-found');
+
+      if(hash.startsWith("/@"))
+      {
+          renderPage(accountPageContent,'account')
+      }
+
+      renderPage(notFoundContent, 'not-found');
       break;
   }
 }
@@ -94,14 +115,15 @@ function router()
   {
 
       await animateContentWrapper();
-      await setTimeout(() => {
+      setTimeout(() => {
           currentPage = pageName;
           content.innerHTML = pageContent;
 
           if (pageName === 'explorer') 
           {
 
-              const posts = [
+              const posts = 
+              [
                   { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
                   { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
                   { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
