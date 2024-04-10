@@ -32,7 +32,9 @@ class AccountDataManager
             {
                 throw new Error(`HTTP error ${response.status}`);
             }
-        
+            
+            console.log(response);
+
             const data = await response.json();
             this.traderStats = data;
             return this.traderStats;

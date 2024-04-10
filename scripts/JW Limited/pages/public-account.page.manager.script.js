@@ -25,8 +25,15 @@ class AccountManager
         this.usernamePlaceholder = container.querySelector('.username');
         this.extractUsernameFromHash();
         this.accountPageContent = '';
+
         this.userData = {
-        username: 'johndoe',
+        videos: [
+            { src: "" }
+        ],
+        goals: [
+            {title: "test", description: "test"}
+        ],
+        username: this.extractUsernameFromHash(),
         bio: 'Software Engineer | Travel Enthusiast',
         profilePicture: 'https://download.cnet.com/a/img/resize/3c40bb97d902d497fdf2d81cf5e5c90fe3a80d5f/catalog/2020/04/27/68048db2-973d-4c82-b9ee-e10d6f37b9fe/imgingest-3647751081601515257.png?auto=webp&fit=crop&width=64',
         posts: [
@@ -39,6 +46,7 @@ class AccountManager
         };
 
         this.renderAccountPage();
+        this.setupTabSwitching();
     }
 
     renderAccountPage() {
@@ -105,7 +113,7 @@ class AccountManager
         accountPageContainer.appendChild(tabBar);
     
         const postsContainer = document.createElement('div');
-        postsContainer.classList.add('account-page-posts-container');
+        postsContainer.classList.add('account-page-posts-container','account-page-tab-content', 'active');
     
         this.userData.posts.forEach(post => {
           const postElement = document.createElement('div');
@@ -128,17 +136,65 @@ class AccountManager
     
           postsContainer.appendChild(postElement);
         });
-    
+
+        const videosContainer = document.createElement('div');
+        videosContainer.classList.add('account-page-videos-container', 'account-page-tab-content');
+
+        // Add your code to render videos here
+        this.userData.videos.forEach(video => {
+        const videoElement = document.createElement('div');
+        videoElement.classList.add('account-page-video');
+        videoElement.innerHTML = `
+            <video src="${video.src}" controls></video>
+            <p>${video.description}</p>
+        `;
+        videosContainer.appendChild(videoElement);
+        });
+
+        const goalsContainer = document.createElement('div');
+        goalsContainer.classList.add('account-page-goals-container', 'account-page-tab-content');
+
+        // Add your code to render goals here
+        this.userData.goals.forEach(goal => {
+        const goalElement = document.createElement('div');
+        goalElement.classList.add('account-page-goal');
+        goalElement.innerHTML = `
+            <h3>${goal.title}</h3>
+            <p>${goal.description}</p>
+            <progress value="${goal.progress}" max="100"></progress>
+        `;
+        goalsContainer.appendChild(goalElement);
+        });
+        
         accountPageContainer.appendChild(postsContainer);
-    
+        accountPageContainer.appendChild(videosContainer);
+        accountPageContainer.appendChild(goalsContainer);    
+        
         this.container.appendChild(accountPageContainer);
-      }
-  
+    }
+    setupTabSwitching() 
+    {
+        const tabBar = this.container.querySelector('.account-page-tab-bar');
+        const tabs = tabBar.querySelectorAll('.account-page-tab');
+        const tabContents = this.container.querySelectorAll('.account-page-tab-content');
+    
+        tabs.forEach((tab, index) => 
+        {
+            tab.addEventListener('click', () => 
+            {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+        
+                tab.classList.add('active');
+                tabContents[index].classList.add('active');
+          });
+        });
+    }
     extractUsernameFromHash() 
     {
       const hash = window.location.hash.slice(1);
-      const username = hash.split('/')[1].slice(1); // Extract the username from the hash (e.g., /@username)
-      this.displayUsername(username);
+      const username = hash.split('/')[1].slice(1);
+      return username;
     }
   
     displayUsername(username) 
