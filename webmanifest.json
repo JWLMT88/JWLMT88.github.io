@@ -1,0 +1,38 @@
+{
+    "short_name": "SwapiX",
+    "name": "SwapiX",
+    "description": "SwapiX - Be different!",
+    "icons": [
+      {
+        "src": "/media/icons/logo.png",
+        "type": "image/png",
+        "sizes": "171x172",
+        "purpose": "any"
+      },
+      {
+        "src": "/media/icons/logo.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": "any"
+      },
+      {
+        "src": "/media/icons/logo.png",
+        "type": "image/png",
+        "sizes": "171x172",
+        "purpose": "maskable"
+      },
+      {
+        "src": "/media/icons/logo.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": "maskable"
+      }
+    ],
+    "start_url": "/#/?action=login",
+    "scope": "/#/",
+    "display": "minimal-ui",    
+    "orientation": "square",
+    "background_color": "#FFFFFFD0",
+    "theme_color": "#FFFFFFD0",
+    "id": "swapix"
+  }
