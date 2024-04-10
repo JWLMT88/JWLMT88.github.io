@@ -65,7 +65,7 @@ const PostRenderer = (function()
                     <span class="material-symbols-outlined">open_in_full</span>
                 </div>
                 <div class="post-author">
-                    <div class="author-image-container glassy-design">
+                    <div class="author-image-container glassy-design" onclick="window.location.href = '/#/@${data.userName}'">
                         <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar-rounded">
                         <span class="author-name">${data.authorName}</span>
                     </div>

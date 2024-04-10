@@ -58,6 +58,7 @@
     <script src="/scripts/JW Limited/router.script.js"></script>
     <script src="/scripts/Manager/account/data/user.stats.manager.script.js"></script>
     <script src="/scripts/JW Limited/pages/explorer.page.manager.script.js"></script>
+    <script src="/scripts/JW Limited/pages/public-account.page.manager.script.js"></script>
    
     <!--STYLE SHEETS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -70,7 +71,9 @@
     <link rel="stylesheet" href="/styles/public/container/explorer-container.style.css"> 
     <link rel="stylesheet" href="/styles/public/container/group-container.style.css"> 
     <link rel="stylesheet" href="/styles/public/container/content-container.style.css"> 
+    <link rel="stylesheet" href="/styles/public/container/account-container.style.css"> 
     <link rel="stylesheet" href="/styles/public/component_colors.css"> 
+    <link rel="stylesheet" href="/styles/components/pages/account.page.components.style.css"> 
 
     <!--SidePannels-->
     <link rel="stylesheet" href="/styles/public/sidebar_panels/search.style.css">
@@ -106,7 +109,7 @@
             <p>Oops! Something went wrong.</p>
             <p id="error-container-ex">Please try again later.</p>
             <div class="logout">
-                <button class="logout-button" onclick="">Retry</button>
+                <button class="logout-button" onclick="window.location.reload();">Retry</button>
             </div>
         </div>
     </div>

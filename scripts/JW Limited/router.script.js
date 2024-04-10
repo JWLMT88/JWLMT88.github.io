@@ -51,13 +51,10 @@ var explorerPageContent = `
 
 var tagPageContent = `
 <div class="tag-container" id="tag-container">
-  <!-- Tag page content goes here -->
 </div>
 `
 var accountPageContent = `
-<div class="account-container" id="account-container">
-  <!-- Tag page content goes here -->
-</div>
+
 `
 
 var currentPage = "home";
@@ -91,7 +88,8 @@ function router()
 
       if(hash.startsWith("/@"))
       {
-          renderPage(accountPageContent,'account')
+          renderPage(accountPageContent,'account');
+          break;
       }
 
       renderPage(notFoundContent, 'not-found');
@@ -135,6 +133,9 @@ function router()
               const explorerManager = new ExplorerManager(posts);
               explorerManager.renderPosts(content);
               explorerManager.setupLoadMoreButton(content);
+          }
+          else if (pageName === 'account') {
+            const accountManager = new AccountManager(content);
           }
       }, 500); 
       

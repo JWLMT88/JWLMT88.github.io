@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', async function()
       
       PostRenderer.addPost({
         authorAvatar: 'https://via.placeholder.com/50',
-        authorName: 'John Doe',
+        authorName: 'Joey West',
+        userName: "admin",
         timestamp: '2 hours ago',
         postDescription: 'TEST',
         tag1: "news",
