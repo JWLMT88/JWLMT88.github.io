@@ -23,8 +23,28 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
-    var scMng = new AccountDataManager();
-    scMng.fetchTraderStats();
+    if ('serviceWorker' in navigator) 
+        {
+        window.addEventListener('load', function() 
+        {
+          navigator.serviceWorker.register('/scripts/Services/cache.script.js', 
+          { 
+            scope: '/' 
+          })
+            .then(function(registration) 
+            {
+              console.log('Service Worker Registration Successful:', registration.scope);
+            })
+            .catch(function(error) 
+            {
+              console.log('Service Worker Registration Failed:', error);
+            });
+        });
+      } 
+      else 
+      {
+        console.log('Service Worker is not supported in this browser.');
+      }
 
      pager = new PageQueryManager({
         observedParams: ['page']
@@ -34,7 +54,8 @@ document.addEventListener('DOMContentLoaded', async function()
         console.log(`Page changed from ${oldValue} to ${newValue}`);
       });
       
-      PostRenderer.addPost({
+    PostRenderer.addPost(
+    {
         authorAvatar: 'https://via.placeholder.com/50',
         authorName: 'Joey West',
         userName: "admin",

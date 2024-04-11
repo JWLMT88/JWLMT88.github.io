@@ -111,13 +111,17 @@
     animation: fadInUp 1s linear;
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(166, 166, 166, 0.3);
-    background-color: rgba(255, 255, 255, 0.327);
+    background-color: rgba(196, 196, 196, 0.778);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    
+    transition:  all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);;
     overflow: hidden;
     padding: 15px;
+    opacity: 0;
+    color: #fff;
+    transform: translateX(200px);
     min-width: 250px;
+    display: block !important;
     outline: none;
   }
   
@@ -149,7 +153,11 @@
     color: #ffffff; 
   }
   
-
+  .dropdown-menu.show{
+    display: block;
+    opacity: 1;
+    transform: translateX(0px);
+  }
 
   .dropdown-item span {
     font-size: 20px;

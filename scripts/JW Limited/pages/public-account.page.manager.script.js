@@ -21,6 +21,7 @@ class AccountManager
 {
     constructor(container) 
     {
+        this.dataManager = new PublicUserDataManager();
         this.container = container;
         this.usernamePlaceholder = container.querySelector('.username');
         this.extractUsernameFromHash();
@@ -29,9 +30,6 @@ class AccountManager
         this.userData = {
         videos: [
             { src: "" }
-        ],
-        goals: [
-            {title: "test", description: "test"}
         ],
         username: this.extractUsernameFromHash(),
         bio: 'Software Engineer | Travel Enthusiast',
@@ -46,16 +44,20 @@ class AccountManager
         };
 
         this.renderAccountPage();
-        this.setupTabSwitching();
     }
 
-    renderAccountPage() {
+    async renderAccountPage() 
+    {
+      try
+      {
+        var data = await this.dataManager.fetchByName(this.extractUsernameFromHash(),true,false);
+
         const accountPageContainer = document.createElement('div');
         accountPageContainer.classList.add('account-page-container');
     
         const profilePic = document.createElement('div');
         profilePic.classList.add('account-page-profile-pic');
-        profilePic.style.backgroundImage = `url(${this.userData.profilePicture})`;
+        profilePic.style.backgroundImage = `url(${apiURI + `v1/content/profiles/@${this.userData.username}?ApiKey=` + CookieManager.getInstance().getCookie("swpKey")})`;
         accountPageContainer.appendChild(profilePic);
     
         const username = document.createElement('h2');
@@ -77,7 +79,7 @@ class AccountManager
         const followers = document.createElement('div');
         followers.classList.add('account-page-stat');
         followers.innerHTML = `
-          <span class="account-page-stat-count">${this.userData.followers}</span>
+          <span class="account-page-stat-count">${data.followingTraders.length}</span>
           <span class="account-page-stat-label">Followers</span>
         `;
         statsContainer.appendChild(followers);
@@ -85,7 +87,7 @@ class AccountManager
         const following = document.createElement('div');
         following.classList.add('account-page-stat');
         following.innerHTML = `
-          <span class="account-page-stat-count">${this.userData.following}</span>
+          <span class="account-page-stat-count">${data.followedTraders.length}</span>
           <span class="account-page-stat-label">Following</span>
         `;
         statsContainer.appendChild(following);
@@ -154,14 +156,13 @@ class AccountManager
         const goalsContainer = document.createElement('div');
         goalsContainer.classList.add('account-page-goals-container', 'account-page-tab-content');
 
-        // Add your code to render goals here
-        this.userData.goals.forEach(goal => {
+        data.goals.forEach(goal => {
         const goalElement = document.createElement('div');
         goalElement.classList.add('account-page-goal');
         goalElement.innerHTML = `
-            <h3>${goal.title}</h3>
-            <p>${goal.description}</p>
-            <progress value="${goal.progress}" max="100"></progress>
+            <h3>${goal._goalName}</h3>
+            <p>${goal._goalDescription}</p>
+            <p>${goal._achievmentDay}</p>
         `;
         goalsContainer.appendChild(goalElement);
         });
@@ -171,9 +172,18 @@ class AccountManager
         accountPageContainer.appendChild(goalsContainer);    
         
         this.container.appendChild(accountPageContainer);
+        
+        this.setupTabSwitching();
+      }
+      catch(Ex)
+      {
+        
+      }
+        
     }
     setupTabSwitching() 
     {
+      
         const tabBar = this.container.querySelector('.account-page-tab-bar');
         const tabs = tabBar.querySelectorAll('.account-page-tab');
         const tabContents = this.container.querySelectorAll('.account-page-tab-content');

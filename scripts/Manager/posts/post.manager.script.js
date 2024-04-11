@@ -66,7 +66,7 @@ const PostRenderer = (function()
                 </div>
                 <div class="post-author">
                     <div class="author-image-container glassy-design" onclick="window.location.href = '/#/@${data.userName}'">
-                        <img src="${data.authorAvatar}" alt="Author Avatar" class="author-avatar-rounded">
+                        <img src="${apiURI + `v1/content/profiles/@${data.userName}?ApiKey=` + CookieManager.getInstance().getCookie("swpKey")}" alt="Author Avatar" class="author-avatar-rounded">
                         <span class="author-name">${data.authorName}</span>
                     </div>
                 </div>
