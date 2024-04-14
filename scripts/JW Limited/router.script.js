@@ -70,6 +70,10 @@ function router()
 
   switch (hash) 
   {
+    
+    case '/account':
+      renderPage(accountPageContent, 'personal')
+      break;
     case '/groups':
 
       renderPage(groupsPageContent, 'groups');
@@ -79,7 +83,6 @@ function router()
       renderPage(explorerPageContent, 'explorer');
       break;
     case '/':
-
       renderPage(homePageContent, 'home');
       break;
     case '/tag':
@@ -113,7 +116,8 @@ function router()
   {
 
       await animateContentWrapper();
-      setTimeout(() => {
+      setTimeout(() => 
+      {
           currentPage = pageName;
           content.innerHTML = pageContent;
 
@@ -134,10 +138,15 @@ function router()
               explorerManager.renderPosts(content);
               explorerManager.setupLoadMoreButton(content);
           }
-          else if (pageName === 'account') {
+          else if (pageName == 'account') 
+          {
             const accountManager = new AccountManager(content);
           }
-      }, 500); 
+          else if(pageName == 'personal')
+          {
+            const peronalAccountManager = new LoggedInAccountManager(content);
+          }
+      }, 300); 
       
   }
 

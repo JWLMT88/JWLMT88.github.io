@@ -34,7 +34,7 @@ class AccountDataManager
             }
             
             console.log(response);
-
+            console.log(`[Account Manager] fetched/cached data [[(request) LoggedInUser]]`, response);
             const data = await response.json();
             this.traderStats = data;
             return this.traderStats;

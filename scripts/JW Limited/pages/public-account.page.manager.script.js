@@ -19,31 +19,38 @@
 
 class AccountManager 
 {
-    constructor(container) 
+    constructor(container)
     {
+
         this.dataManager = new PublicUserDataManager();
         this.container = container;
         this.usernamePlaceholder = container.querySelector('.username');
         this.extractUsernameFromHash();
         this.accountPageContent = '';
-
-        this.userData = {
-        videos: [
-            { src: "" }
-        ],
-        username: this.extractUsernameFromHash(),
-        bio: 'Software Engineer | Travel Enthusiast',
-        profilePicture: 'https://download.cnet.com/a/img/resize/3c40bb97d902d497fdf2d81cf5e5c90fe3a80d5f/catalog/2020/04/27/68048db2-973d-4c82-b9ee-e10d6f37b9fe/imgingest-3647751081601515257.png?auto=webp&fit=crop&width=64',
-        posts: [
-            { image: 'https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png' },
-            { image: 'https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png' },
-            // Add more posts here
-        ],
-        followers: 1234,
-        following: 567,
-        };
-
-        this.renderAccountPage();
+        if(this.extractUsernameFromHash() == CookieManager.getInstance().getCookie("__swp_cgb_account-username"))
+        {
+           window.location.href = "/#/account"
+        }
+        else
+        {
+          this.userData = {
+            videos: [
+                { src: "" }
+            ],
+            username: this.extractUsernameFromHash(),
+            bio: 'Software Engineer | Travel Enthusiast',
+            profilePicture: 'https://download.cnet.com/a/img/resize/3c40bb97d902d497fdf2d81cf5e5c90fe3a80d5f/catalog/2020/04/27/68048db2-973d-4c82-b9ee-e10d6f37b9fe/imgingest-3647751081601515257.png?auto=webp&fit=crop&width=64',
+            posts: [
+                { image: 'https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png' },
+                { image: 'https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png' },
+                // Add more posts here
+            ],
+            followers: 1234,
+            following: 567,
+            };
+    
+            this.renderAccountPage();
+        }
     }
 
     async renderAccountPage() 
