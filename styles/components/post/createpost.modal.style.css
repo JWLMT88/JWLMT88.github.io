@@ -15,7 +15,6 @@
   
   .modal-content {
     flex-direction: none !important;
-    position: fixed;
     border: 0px solid #eee !important;
     min-height: 500px;
     transition: all 0.4s ease-in-out;
