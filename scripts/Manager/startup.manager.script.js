@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', async function()
 
     window.addEventListener('hashchange', router);
     window.addEventListener('load', router);
+
+    ModalManager.init();
 });
 
 async function SetCachedProfile()

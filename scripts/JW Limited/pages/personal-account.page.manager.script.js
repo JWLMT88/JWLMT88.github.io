@@ -47,23 +47,27 @@ class LoggedInAccountManager
         };
 
         await fetch(requestURL + "trader/" + CookieManager.getInstance().getCookie("profileID") + "?apiKey=" + CookieManager.getInstance().getCookie("swpKey"), requestOptions)
-        .then(response => {
-            if (response.ok) {
+        .then(response => 
+        {
+            if (response.ok) 
+            {
               return response.json();
-            } else {
+            } else 
+            {
               showError();
               throw new Error("Login failed: " + response.body);
             }
           })
-        .then(data => {
+        .then(data => 
+        {
             this.accountBio = data.bio; 
         })
-        .catch(error => {
+        .catch(error => 
+        {
             showError(error);
             console.error(error);
         }); 
     }
-
 
     async renderAccountPage() 
     {
@@ -81,34 +85,42 @@ class LoggedInAccountManager
         username.classList.add('account-page-username');
         username.textContent = CookieManager.getInstance().getCookie("__swp_cgb_account-username");
         accountPageContainer.appendChild(username);
-
+        
         const bio = document.createElement('p');
         bio.classList.add('account-page-bio');
         bio.textContent = this.accountBio;
         accountPageContainer.appendChild(bio);
 
+        const accountActionButton = document.createElement('div');
+        accountActionButton.classList.add('account-actions');
+
         const editBioButton = document.createElement('button');
         editBioButton.classList.add('edit-bio-button');
-        editBioButton.textContent = 'Edit Bio';
-        editBioButton.addEventListener('click', () => {
+        editBioButton.textContent = 'Edit';
+        editBioButton.addEventListener('click', () => 
+        {
             this.renderEditBioModal();
         });
-        accountPageContainer.appendChild(editBioButton);
+        accountActionButton.appendChild(editBioButton);
 
         const uploadProfilePicButton = document.createElement('button');
         uploadProfilePicButton.classList.add('upload-profile-pic-button');
-        uploadProfilePicButton.textContent = 'Upload Profile Picture';
-        uploadProfilePicButton.addEventListener('click', () => {
-            this.renderUploadProfilePicModal();
+        uploadProfilePicButton.textContent = 'Goals';
+        uploadProfilePicButton.addEventListener('click', () => 
+        {
+            window.location.href = "/#/account/goals"
         });
-        accountPageContainer.appendChild(uploadProfilePicButton);
+        accountActionButton.appendChild(uploadProfilePicButton);
+
+        accountPageContainer.appendChild(accountActionButton)
+
         const statsContainer = document.createElement('div');
         statsContainer.classList.add('account-page-stats-container');
     
         const posts = document.createElement('div');
         posts.classList.add('account-page-stat');
         posts.innerHTML = `
-          <span class="account-page-stat-count">$"#{this.userData.posts.length}"</span>
+          <span class="account-page-stat-count">2</span>
           <span class="account-page-stat-label">Posts</span>
         `;
         statsContainer.appendChild(posts);
@@ -217,6 +229,8 @@ class LoggedInAccountManager
 
         const modalContent = document.createElement('div');
         modalContent.classList.add('modal-content');
+
+        
 
         const bioInput = document.createElement('textarea');
         bioInput.classList.add('bio-input');

@@ -44,6 +44,7 @@
 
     <!--SCRIPTS-->
     <script src="/scripts/ThirdParty/imgix.js"></script>
+    <script src="/scripts/JW Limited/router.script.js"></script>
     <script src="/scripts/Services/cache.script.js"></script>
     <script src="/scripts/Manager/account/data/public.user.stats.manager.script.js"></script>
     <script src="/scripts/Shared/element-selector.script.js"></script>
@@ -59,7 +60,8 @@
     <script src="/scripts/Manager/posts/post.manager.script.js"></script>
     <script src="/scripts/Manager/posts/postobserver.manager.script.js"></script>
     <script src="/scripts/JW Limited/root.script.js"></script>
-    <script src="/scripts/JW Limited/router.script.js"></script>
+    <script src="/scripts/Manager/posts/post.creator.manager.script.js"></script>
+    
     <script src="/scripts/Manager/account/data/user.stats.manager.script.js"></script>
     <script src="/scripts/JW Limited/pages/explorer.page.manager.script.js"></script>
     <script src="/scripts/JW Limited/pages/public-account.page.manager.script.js"></script>
@@ -87,6 +89,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/styles/components/post/majorPost.style.css"> 
     <link rel="stylesheet" href="/styles/public/sidebar.style.css"> 
+    <link rel="stylesheet" href="/styles/components/post/createpost.modal.style.css"> 
     <link rel="stylesheet" href="/styles/components/loader/spinner.style.css"> 
     <link rel="stylesheet" href="/styles/components/error-container.style.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -130,16 +133,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <button class="sidebar-button">
+                    <button id="openPostCreatorButton" class="sidebar-button">
                         <span class="material-symbols-outlined">add</span>
-                        <span onclick="addPost();" class="sidebar-button-text">New Swap</span>
+                        <span class="sidebar-button-text">New Swap</span>
                     </button>
                 </li>
                 <li class="nav-item dropdown">
                     <div class="profile-image-placeholder" onclick="toggleDropdown();" id="profile-image-placeholder" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="none" alt="Profile Image" id="header-profile-manager" class="profile-image">
                     </div>
-                    <div id="dropdown-menu" class="dropdown-menu dropdown-menu-right">
+                    <div id="dropdown-menu" class="dropdown-menu dropdown-menu-right" onclick="toggleDropdown()">
                         <div class="dropdown-header">
                             <h6>Hey, again.</h6>
                         </div>
@@ -208,6 +211,39 @@
     
     <div class="space"></div>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button"><span class="material-symbols-outlined">
+            arrow_back_ios
+            </span></span>
+          <div id="modalPages">
+            <div class="modal-page">
+              <h2>Upload Photo</h2>
+              <input type="file" id="fileInput" accept="image/*">
+              <img id="preview" src="" alt="Preview" style="display: none; max-width: 100%;">
+              <button id="nextPage">Next</button>
+            </div>
+            <div class="modal-page" style="display: none;">
+              <h2>Edit Photo</h2>
+              <canvas id="canvas"></canvas>
+              <button id="prevPage">Previous</button>
+              <button id="nextPage">Next</button>
+            </div>
+            <div class="modal-page" style="display: none;">
+              <h2>Add Tags</h2>
+              <input type="text" id="tagInput" placeholder="Enter tags separated by commas">
+              <button id="prevPage">Previous</button>
+              <button id="nextPage">Next</button>
+            </div>
+            <div class="modal-page" style="display: none;">
+              <h2>Add Description</h2>
+              <textarea id="description" placeholder="Enter description"></textarea>
+              <button id="prevPage">Previous</button>
+              <button id="submit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="content-wrapper content-container" id="content">
         <div class="post-container" id="post-container">
 
