@@ -18,7 +18,7 @@
 */
 
 
-const requestURL = "https://mutual-loved-filly.ngrok-free.app/api/v1/";
+
 const profilePlaceholder = document.getElementById('profile-image-placeholder');
 var isOutsideDropdown = false;
 

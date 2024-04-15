@@ -184,12 +184,14 @@ function addPost()
     PostRenderer.addPost(
     {
         authorAvatar: 'https://via.placeholder.com/50',
-        authorName: 'Jane Smith',
-        timestamp: '1 hour ago',
-        content: 'This is another sample post.',
-        postDescription: 'This is another sample post.',
+        authorName: 'Joey West',
+        userName: "admin",
+        timestamp: '2 hours ago',
+        postDescription: 'TEST',
         tag1: "news",
         tag2: "politics",
-        tag2: "goals"
+        tag3: "goals",
+        likeCount: "200",
+        pictureURI: "https://images.ctfassets.net/b4k16c7lw5ut/37pi4T16q2gUm3xhGI4Dvx/78d0ef19ab6faef492e74edce4d285dc/image1.png?w=1920&h=1080&q=50&fm=png"
     });
 }
