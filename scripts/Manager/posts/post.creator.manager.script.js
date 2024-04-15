@@ -8,8 +8,8 @@ const ModalManager = (function() {
       elements.modalPages = document.getElementById("modalPages");
       elements.modalContent = document.getElementsByClassName("modal-content")[0];
       elements.closeBtn = document.getElementsByClassName("close-button")[0];
-      elements.nextBtns = document.getElementsByClassName("modal-page");
-      elements.prevBtns = document.getElementsByClassName("modal-page");
+      elements.nextBtns = document.getElementsByClassName("nextButton");
+      elements.prevBtns = document.getElementsByClassName("preButton");
       elements.submitBtn = document.getElementById("submit");
       elements.fileInput = document.getElementById("fileInput");
       elements.preview = document.getElementById("preview");
@@ -21,38 +21,67 @@ const ModalManager = (function() {
     // Open modal
     function openModal() 
     {
-      elements.modal.style.display = "block";
+        elements.modal.style.display = "block";
+        setTimeout(() => 
+        {
+            elements.modal.classList.add("show");
+            elements.modal.querySelector(".modal-page").classList.add("show");
+        }, 100);
     }
-  
-    // Close modal
+    
     function closeModal() 
     {
-      elements.modal.style.display = "none";
-    }
-  
-    // Handle page navigation
-    let currentPage = 0;
-    const pages = document.getElementsByClassName("modal-page");
-  
-    function showPage(index) 
-    {
+        elements.modal.classList.remove("show");
+        const pages = document.getElementsByClassName("modal-page");
         for (let i = 0; i < pages.length; i++) 
         {
-            pages[i].style.display = "none";
+            pages[i].classList.remove("show");
         }
+        setTimeout(() => {
+            elements.modal.style.display = "none";
+            currentPage_M = 0;
+            showPage(0);
+        },100)
+        
+    }
 
-        pages[index].style.display = "block";
-        currentPage = index;
+  
+    // Handle page navigation
+    let currentPage_M = 0;
+
+    function showPage(index) 
+    {
+        const pages = document.getElementsByClassName("modal-page");
+
+        for (let i = 0; i < pages.length; i++) 
+        {
+            pages[i].classList.remove("show");
+            setTimeout(() => 
+            {
+                pages[i].style.display = "none"
+            });
+        }
+        console.log(index, pages)
+        setTimeout(() => 
+        {
+            pages[index].style.display = "block";
+            setTimeout(() => 
+            {
+                pages[index].classList.add("show");
+            },100);
+        }, 100);
+
+        currentPage_M = index;
     }
   
     function handleNextPage() 
     {
-      showPage(currentPage + 1);
+      showPage(currentPage_M + 1);
     }
   
     function handlePrevPage() 
     {
-      showPage(currentPage - 1);
+      showPage(currentPage_M - 1);
     }
   
     // Handle file upload and preview

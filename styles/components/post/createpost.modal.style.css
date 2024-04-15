@@ -1,19 +1,23 @@
-/* Modal styles */
 .modal {
     display: none;
     position: fixed !important;
     z-index: 20000;
+    transition: all 0.4s ease-in-out;
     left: 0 !important; 
     top: 0 !important;
     width: 100%;
+    opacity: 0;
     height: 100%;
+    backdrop-filter: blur(20px);
     overflow: auto;
-    background-color: rgba(146, 146, 146, 0.597);
+    background-color: rgba(95, 95, 95, 0.419);
   }
   
   .modal-content {
-    background-color: rgba(255, 255, 255, 0.707) !important;
-    backdrop-filter: blur(20px);
+    min-height: 500px;
+    transition: all 0.4s ease-in-out;
+    background-color: rgb(255, 255, 255) !important;
+    backdrop-filter: blur(15px);
     box-decoration-break: 0 4px 4px rgba(97, 97, 97, 0.4) !important; /* Schatten */
     border-radius: 15px !important;
     margin: 15% auto;
@@ -24,6 +28,14 @@
     position: relative;
   }
   
+  .show {
+    opacity: 1;
+  }
+
+  .show .modal-content {
+    transform: scale(1);
+  }
+
   .close-button {
     color: #aaa;
     float: right;
@@ -43,14 +55,27 @@
     text-decoration: none;
     cursor: pointer;
   }
-  
-  /* Page styles */
+
   .modal-page {
     text-align: center;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .modal-page h2{
+    font-family: "Manrope";
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  .modal-page.show {
+    opacity: 1;
+    transform: translateX(0);
   }
   
   #canvas {
-    max-width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
   }
   
   #tagInput {
@@ -66,4 +91,20 @@
     padding: 12px 20px;
     box-sizing: border-box;
     resize: none;
+  }
+
+  .modal-page img{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 300px !important;
+    border-radius: 10px;
+  }
+
+  .nextButton{
+
+  }
+
+  .preButton{
+
   }
