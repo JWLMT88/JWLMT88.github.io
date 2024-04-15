@@ -14,11 +14,12 @@
   }
   
   .modal-content {
+    flex-direction: none !important;
+    border: 0px solid #eee !important;
     min-height: 500px;
     transition: all 0.4s ease-in-out;
     background-color: rgb(255, 255, 255) !important;
     backdrop-filter: blur(15px);
-    box-decoration-break: 0 4px 4px rgba(97, 97, 97, 0.4) !important; /* Schatten */
     border-radius: 15px !important;
     margin: 15% auto;
     padding: 25px;
@@ -26,6 +27,53 @@
     width: 80%;
     max-width: 600px;
     position: relative;
+  }
+
+  .upload-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ebebeb;
+    border-radius: 10px;
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .upload-instructions {
+    flex: 1;
+    text-align: center;
+    color: #888;
+  }
+  
+  .upload-label {
+    display: inline-block;
+    border: 1px solid #eee !important;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color:  #333;
+    border-radius: 13px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-label:hover {
+    color:#aaa;
+  }
+  
+  .preview-container {
+    flex: 1;
+    max-width: 300px;
+    margin-left: 20px;
+  }
+  
+  #preview {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
   .show {
@@ -58,8 +106,9 @@
 
   .modal-page {
     text-align: center;
+    min-height: 430px;
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(40px);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
   .modal-page h2{
@@ -67,6 +116,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 25px;
+    left: 25px;
   }
   .modal-page.show {
     opacity: 1;
@@ -79,15 +129,18 @@
   }
   
   #tagInput {
-    width: 100%;
+    width: 85%;
+    border-radius: 15px;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
   }
   
   #description {
-    width: 100%;
+    width: 85%;
+    border-radius: 15px;
     height: 150px;
+    border:2px solid #333;
     padding: 12px 20px;
     box-sizing: border-box;
     resize: none;
@@ -102,9 +155,67 @@
   }
 
   .nextButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 65%;
+  }
 
+  .nextButton:hover{
+    background-color: #555;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
   }
 
   .preButton{
+    margin: 0px 10px;
+    display: flex;
+    border: 1px solid #eee !important;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color:  #333;
+    border-radius: 13px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 25%;
+  }
 
+  .action-button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .submitButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 65%;
   }

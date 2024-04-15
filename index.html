@@ -218,28 +218,45 @@
             </span></span>
           <div id="modalPages">
             <div class="modal-page">
-              <h2>Upload Photo</h2>
-              <input type="file" id="fileInput" accept="image/*">
-              <img id="preview" src="" alt="Preview" style="display: none; max-width: 100%;">
-              <button class="nextButton" id="nextPage">Next</button>
+                <h2>Upload Photo</h2>
+                <div class="upload-area">
+                  <div class="upload-instructions">
+                    <p>Drag and drop your photo here</p>
+                    <p>or</p>
+                    <label for="fileInput" class="upload-label">Browse Files</label>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                  </div>
+                  <div class="preview-container">
+                    <img id="preview" src="" alt="Preview">
+                  </div>
+                </div>
+                <div class="action-button-container">
+                  <button class="nextButton" id="nextPage">Next</button>
+                </div>
             </div>
             <div class="modal-page" style="display: none;">
               <h2>Edit Photo</h2>
               <canvas id="canvas"></canvas>
-              <button class="preButton" id="prevPage">Previous</button>
-              <button  class="nextButton" id="nextPage">Next</button>
+              <div class="action-button-container">
+                <button class="preButton" id="prevPage">Previous</button>
+                <button  class="nextButton" id="nextPage">Next</button>
+              </div>
             </div>
             <div class="modal-page" style="display: none;">
               <h2>Add Tags</h2>
               <input type="text" id="tagInput" placeholder="Enter tags separated by commas">
-              <button class="preButton" id="prevPage">Previous</button>
-              <button class="nextButton" id="nextPage">Next</button>
+              <div class="action-button-container">
+                <button class="preButton" id="prevPage">Previous</button>
+                <button  class="nextButton" id="nextPage">Next</button>
+              </div>
             </div>
             <div class="modal-page" style="display: none;">
               <h2>Add Description</h2>
               <textarea id="description" placeholder="Enter description"></textarea>
-              <button class="preButton" id="prevPage">Previous</button>
-              <button id="submit">Submit</button>
+              <div class="action-button-container">
+                <button class="preButton" id="prevPage">Previous</button>
+                <button class="submitButton" id="submit">Share It!</button>
+              </div>
             </div>
           </div>
         </div>
