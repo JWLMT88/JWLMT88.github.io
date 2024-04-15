@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function()
         {
         window.addEventListener('load', function() 
         {
-          navigator.serviceWorker.register('/scripts/Services/cache.script.js', 
+          navigator.serviceWorker.register('/scripts/Service Worker/cache.script.js', 
           { 
             scope: '/' 
           })
