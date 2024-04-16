@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async function()
                 document.body.classList.add('loaded-hidden');
                
             }, 500);
-        }, 2000);
+        }, 3300);
 
 
     }
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async function()
                 document.body.classList.add('loaded-hidden');
              
             }, 500);
-        }, 200);
+        }, 700);
     }
 
     if(!window.location.href.toString().includes("#"))
