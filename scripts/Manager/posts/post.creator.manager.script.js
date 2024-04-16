@@ -94,6 +94,7 @@ const ModalManager = (function() {
         {
             elements.preview.src = reader.result;
             elements.preview.style.display = "block";
+            elements.preview.classList.add("preview-show");
     
             // Draw image on canvas for editing
             const img = new Image();
@@ -104,6 +105,7 @@ const ModalManager = (function() {
                 const ctx = elements.canvas.getContext("2d");
                 ctx.drawImage(img, 0, 0);
             }
+
             img.src = reader.result;
         }
     

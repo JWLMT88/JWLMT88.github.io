@@ -147,8 +147,8 @@ async function SetCachedProfile()
               throw new Error("Login failed: " + response.body);
             }
           })
-        .then(data => {
-            
+        .then(data => 
+          {
             CookieManager.getInstance().setCookie("__swp_cgb_account-name", data.firstName);
             CookieManager.getInstance().setCookie("__swp_cgb_account-email", data.email);
             CookieManager.getInstance().setCookie("__swp_cgb_account-username", data.userName);
