@@ -48,7 +48,7 @@ const PostRenderer = (function()
             <div class="post-image">
                 <img src="${data.pictureURI}" alt="Post Image">
                 <div class="post-actions">
-                    <button class="post-action-btn wide" onclick="PostRenderer.likePost('post-${postId}')">
+                    <button class="post-action-btn wide" onclick="PostRenderer.likePost('${postId}')">
                         <span class="material-symbols-outlined" id="${postId}-like-icon">thumb_up_off</span>
                         <span class="post-action-text">${data.likeCount}</span>
                     </button>
@@ -125,12 +125,12 @@ const PostRenderer = (function()
     function likePost(postID) 
     {
         const likeIcon = document.getElementById(postID +'-like-icon');
-        const isLiked = likeIcon.innerHTML === 'thumb_up';
+        const isLiked = likeIcon.classList.contains("postliked");
 
         if (isLiked) {
-            likeIcon.innerHTML = 'thumb_up_off';
+            likeIcon.classList.remove("post-liked")
         } else {
-            likeIcon.innerHTML = 'thumb_up';
+            likeIcon.classList.add("post-liked")
         }
     }
 
