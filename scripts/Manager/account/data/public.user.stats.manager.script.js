@@ -17,6 +17,18 @@ class PublicUserDataManager
     {
         try 
         {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("content-type", "application/json");
+            myHeaders.append("ngrok-skip-browser-warning","true");
+            const requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+                header: myHeaders,
+                redirect: "follow"
+            };
+
+
             if(needRefetch == false)
             {
                 const cachedResult = this._getSavedResult(username);
@@ -27,7 +39,7 @@ class PublicUserDataManager
                 }
             }
     
-            const response = await fetch(apiURI + `v1/trader/@${username}/stats/public`);
+            const response = await fetch(apiURI + `v1/trader/@${username}/stats/public`, requestOptions);
     
             if (!response.ok) 
             {

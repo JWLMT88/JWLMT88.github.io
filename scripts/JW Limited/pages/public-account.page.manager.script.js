@@ -57,6 +57,7 @@ class AccountManager
     {
       try
       {
+        
         var data = await this.dataManager.fetchByName(this.extractUsernameFromHash(),true,false);
 
         const accountPageContainer = document.createElement('div');

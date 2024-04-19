@@ -24,9 +24,11 @@ var isOutsideDropdown = false;
 
 async function FillInContent()
 {
+    const networkManager = new JWLimitedRequestManager();
+
     document.getElementById("header-dropdown-username").innerText = CookieManager.getInstance().getCookie("__swp_cgb_account-username");
     document.getElementById("header-dropdown-email").innerText = CookieManager.getInstance().getCookie("__swp_cgb_account-email");
-    document.getElementById("header-profile-manager").src = requestURL + "content/profiles?ApiKey=" + CookieManager.getInstance().getCookie("swpKey") + "&traderID=" + CookieManager.getInstance().getCookie("profileID");
+    networkManager.loadImageIntoFrame(requestURL + "content/profiles?ApiKey=" + CookieManager.getInstance().getCookie("swpKey") + "&traderID=" + CookieManager.getInstance().getCookie("profileID"),document.getElementById("header-profile-manager"));
 }
 
 function SetPage(page){

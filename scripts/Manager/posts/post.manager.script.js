@@ -37,7 +37,11 @@ const PostRenderer = (function()
     pictureContent = "string" (needs to be uri / on swapix server)
      */
 
-    function createPostTemplate(data) {
+    async function createPostTemplate(data) 
+    {
+        const networkManager = new JWLimitedRequestManager();
+        var authorBlobUri = await networkManager.getImageBlobUrl(apiURI + `v1/content/profiles/@${data.userName}?ApiKey=` + CookieManager.getInstance().getCookie("swpKey"));
+
         postId++;
         const postTemplate = `
         <div class="post" id="post-${postId}">
@@ -45,7 +49,7 @@ const PostRenderer = (function()
                 <img src="${data.pictureURI}" alt="Post Image">
                 <div class="post-actions">
                     <button class="post-action-btn wide" onclick="PostRenderer.likePost('post-${postId}')">
-                        <span class="material-symbols-outlined">thumb_up_off</span>
+                        <span class="material-symbols-outlined" id="${postId}-like-icon">thumb_up_off</span>
                         <span class="post-action-text">${data.likeCount}</span>
                     </button>
                 </div> 
@@ -66,7 +70,7 @@ const PostRenderer = (function()
                 </div>
                 <div class="post-author">
                     <div class="author-image-container glassy-design" onclick="window.location.href = '/#/@${data.userName}'">
-                        <img src="${apiURI + `v1/content/profiles/@${data.userName}?ApiKey=` + CookieManager.getInstance().getCookie("swpKey")}" alt="Author Avatar" class="author-avatar-rounded">
+                        <img src="${authorBlobUri}" alt="Author Avatar" class="author-avatar-rounded">
                         <span class="author-name">${data.authorName}</span>
                     </div>
                 </div>
@@ -92,7 +96,7 @@ const PostRenderer = (function()
         renderPosts();
     }
 
-    function renderPosts() 
+    async function renderPosts() 
     {
         
         console.log("[PostManager (v" + swapixVersion + ")] Started rendering of new data")
@@ -101,7 +105,7 @@ const PostRenderer = (function()
 
         for (let i = currentPostIndex; i < endIndex && i < posts.length; i++) 
         {
-            const postTemplate = createPostTemplate(posts[i]);
+            const postTemplate = await createPostTemplate(posts[i]);
             postHTML += postTemplate;
         }
 
@@ -120,7 +124,7 @@ const PostRenderer = (function()
 
     function likePost(postID) 
     {
-        const likeIcon = $Select(postID +'-like-icon');
+        const likeIcon = document.getElementById(postID +'-like-icon');
         const isLiked = likeIcon.innerHTML === 'thumb_up';
 
         if (isLiked) {

@@ -31,6 +31,7 @@ async function login(username, password)
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("content-type", "application/json");
+        myHeaders.append("ngrok-skip-browser-warning","true");
         const requestOptions = {
             method: "POST",
             content: "application/json",
