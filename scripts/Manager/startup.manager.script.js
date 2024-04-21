@@ -137,8 +137,10 @@ async function SetCachedProfile()
         header: myHeaders,
         redirect: "follow"
     };
-
-    await fetch(requestURL + "trader/" + CookieManager.getInstance().getCookie("profileID") + "?apiKey=" + CookieManager.getInstance().getCookie("swpKey"), requestOptions)
+    
+    if(CookieManager.getInstance().getCookie("__chachedProfile") != "1")
+    {
+        await fetch(requestURL + "trader/" + CookieManager.getInstance().getCookie("profileID") + "?apiKey=" + CookieManager.getInstance().getCookie("swpKey"), requestOptions)
         .then(response => {
             if (response.ok) {
               return response.json();
@@ -162,9 +164,13 @@ async function SetCachedProfile()
             console.error(error);
         }); 
 
-        var notificationManager = NotificationManager.getInstance();
-        notificationManager.addNotification('New Login!', 'We successfully logged you in, so no worry!',  "linked", "/#/");
-        notificationManager.addNotification('New Follower!', 'https.marv followed you yesterday!',  "linked", "/#/@https.marv");
+        CookieManager.getInstance().setCookie("__chachedProfile","1");
+    }
+    
+
+    var notificationManager = NotificationManager.getInstance();
+    notificationManager.addNotification('New Login!', 'We successfully logged you in, so no worry!',  "linked", "/#/");
+    notificationManager.addNotification('New Follower!', 'https.marv followed you yesterday!',  "linked", "/#/@https.marv");
 }
 
 function showError(ex) 

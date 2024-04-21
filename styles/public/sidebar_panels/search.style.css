@@ -12,7 +12,7 @@
     padding: 20px;
     padding-top: 105px !important;
     box-sizing: border-box;
-    z-index: 99;
+    z-index: 101;
     transition: all 0.4s ease-in-out;
     opacity: 0;
     transform: translateX(-50%);

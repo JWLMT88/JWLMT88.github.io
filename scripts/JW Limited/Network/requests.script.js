@@ -34,7 +34,7 @@ class JWLimitedRequestManager
         return JWLimitedRequestManager.instance;
     }
   
-    makeRequest(method, url, data = null, headers = {}) 
+    async makeRequest(method, url, data = null, headers = {}) 
     {
         return new Promise((resolve, reject) => 
         {
@@ -49,11 +49,12 @@ class JWLimitedRequestManager
                 xhr.setRequestHeader(key, value);
             });
     
-            xhr.onload = () => 
+            xhr.onload = async () => 
             {
                 if (xhr.status >= 200 && xhr.status < 300) 
                 {
-                    resolve(xhr.response);
+                    console.log(xhr.responseText)
+                    await resolve(xhr.response);
                 } else 
                 {
                     reject(`Request failed with status ${xhr.status}: ${xhr.statusText}`);
@@ -132,38 +133,48 @@ class JWLimitedRequestManager
     
     getImageBlobUrl(url) 
     {
-
+        const cacheManager = new CacheManager();
         return new Promise((resolve, reject) => 
         {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.setRequestHeader(this.ngrokSkipBrowserWarningHeader, 'true');
-            //xhr.setRequestHeader('User-Agent', this.customUserAgentHeader);
-        
-            xhr.responseType = 'blob';
-            xhr.onload = () => 
+            const cacheObject = cacheManager.getResource(url);
+            if(!cacheObject)
             {
-                if (xhr.status === 200) 
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.setRequestHeader(this.ngrokSkipBrowserWarningHeader, 'true');
+                //xhr.setRequestHeader('User-Agent', this.customUserAgentHeader);
+            
+                xhr.responseType = 'blob';
+                xhr.onload = () => 
                 {
-                    const blob = xhr.response;
-                    const imgUrl = URL.createObjectURL(blob);
-                    resolve(imgUrl);
-                } 
-                else 
+                    if (xhr.status === 200) 
+                    {
+                        const blob = xhr.response;
+                        const imgUrl = URL.createObjectURL(blob);
+                        cacheManager.registerResource(url, imgUrl);
+                        resolve(imgUrl);
+                    } 
+                    else 
+                    {
+                        console.log(`Failed to get image Blob URL from ngrok URL with status ${xhr.status}: ${xhr.statusText}`)
+                        reject(`Failed to get image Blob URL from ngrok URL with status ${xhr.status}: ${xhr.statusText}`);
+                    }
+                };
+            
+                xhr.onerror = () => 
                 {
-                    console.log(`Failed to get image Blob URL from ngrok URL with status ${xhr.status}: ${xhr.statusText}`)
-                    reject(`Failed to get image Blob URL from ngrok URL with status ${xhr.status}: ${xhr.statusText}`);
-                }
-            };
-        
-            xhr.onerror = () => 
+                    
+                    console.log(`Error getting image Blob URL from ngrok URL: ${url}`)
+                    reject('Error getting image Blob URL from ngrok URL');
+                };
+            
+                xhr.send();
+            }
+            else
             {
-                
-                console.log(`Error getting image Blob URL from ngrok URL: ${url}`)
-                reject('Error getting image Blob URL from ngrok URL');
-            };
-        
-            xhr.send();
+                resolve(cacheObject);
+            }
+
         });
     }
 }
