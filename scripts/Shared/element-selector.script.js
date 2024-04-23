@@ -38,3 +38,10 @@ function $Select(selector)
         xhr.send();
     });
 }
+
+function e() 
+{
+    for (var t = [], e = 0; e < arguments.length; e++) t[e] = arguments[e];
+    (n = console.warn || console.log).call.apply(n, [console, "[SWAPIX] "].concat(t));
+    var n
+}

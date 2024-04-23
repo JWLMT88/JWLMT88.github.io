@@ -81,17 +81,6 @@ document.addEventListener('DOMContentLoaded', async function()
 
         await SetCachedProfile();
         await FillInContent();
-        setTimeout(() => 
-        {
-            document.body.classList.add('loaded');
-            setTimeout(() => 
-            {
-                document.body.classList.add('loaded-hidden');
-               
-            }, 500);
-        }, 3300);
-
-
     }
     else 
     {
@@ -102,16 +91,6 @@ document.addEventListener('DOMContentLoaded', async function()
 
         await FillInContent();
         await SetCachedProfile();
-
-        setTimeout(() => 
-        {
-            document.body.classList.add('loaded');
-            setTimeout(() => 
-            {
-                document.body.classList.add('loaded-hidden');
-             
-            }, 500);
-        }, 700);
     }
 
     if(!window.location.href.toString().includes("#"))
@@ -123,6 +102,16 @@ document.addEventListener('DOMContentLoaded', async function()
     window.addEventListener('load', router);
 
     ModalManager.init();
+
+    setTimeout(() => 
+    {
+        document.body.classList.add('loaded');
+        setTimeout(() => 
+        {
+            document.body.classList.add('loaded-hidden');
+           
+        }, 500);
+    }, 800);
 });
 
 async function SetCachedProfile()
@@ -131,6 +120,7 @@ async function SetCachedProfile()
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("content-type", "application/json");
     myHeaders.append("ngrok-skip-browser-warning","true");
+    
     const requestOptions = {
         method: "GET",
         headers: myHeaders,
@@ -159,14 +149,14 @@ async function SetCachedProfile()
             CookieManager.getInstance().setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A");
             CookieManager.getInstance().setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A")
         })
-        .catch(error => {
+        .catch(error => 
+        {
             showError(error);
             console.error(error);
         }); 
 
         CookieManager.getInstance().setCookie("__chachedProfile","1");
     }
-    
 
     var notificationManager = NotificationManager.getInstance();
     notificationManager.addNotification('New Login!', 'We successfully logged you in, so no worry!',  "linked", "/#/");
@@ -181,7 +171,8 @@ function showError(ex)
     errorContainerex.innerText = ex.Message;
 }
 
-function logoutMainUser(){
+function logoutMainUser()
+{
     CookieManager.getInstance().deleteCookie("swpKey")
     CookieManager.getInstance().deleteCookie("profileID")
     window.location.href = "https://core.swapix.fun/pages/account/?action=logout"

@@ -11,6 +11,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 20px;
     padding-top: 105px !important;
+    background: linear-gradient(to top, rgba(216, 228, 255, 0.25), rgb(255, 255, 255));
     box-sizing: border-box;
     z-index: 101;
     transition: all 0.4s ease-in-out;
@@ -63,4 +64,58 @@
 
   .search-button:hover {
     background-color: #d7d7d799;
+  }
+
+  .search-results {
+    display: none;
+    margin-top: 25px;
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .search-result {
+    transition:  all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid #dbdbdb;
+    border-radius: 15px;
+    background: #ffffffad;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .search-result:hover {
+    background-color: #f0f0f0b3;
+  }
+  
+  .search-result-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 15px;
+  }
+  
+  .search-result-info {
+    flex: 1;
+  }
+  
+  .search-result-title {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2d2d2d;
+    margin-bottom: 5px;
+  }
+
+  .search-result-title:hover{
+    text-decoration: none;
+    color: #2d2d2d;
+  }
+  
+  .search-result-description {
+    color: #666;
+    font-size: 14px;
   }

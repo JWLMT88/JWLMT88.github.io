@@ -43,8 +43,64 @@ function _OpenSearch()
                 <input type="text" class="search-input" placeholder="Search here...">
                 <button class="search-button"><span class="material-symbols-outlined">search</span></button>
             </div>
+            <div class="search-results"></div>
         `;
         searchContainer.classList.add('show');
+
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+
+        // Simulated search data
+        const searchData = [
+        {
+            title: 'JavaScript',
+            description: 'A programming language for building web applications.',
+            image: 'https://via.placeholder.com/50',
+            link: '#',
+        },
+        {
+            title: 'React',
+            description: 'A JavaScript library for building user interfaces.',
+            image: 'https://via.placeholder.com/50',
+            link: '#',
+        },
+        {
+            title: 'Angular',
+            description: 'A TypeScript-based web application framework.',
+            image: 'https://via.placeholder.com/50',
+            link: '#',
+        },
+        // Add more search data objects as needed
+        ];
+
+        searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const filteredResults = searchData.filter((item) =>
+            item.title.toLowerCase().includes(searchTerm)
+        );
+
+        searchResults.innerHTML = '';
+
+        if (searchTerm === '') {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        searchResults.style.display = 'block';
+
+        filteredResults.forEach((result) => {
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result');
+            resultItem.innerHTML = `
+            <img class="search-result-image" src="${result.image}" alt="${result.title}">
+            <div class="search-result-info">
+                <a href="${result.link}" class="search-result-title">${result.title}</a>
+                <p class="search-result-description">${result.description}</p>
+            </div>
+            `;
+            searchResults.appendChild(resultItem);
+        });
+        });
     }
 
     else
@@ -57,6 +113,10 @@ function _OpenSearch()
         searchContainer.classList.remove('show');
     }
 }
+
+
+
+
 
 function _OpenNotifications()
 {
