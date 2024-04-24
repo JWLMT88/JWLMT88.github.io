@@ -24,32 +24,44 @@ var isOutsideDropdown = false;
 
 async function FillInContent()
 {
-    const networkManager = new JWLimitedRequestManager();
+    try
+    {
+        const networkManager = new JWLimitedRequestManager();
+        document.getElementById("header-dropdown-username").innerText = CookieManager.getInstance().getCookie("__swp_cgb_account-username");
+        document.getElementById("header-dropdown-email").innerText = CookieManager.getInstance().getCookie("__swp_cgb_account-email");
+        networkManager.loadImageIntoFrame(requestURL + "content/profiles?ApiKey=" + CookieManager.getInstance().getCookie("swpKey") + "&traderID=" + CookieManager.getInstance().getCookie("profileID"),document.getElementById("header-profile-manager"));
+        var blobLink = await networkManager.getImageBlobUrl(requestURL + "content/profiles?ApiKey=" + CookieManager.getInstance().getCookie("swpKey") + "&traderID=" + CookieManager.getInstance().getCookie("profileID"));
+        CookieManager.getInstance().setCookie("profile-blob-uri", blobLink);
+    }
+    catch(ex)
+    {
+        console.log(ex);
+    }
+  }
 
-    document.getElementById("header-dropdown-username").innerText = CookieManager.getInstance().getCookie("__swp_cgb_account-username");
-    document.getElementById("header-dropdown-email").innerText = CookieManager.getInstance().getCookie("__swp_cgb_account-email");
-    networkManager.loadImageIntoFrame(requestURL + "content/profiles?ApiKey=" + CookieManager.getInstance().getCookie("swpKey") + "&traderID=" + CookieManager.getInstance().getCookie("profileID"),document.getElementById("header-profile-manager"));
-}
-
-function SetPage(page){
-
+function SetPage(page)
+{
     const qm = new QueryManager();
     qm.setParam("page",page);
 }
 
-function BackToMainPage(){
+function BackToMainPage()
+{
     window.location.href = "/#/"
 }
 
 
 
-function toggleDropdown() {
+function toggleDropdown() 
+{
     const dropdownMenu = document.getElementById('dropdown-menu');
-  if (isOutsideDropdown) {
+  if (isOutsideDropdown) 
+  {
     dropdownMenu.classList.remove('show');
     isOutsideDropdown =  false;
   }
-  else{
+  else
+  {
     dropdownMenu.classList.add('show');
     isOutsideDropdown =  true;
   }

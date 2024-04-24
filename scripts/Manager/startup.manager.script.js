@@ -23,6 +23,8 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
+  errorManager();
+
     if ('serviceWorker' in navigator) 
         {
         window.addEventListener('load', function() 

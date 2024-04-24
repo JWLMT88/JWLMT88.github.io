@@ -79,7 +79,7 @@ class LoggedInAccountManager
 
         const profilePic = document.createElement('div');
         profilePic.classList.add('account-page-profile-pic');
-        profilePic.style.backgroundImage = `url(${requestURL + "content/profiles?ApiKey=" + CookieManager.getInstance().getCookie("swpKey") + "&traderID=" + CookieManager.getInstance().getCookie("profileID")})`;
+        profilePic.style.backgroundImage = `url(${CookieManager.getInstance().getCookie("profile-blob-uri")})`;
         accountPageContainer.appendChild(profilePic);
 
         const username = document.createElement('h2');
