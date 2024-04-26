@@ -197,3 +197,9 @@
   .space{
     height: 80px;
   }
+
+  .branding-ix{
+    background: linear-gradient(195deg, #162184, #020a59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async function()
             document.body.classList.add('loaded-hidden');
            
         }, 500);
-    }, 800);
+    }, 3000);
 });
 
 async function SetCachedProfile()

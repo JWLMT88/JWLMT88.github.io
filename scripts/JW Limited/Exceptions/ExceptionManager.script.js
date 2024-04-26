@@ -6,19 +6,38 @@ function errorManager()
   
   function handleError(event) 
   {
-    const errorString = event.error ? event.error.toString() : event.message;
-    sendErrorReport(errorString, false);
+      const errorInfo = 
+      {
+        message: event.error ? event.error.toString() : event.message,
+        fileName: event.filename,
+        lineNo: event.lineno,
+        colNo: event.colno,
+        isUnhandledRejection: false,
+        timeStamp: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      };
+    
+      sendErrorReport(errorInfo, false);
   }
   
-  function handleUnhandledRejection(event) 
-  {
-    const errorString = event.reason ? event.reason.toString() : 'Unhandled Promise Rejection';
-    sendErrorReport(errorString, true);
+  function handleUnhandledRejection(event) {
+    const errorInfo = {
+      message: event.reason ? event.reason.toString() : 'Unhandled Promise Rejection',
+      isUnhandledRejection: true,
+      timeStamp: new Date().toISOString(),
+      userAgent: navigator.userAgent
+    };
+  
+    sendErrorReport(errorInfo, true);
   }
   
   function sendErrorReport(errorString, stopedBoot) 
   {
-    const apiUrl = requestURL + `telemetry/error-reports?ApiKey=${CookieManager.getInstance().getCookie("swpKey")}&errorString=${encodeURIComponent(errorString)}&platform=0&stopedBoot=${stopedBoot}`;
+    const errorInfo = Object.entries(errorString)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('\n');
+
+    const apiUrl = requestURL + `telemetry/error-reports?ApiKey=${CookieManager.getInstance().getCookie("swpKey")}&errorString=${encodeURIComponent(errorInfo)}&platform=0&stopedBoot=${stopedBoot}`;
   
     fetch(apiUrl, 
     {
