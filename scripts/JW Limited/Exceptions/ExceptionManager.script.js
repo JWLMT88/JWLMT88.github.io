@@ -17,9 +17,7 @@ function errorManager()
         userAgent: navigator.userAgent
       };
     
-    showError(Object.entries(errorInfo)
-    .map(([key, value]) => `${key}: ${value}`)
-    .join('\n'));
+    
 
     try
     {
@@ -27,6 +25,9 @@ function errorManager()
     }
     catch(ex)
     {
+      showError(Object.entries(errorInfo)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n'));
       console.log(ex);
     }
   }
@@ -39,9 +40,7 @@ function errorManager()
       userAgent: navigator.userAgent
     };
 
-    showError(Object.entries(errorInfo)
-    .map(([key, value]) => `${key}: ${value}`)
-    .join('\n'));
+    
 
     try
     {
@@ -49,6 +48,9 @@ function errorManager()
     }
     catch(ex)
     {
+      showError(Object.entries(errorInfo)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n'));
       console.log(ex);
     } 
   }
@@ -83,6 +85,7 @@ function errorManager()
     })
     .catch(error => 
     {
+        showError(errorInfo);
         console.error('Error sending error report:', error);
     });
   }
