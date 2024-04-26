@@ -17,7 +17,18 @@ function errorManager()
         userAgent: navigator.userAgent
       };
     
+    showError(Object.entries(errorInfo)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('\n'));
+
+    try
+    {
       sendErrorReport(errorInfo, false);
+    }
+    catch(ex)
+    {
+      console.log(ex);
+    }
   }
   
   function handleUnhandledRejection(event) {
@@ -27,8 +38,19 @@ function errorManager()
       timeStamp: new Date().toISOString(),
       userAgent: navigator.userAgent
     };
-  
-    sendErrorReport(errorInfo, true);
+
+    showError(Object.entries(errorInfo)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('\n'));
+
+    try
+    {
+      sendErrorReport(errorInfo, true);
+    }
+    catch(ex)
+    {
+      console.log(ex);
+    } 
   }
   
   function sendErrorReport(errorString, stopedBoot) 

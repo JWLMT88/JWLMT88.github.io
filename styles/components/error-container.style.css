@@ -10,6 +10,9 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    flex-direction: column; /* Align items in column */
+    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid #eee; /* Unterstrich */
     background-color: rgb(255, 255, 255); /* Semi-transparent black background */
     z-index: 1000;
@@ -27,7 +30,18 @@
     text-align: center;
 }
 
+
+.error-message-footer {
+    position: absolute;
+    left: 50%;
+    padding: 120px;
+    border-radius: 10px;
+    text-align: center;
+    bottom: 10%;
+}
+
 .error-message h2 {
+    font-family: "Manrope", sans-serif;
     color: #1e1e1e; /* Red color for error title */
     margin-bottom: 10px;
 }

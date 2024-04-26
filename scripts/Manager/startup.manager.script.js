@@ -23,7 +23,9 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
-  errorManager();
+  try
+  {
+    errorManager();
 
     if ('serviceWorker' in navigator) 
         {
@@ -114,6 +116,23 @@ document.addEventListener('DOMContentLoaded', async function()
            
         }, 500);
     }, 3000);
+    
+  }
+  catch(ex)
+
+  {
+    showError(ex);
+
+    setTimeout(() => 
+      {
+          document.body.classList.add('loaded');
+          setTimeout(() => 
+          {
+              document.body.classList.add('loaded-hidden');
+             
+          }, 500);
+      }, 1200);
+  }
 });
 
 async function SetCachedProfile()
@@ -168,9 +187,13 @@ async function SetCachedProfile()
 function showError(ex) 
 {
     const errorContainer = document.getElementById("error-container");
+    const headerMenu = document.getElementById("navigation-center");
+    headerMenu.classList.add("header-error-case"); 
+    const headerMenuBnt = document.getElementById("openPostCreatorButton");
+    headerMenuBnt.classList.add("header-error-case");
     errorContainer.style.display = "block";
     const errorContainerex = document.getElementById("error-container-ex");
-    errorContainerex.innerText = ex.Message;
+    errorContainerex.innerText = ex;
 }
 
 function logoutMainUser()

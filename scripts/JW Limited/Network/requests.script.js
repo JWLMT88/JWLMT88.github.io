@@ -104,7 +104,6 @@ class JWLimitedRequestManager
             const xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
             xhr.setRequestHeader(this.ngrokSkipBrowserWarningHeader, 'true');
-            //xhr.setRequestHeader('User-Agent', this.customUserAgentHeader);
         
             xhr.responseType = 'blob';
             xhr.onload = () => 
@@ -118,13 +117,13 @@ class JWLimitedRequestManager
                 } 
                 else 
                 {
-                    reject(`Failed to load image from ngrok URL with status ${xhr.status}: ${xhr.statusText}`);
+                    reject(`Exception was thrown while sideloading CDN Server/Client resource with status ${xhr.status}: ${xhr.statusText}`);
                 }
             };
         
             xhr.onerror = () => 
             {
-                reject('Error loading image from ngrok URL');
+                reject('Exception was thrown while contacting CDN Server/Client. (Server status: 0cx2212)');
             };
         
             xhr.send();
@@ -156,16 +155,16 @@ class JWLimitedRequestManager
                     } 
                     else 
                     {
-                        console.log(`Failed to get image Blob URL from ngrok URL with status ${xhr.status}: ${xhr.statusText}`)
-                        reject(`Failed to get image Blob URL from ngrok URL with status ${xhr.status}: ${xhr.statusText}`);
+                        console.log(`Failed to get image Blob URL from CDN Client with status ${xhr.status}: ${xhr.statusText}`)
+                        reject(`Failed to get image Blob URL from CDN Client with status ${xhr.status}: ${xhr.statusText}`);
                     }
                 };
             
                 xhr.onerror = () => 
                 {
                     
-                    console.log(`Error getting image Blob URL from ngrok URL: ${url}`)
-                    reject('Error getting image Blob URL from ngrok URL');
+                    console.log(`Error getting image Blob URL from CDN Client: ${url}`)
+                    reject('Error getting image Blob URL from CDN Client ');
                 };
             
                 xhr.send();

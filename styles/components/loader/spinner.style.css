@@ -49,13 +49,14 @@
 
 
 .app-name {
-    word-spacing:4px;
+    word-spacing: -6px;
     font-family: 'Montserrat', sans-serif; /* Replace with your desired font */
     font-size: 48px;
     font-stretch: condensed;
     font-weight:730;
     margin-bottom: 40px;
     text-align: center;
+    
   }
   
   .letter {
@@ -114,7 +115,7 @@
   .progress {
     width: 0%;
     height: 100%;
-    border-radius: 4x;
+    border-radius: 4px;
     background: linear-gradient(to right, #3498db, #162184);
     animation: progressAnimation 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
     position: absolute;
