@@ -40,6 +40,83 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://github.com/jquery/sizzle/blob/main/src/sizzle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* Chat Button Styles */
+      .chat-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #d9e2fc;
+        color: #5f7fff  ;
+        border: none;
+        border-radius: 20px;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);;
+        z-index: 9999;
+        animation: pulse 2s infinite;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .chat-btn-hidden {
+        opacity: 0;
+        transform: scale(0.1);
+      }
+
+      /* Chat Iframe Styles */
+      #chat-iframe {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 400px;
+        height: 600px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        z-index: 9998;
+        display: none;
+        transform: scale(0);
+        animation: slideIn 0.3s ease-out forwards;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Animations */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateX(-200px);
+        }
+        100% {
+          transform: translateX(-100px);
+        }
+      }
+
+      @keyframes slideOut {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+    </style>
 
     <title>SwapiX</title>
     <link rel="icon" href="/media/icons/logo.png" sizes="32x32">
@@ -231,15 +308,40 @@
               </li>
             <li class="sidebar-item" onclick="_OpenNotifications()">
                 <a class="sidebar-link" id="sidebar-noti-link">
-                    <span class="material-symbols-outlined">notifications</span>
+                  <span class="material-symbols-outlined">
+                    notifications
+                    </span>
                     <span class="sidebar-text">Notifications</span>
                 </a>
             </li>
         </ul>
     </div>
+    <button id="chat-btn" class="chat-btn">
+      <span class="material-symbols-outlined">robot_2</span>
+    </button>
+    <iframe id="chat-iframe" src="https://swapix-buddy.kidjjoe.workers.dev/ui "></iframe>
+
+    <script>
+      const chatBtn = document.getElementById('chat-btn');
+      const chatIframe = document.getElementById('chat-iframe');
+
+      chatBtn.addEventListener('click', () => {
+        chatIframe.style.display = 'block';
+        chatIframe.style.animation = 'slideIn 0.3s ease-out forwards';
+        chatBtn.classList.add('chat-btn-hidden');
+      });
+
+      window.addEventListener('click', (e) => {
+        if (e.target !== chatBtn && !chatIframe.contains(e.target)) {
+          chatIframe.style.display = 'none';
+          chatIframe.style.animation = 'slideOut 0.3s ease-out forwards';
+          chatBtn.classList.remove('chat-btn-hidden');
+        }
+      });
+    </script>
     <div class="search-container" id="search-container"></div>
     <div class="notifications-container" id="notifications-container"></div>
-    <div class="goals-container" id="goals-container"></div>
+    <div class="goals-container" id="goals-container"></div0., >
     
     <div class="space"></div>
 
