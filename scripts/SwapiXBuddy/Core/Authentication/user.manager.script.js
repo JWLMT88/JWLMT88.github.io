@@ -1,6 +1,3 @@
-import "https://app.swapix.fun/scripts/Manager/cookie.manager.script.js"
-import "https://app.swapix.fun/scripts/Manager/query.manager.script.js"
-
 class UserManager
 {
     constructor()
