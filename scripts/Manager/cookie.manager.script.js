@@ -30,7 +30,7 @@ var CookieManager = (function()
             {
                 var date = new Date();
                 date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
-                cookieString += "; expires=" + date.toUTCString();
+                cookieString += ";" + date.toUTCString();
             }
             if (domain) 
             {
