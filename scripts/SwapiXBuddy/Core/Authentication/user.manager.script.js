@@ -91,13 +91,16 @@ class UserManager
         })
         .then(data => 
         {
-                this.setCookie("__swp_cgb_account-name", data.firstName);
-                this.setCookie("__swp_cgb_account-email", data.email);
-                this.setCookie("__swp_cgb_account-username", data.userName);
-                this.setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName);
-                this.setCookie("__swp_cgb_account-resident", data.location);
-                this.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A");
-                this.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A")
+            this.setCookie("__swp_cgb_account-name", data.firstName, 365);
+            this.setCookie("__swp_cgb_account-email", data.email, 365);
+            this.setCookie("__swp_cgb_account-username", data.userName, 365);
+            this.setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName, 365);
+            this.setCookie("__swp_cgb_account-resident", data.location, 365);
+            this.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A", 365);
+            this.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A", 365);
+
+            this.qrMng.deleteParam("profileID");
+            this.qrMng.deleteParam("swpKey");
         })
         .catch(error => 
         {
