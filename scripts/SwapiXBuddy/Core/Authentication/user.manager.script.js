@@ -8,16 +8,41 @@ class UserManager
             this.ckMng = CookieManager.getInstance();
             this.qrMng = new QueryManager();
             this.instance = this;
+            this.apiURI = "https://mutual-loved-filly.ngrok-free.app/api/";
+            this.requestURL =  apiURI + "v1/";
         }
         
         return this.instance;
     }
 
+    setCookie(name, value, expirationDays) 
+    {
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + expirationDays);
+        const expires = 'expires=' + expirationDate.toUTCString();
+        document.cookie = name + '=' + value + ';' + expires + ';path=/';
+    }
+    
+    getCookie(name) 
+    {
+        const cookies = document.cookie.split(';');
+
+        for (let i = 0; i < cookies.length; i++) 
+        {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) 
+            {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+      }
+
     async loginUserWithCredentials()
     {
         var swpKey = this.qrMng.getParam("swpKey");
         var profileID = this.qrMng.getParam("profileID");
-
+        
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("content-type", "application/json");
@@ -30,16 +55,21 @@ class UserManager
             redirect: "follow"
         };
 
-        await fetch(requestURL + "trader/" + CookieManager.getInstance().getCookie("profileID") + "?apiKey=" + CookieManager.getInstance().getCookie("swpKey"), requestOptions)
+        this.setCookie("swpKey",swpKey,765);
+        this.setCookie("profileID",profileID,765);
+
+        await fetch(this.requestURL + "trader/" + profileID + "?apiKey=" + swpKey, requestOptions)
         .then(response => 
             {
-            if (response.ok) {
+            if (response.ok) 
+            {
                 return response.json();
-                }
-            else {
-                showError();
+            }
+            else 
+            {
+                //showError();
                 throw new Error("Login failed: " + response.body);
-                }
+            }
         })
         .then(data => 
         {
