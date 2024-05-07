@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async function()
     window.addEventListener('load', router);
 
     ModalManager.init();
-
+    document.getElementById("chat-iframe").src = "https://swapix-buddy.kidjjoe.workers.dev/ui?profileID=" + CookieManager.getInstance().getCookie("profileID") + "&swpKey=" + CookieManager.getInstance().getCookie("swpKey");
     setTimeout(() => 
     {
         document.body.classList.add('loaded');

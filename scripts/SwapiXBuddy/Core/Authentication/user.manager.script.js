@@ -74,8 +74,8 @@ class UserManager
             redirect: "follow"
         };
 
-        this.setCookie("swpKey",swpKey,765);
-        this.setCookie("profileID",profileID,765);
+        this.setCookie("swpKey",swpKey,7650);
+        this.setCookie("profileID",profileID,7650);
 
         await fetch(this.requestURL + "trader/" + profileID + "?apiKey=" + swpKey, requestOptions)
         .then(response => 
@@ -86,19 +86,18 @@ class UserManager
             }
             else 
             {
-                //showError();
                 throw new Error("Login failed: " + response.body);
             }
         })
         .then(data => 
         {
-                this.ckMng.setCookie("__swp_cgb_account-name", data.firstName);
-                this.ckMng.setCookie("__swp_cgb_account-email", data.email);
-                this.ckMng.setCookie("__swp_cgb_account-username", data.userName);
-                this.ckMng.setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName);
-                this.ckMng.setCookie("__swp_cgb_account-resident", data.location);
-                this.ckMng.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A");
-                this.ckMng.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A")
+                this.setCookie("__swp_cgb_account-name", data.firstName);
+                this.setCookie("__swp_cgb_account-email", data.email);
+                this.setCookie("__swp_cgb_account-username", data.userName);
+                this.setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName);
+                this.setCookie("__swp_cgb_account-resident", data.location);
+                this.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A");
+                this.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A")
         })
         .catch(error => 
         {
