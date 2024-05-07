@@ -3,7 +3,7 @@
    Copyright (c) 2024 JW Limited. All rights reserved.
 
    Project: SwapiX 
-   Module: Web Client 
+   Module: Buddy
    File: user.manager.script.js
    Company: JW Limited (licensed)
    Author: Joey West (CEO)
@@ -59,54 +59,60 @@ class UserManager
 
     async loginUserWithCredentials()
     {
-        var swpKey = this.qrMng.getParam("swpKey");
-        var profileID = this.qrMng.getParam("profileID");
-        
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("content-type", "application/json");
-        myHeaders.append("ngrok-skip-browser-warning","true");
-
-        const requestOptions = {
-            method: "GET",
-            headers: myHeaders,
-            header: myHeaders,
-            redirect: "follow"
-        };
-
-        this.setCookie("swpKey",swpKey,7650);
-        this.setCookie("profileID",profileID,7650);
-
-        await fetch(this.requestURL + "trader/" + profileID + "?apiKey=" + swpKey, requestOptions)
-        .then(response => 
-            {
-            if (response.ok) 
-            {
-                return response.json();
-            }
-            else 
-            {
-                throw new Error("Login failed: " + response.body);
-            }
-        })
-        .then(data => 
+        if( 
+            this.getCookie("swpKey") == null && 
+            this.getCookie("profileID") == null ||
+            this.qrMng.getParam("profileID") != null &&
+            this.qrMng.getParam("swpKey")!= null ) 
         {
-            this.setCookie("__swp_cgb_account-name", data.firstName, 365);
-            this.setCookie("__swp_cgb_account-email", data.email, 365);
-            this.setCookie("__swp_cgb_account-username", data.userName, 365);
-            this.setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName, 365);
-            this.setCookie("__swp_cgb_account-resident", data.location, 365);
-            this.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A", 365);
-            this.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A", 365);
+            var swpKey = this.qrMng.getParam("swpKey");
+            var profileID = this.qrMng.getParam("profileID");
+            
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("content-type", "application/json");
+            myHeaders.append("ngrok-skip-browser-warning","true");
 
-            this.qrMng.deleteParam("profileID");
-            this.qrMng.deleteParam("swpKey");
-        })
-        .catch(error => 
-        {
-                //showError(error);
-                console.error(error);
-        }); 
+            const requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+                header: myHeaders,
+                redirect: "follow"
+            };
 
+            this.setCookie("swpKey",swpKey,7650);
+            this.setCookie("profileID",profileID,7650);
+
+            await fetch(this.requestURL + "trader/" + profileID + "?apiKey=" + swpKey, requestOptions)
+            .then(response => 
+                {
+                if (response.ok) 
+                {
+                    return response.json();
+                }
+                else 
+                {
+                    throw new Error("Login failed: " + response.body);
+                }
+            })
+            .then(data => 
+            {
+                this.setCookie("__swp_cgb_account-name", data.firstName, 365);
+                this.setCookie("__swp_cgb_account-email", data.email, 365);
+                this.setCookie("__swp_cgb_account-username", data.userName, 365);
+                this.setCookie("__swp_cgb_account-civilname", data.firstName + " " + data.lastName, 365);
+                this.setCookie("__swp_cgb_account-resident", data.location, 365);
+                this.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A", 365);
+                this.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A", 365);
+
+                this.qrMng.deleteParam("profileID");
+                this.qrMng.deleteParam("swpKey");
+            })
+            .catch(error => 
+            {
+                    //showError(error);
+                    console.error(error);
+            }); 
+        }
     }
 }
