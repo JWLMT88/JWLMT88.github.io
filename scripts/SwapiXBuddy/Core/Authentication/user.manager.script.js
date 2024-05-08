@@ -55,7 +55,17 @@ class UserManager
             }
         }
         return null;
-      }
+    }
+
+    getUserObject()
+    {
+        if(this.loggedInUserObject != null)
+        {
+            return this.loggedInUserObject;
+        }
+
+        return false;
+    }
 
     async loginUserWithCredentials()
     {
@@ -85,7 +95,7 @@ class UserManager
 
             await fetch(this.requestURL + "trader/" + profileID + "?apiKey=" + swpKey, requestOptions)
             .then(response => 
-                {
+            {
                 if (response.ok) 
                 {
                     return response.json();
@@ -97,6 +107,8 @@ class UserManager
             })
             .then(data => 
             {
+                this.loggedInUserObject = data;
+
                 this.setCookie("__swp_cgb_account-name", data.firstName, 365);
                 this.setCookie("__swp_cgb_account-email", data.email, 365);
                 this.setCookie("__swp_cgb_account-username", data.userName, 365);
@@ -110,8 +122,7 @@ class UserManager
             })
             .catch(error => 
             {
-                    //showError(error);
-                    console.error(error);
+                console.error(error);
             }); 
         }
     }
