@@ -1,14 +1,3 @@
-const chatDiv = document.getElementById('chat');
-const inputField = document.getElementById('input');
-const chatContainer = document.getElementById('chat-container');
-const menuBtn = document.getElementById('menu-btn');
-const menu = document.getElementById('menu');
-const settingsLink = document.getElementById('settings-link');
-const settingsPage = document.getElementById('settings-page');
-const defaultPromptInput = document.getElementById('default-prompt');
-const saveSettingsBtn = document.getElementById('save-settings');
-const email = document.getElementById('header-dropdown-email');
-const username = document.getElementById('header-dropdown-username');
 let sessionKey = null;
 
 function setCookie(name, value, expirationDays) 
@@ -73,6 +62,18 @@ function showErrorBotMessage()
     $(document).ready(
     async function() 
     {
+      const chatDiv = document.getElementById('chat');
+      const inputField = document.getElementById('input');
+      const chatContainer = document.getElementById('chat-container');
+      const menuBtn = document.getElementById('menu-btn');
+      const menu = document.getElementById('menu');
+      const settingsLink = document.getElementById('settings-link');
+      const settingsPage = document.getElementById('settings-page');
+      const defaultPromptInput = document.getElementById('default-prompt');
+      const saveSettingsBtn = document.getElementById('save-settings');
+      const email = document.getElementById('header-dropdown-email');
+      const username = document.getElementById('header-dropdown-username');
+
         var usrMng = new UserManager();
         await usrMng.loginUserWithCredentials();
 
