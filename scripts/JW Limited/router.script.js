@@ -67,7 +67,8 @@ function router()
   console.log(hash)
   content = document.getElementById('content');
   savePage();
-
+  
+  
   switch (hash) 
   {
     
@@ -87,6 +88,9 @@ function router()
       break;
     case '/tag':
       renderPage(tagPageContent, 'tags')
+    case '/account/goals':
+      
+      renderPage(groupsPageContent,"goals")
     default:
 
       if(hash.startsWith("/@"))
@@ -118,12 +122,12 @@ function router()
       await animateContentWrapper();
       setTimeout(() => 
       {
-          currentPage = pageName;
-          content.innerHTML = pageContent;
-
           if (pageName === 'explorer') 
           {
 
+            currentPage = pageName;
+            content.innerHTML = pageContent;
+            
               const posts = 
               [
                   { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
@@ -141,6 +145,12 @@ function router()
           else if (pageName == 'account') 
           {
             const accountManager = new AccountManager(content);
+          }
+          else if(pageName == "goals")
+          {
+            content.innerHTML = "";
+            currentPage = pageName;
+            renderGoals(content);
           }
           else if(pageName == 'personal')
           {

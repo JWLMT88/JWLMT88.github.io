@@ -116,9 +116,6 @@ class UserManager
                 this.setCookie("__swp_cgb_account-resident", data.location, 365);
                 this.setCookie("__swp_cgb_account-telephone", data.phoneNumber ?? "N/A", 365);
                 this.setCookie("__swp_cgb_account-twofa",data.twoFactorEnabled ?? "N/A", 365);
-
-                this.qrMng.deleteParam("profileID");
-                this.qrMng.deleteParam("swpKey");
             })
             .catch(error => 
             {

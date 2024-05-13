@@ -14,19 +14,21 @@
   }
   
   .modal-content {
-    flex-direction: none !important;
-    border: 0px solid #eee !important;
-    min-height: 500px;
-    transition: all 0.4s ease-in-out;
     background-color: rgb(255, 255, 255) !important;
     backdrop-filter: blur(15px);
+    transition: all 0.4s ease-in-out;
+    border: 0px solid rgb(0 0 0 / 0%) !important;
     border-radius: 15px !important;
-    margin: 15% auto;
-    padding: 25px;
-    border: 1px solid #cbcbcb;
+    margin-top: 10%;
+    margin-bottom: auto;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2) !important;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
     width: 80%;
+    max-height: 80%;
+    overflow: hidden;
     max-width: 600px;
-    position: relative;
   }
 
   .upload-area {
