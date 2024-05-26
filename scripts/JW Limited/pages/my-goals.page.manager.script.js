@@ -32,20 +32,6 @@ function renderGoals(content)
       header.textContent = "My Goals";
       goalsContainer.appendChild(header);
   
-      const userInfo = document.createElement("div");
-      userInfo.classList.add("user-info");
-  
-      const profilePic = document.createElement("div");
-      profilePic.classList.add("profile-pic");
-      profilePic.style.backgroundImage = `url(/media/icons/logo.png)`;
-      userInfo.appendChild(profilePic);
-  
-      const username = document.createElement("span");
-      username.classList.add("username");
-      username.textContent = "username";
-      userInfo.appendChild(username);
-  
-      goalsContainer.appendChild(userInfo);
   
       const goalsList = document.createElement("ul");
       goalsList.classList.add("goals-list");

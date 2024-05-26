@@ -159,3 +159,36 @@
       transform: translateY(100%);
     }
   }
+
+  /* Add these styles to your existing stylesheet */
+
+@keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeOutScale {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+  
+  .animate-in {
+    animation: fadeInScale 0.5s forwards;
+  }
+  
+  .animate-out {
+    animation: fadeOutScale 0.5s forwards;
+  }
+  

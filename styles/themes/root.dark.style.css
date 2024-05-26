@@ -226,3 +226,41 @@
     background-color: rgb(35 35 35 / 90%);
     border: 1px solid  #333333 !important;
 }
+
+.dark .account-goals-container .goal-item{
+    background-color: #1f1f1f;
+    border: 1px solid  #333333 !important;
+}
+
+.dark .dropdown-menu{
+    background-color: #1f1f1f;
+    border: 1px solid  #333333 !important;
+} 
+
+.dark .version-info {
+    color: #f0f0f0;
+}
+
+.dark .username{
+    color: #f0f0f0;
+}
+
+.dark .email{
+    color: #f0f0f0;
+}
+
+.dark .user-info {
+    border: 1px solid  #4b4b4b !important;
+}
+
+.dark .dropdown-divider{
+    border-top: 1px solid  #4b4b4b !important;
+}
+
+.dark .user-info:hover{
+    background-color: #393939;
+}
+
+.dark ,dropdown-item{
+    background-color: #393939;
+}

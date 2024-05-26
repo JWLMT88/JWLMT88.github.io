@@ -17,11 +17,11 @@
    ------------------------------------------------------------------------------
 */
 
-var notFoundContent = `
+const notFoundContent = `
 <div class="not-found-container">
   <div class="not-found-message">
-    <h2>Oops! This side doesn't exist.</h2>
-    <p>Please go back to youre <span class="side-name">Main Feed</span>.</p>
+    <h2>Oops! This page doesn't exist.</h2>
+    <p>Please go back to your <span class="side-name">Main Feed</span>.</p>
     <div onclick="window.location.href = '/#/'" class="go-back-btn">Go Back</div>
   </div>
   <div class="not-found-graphic">
@@ -30,149 +30,115 @@ var notFoundContent = `
 </div>
 `;
 
-var homePageContent = `
+let homePageContent = `
   <div class="post-container" id="post-container">
     <!-- Home page content goes here -->
   </div>
 `;
 
-var groupsPageContent = `
+let groupsPageContent = `
   <div class="groups-container">
     <!-- Groups page content goes here -->
   </div>
 `;
 
-var explorerPageContent = `
-    <div class="explorer-container" id="explorer-container">
+let explorerPageContent = `
+  <div class="explorer-container" id="explorer-container">
     <div class="post-grid" id="post-grid"></div>
-    <div class="load-more-btn">Load More</div>
-    </div>
+    <div class="load-more-btn" id="load-more-btn">Load More</div>
+  </div>
 `;
 
-var tagPageContent = `
+let tagPageContent = `
 <div class="tag-container" id="tag-container">
 </div>
-`
-var accountPageContent = `
+`;
 
-`
+let accountPageContent = ``;
 
-var currentPage = "home";
+let currentPage = "home";
 var content = document.getElementById('content');
 
-// Router function
-function router() 
-{
+function router() {
   const hash = window.location.hash.slice(1);
-  console.log(hash)
+  console.log(`Navigating to: ${hash}`);
   content = document.getElementById('content');
   savePage();
   
-  
-  switch (hash) 
-  {
-    
+  switch (hash) {
     case '/account':
-      renderPage(accountPageContent, 'personal')
+      renderPage(accountPageContent, 'personal');
       break;
     case '/groups':
-
       renderPage(groupsPageContent, 'groups');
       break;
     case '/explore':
-
       renderPage(explorerPageContent, 'explorer');
       break;
     case '/':
       renderPage(homePageContent, 'home');
       break;
     case '/tag':
-      renderPage(tagPageContent, 'tags')
+      renderPage(tagPageContent, 'tags');
+      break;
     case '/account/goals':
-      
-      renderPage(groupsPageContent,"goals")
+      renderPage(groupsPageContent, 'goals');
+      break;
     default:
-
-      if(hash.startsWith("/@"))
-      {
-          renderPage(accountPageContent,'account');
-          break;
+      if (hash.startsWith("/@")) {
+        renderPage(accountPageContent, 'account');
+        break;
       }
-
       renderPage(notFoundContent, 'not-found');
       break;
   }
 }
-  async function animateContentWrapper() 
-  {
-    content.classList.remove('animate-in', 'animate-out');
-    void content.offsetWidth;
-    this.content.classList.add('animate-out');
-    await setTimeout(() => 
-    {
-      content.classList.remove('animate-out');
-      void content.offsetWidth;
-      content.classList.add('animate-in');
-    }, 500);
 
-  }
-  async function renderPage(pageContent, pageName) 
-  {
-
-      await animateContentWrapper();
-      setTimeout(() => 
-      {
-          if (pageName === 'explorer') 
-          {
-
-            currentPage = pageName;
-            content.innerHTML = pageContent;
-            
-              const posts = 
-              [
-                  { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
-                  { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
-                  { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
-                  { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
-                  { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
-                  { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
-              ];
-              
-              const explorerManager = new ExplorerManager(posts);
-              explorerManager.renderPosts(content);
-              explorerManager.setupLoadMoreButton(content);
-          }
-          else if (pageName == 'account') 
-          {
-            const accountManager = new AccountManager(content);
-          }
-          else if(pageName == "goals")
-          {
-            content.innerHTML = "";
-            currentPage = pageName;
-            renderGoals(content);
-          }
-          else if(pageName == 'personal')
-          {
-            const peronalAccountManager = new LoggedInAccountManager(content);
-          }
-      }, 300); 
+async function animateContentWrapper() {
+  content.classList.remove('animate-in', 'animate-out');
+  void content.offsetWidth;
+  content.classList.add('animate-out');
+  await new Promise(resolve => setTimeout(resolve, 500));
+  content.classList.remove('animate-out');
+  void content.offsetWidth;
+  content.classList.add('animate-in');
+}
+async function renderPage(pageContent, pageName) {
+  await animateContentWrapper();
+  content.innerHTML = pageContent;
+    currentPage = pageName;
+    
+    if (pageName === 'explorer') {
+      const posts = [
+        { id: 1, title: 'Post 1', content: 'This is the content of post 1' },
+        { id: 2, title: 'Post 2', content: 'This is the content of post 2' },
+        { id: 3, title: 'Post 3', content: 'This is the content of post 3' },
+        // Add more posts as needed
+      ];
       
-  }
-
-
-  function savePage() 
-  {
-    switch (currentPage) 
-    {
-      case 'home':
-        homePageContent = content.innerHTML;
-        break;
-      case 'groups':
-        groupsPageContent = content.innerHTML;
-        break;
-      case 'explorer':
-        groupHPageContent = content.innerHTML;
-        break;
+      const explorerManager = new ExplorerManager(posts);
+      explorerManager.renderPosts();
+      explorerManager.setupLoadMoreButton();
+    } else if (pageName === 'account') {
+      const accountManager = new AccountManager(content);
+    } else if (pageName === 'goals') {
+      content.innerHTML = "";
+      renderGoals(content);
+    } else if (pageName === 'personal') {
+      const personalAccountManager = new LoggedInAccountManager(content);
     }
+}
+
+function savePage() {
+  switch (currentPage) {
+    case 'home':
+      homePageContent = content.innerHTML;
+      break;
+    case 'groups':
+      groupsPageContent = content.innerHTML;
+      break;
+    case 'explorer':
+      explorerPageContent = content.innerHTML;
+      break;
   }
+}

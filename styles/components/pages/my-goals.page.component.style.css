@@ -1,0 +1,83 @@
+/* Account Goals Container */
+.account-goals-container {
+    margin-left: 260px;
+    padding: 20px;
+    align-items: center;
+    display: grid;
+    justify-content: space-around;
+  }
+  
+  /* Header */
+  .account-goals-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* User Info */
+  .account-goals-container .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .account-goals-container .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+  }
+  
+  .account-goals-container .username {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Goals List */
+  .account-goals-container .goals-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .account-goals-container .goal-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .account-goals-container .goal-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .account-goals-container .goal-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .account-goals-container .goal-progress {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .account-goals-container .progress-bar {
+    height: 10px;
+    background-color: #4caf50;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .account-goals-container .progress-label {
+    font-size: 14px;
+  }
+  
+  .account-goals-container .due-date {
+    font-size: 14px;
+    color: #888888;
+  }
