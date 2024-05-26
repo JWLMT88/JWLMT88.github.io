@@ -23,35 +23,49 @@ var CookieManager = (function()
 
     function CookieManager() 
     {
-        function setCookie(name, value, expirationDays, domain) 
+        function setCookie(name, value, expirationDays, domain, realCookie) 
         {
-            var cookieString = name + "=" + encodeURIComponent(value);
-            if (expirationDays) 
+            if(realCookie)
             {
-                var date = new Date();
-                date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
-                cookieString += ";" + date.toUTCString();
+                var cookieString = name + "=" + encodeURIComponent(value);
+                if (expirationDays) 
+                {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+                    cookieString += ";" + date.toUTCString();
+                }
+                if (domain) 
+                {
+                    cookieString += "; domain=" + domain;
+                }
+                cookieString += "; path=/";
+                document.cookie = cookieString;
+
+                return;
             }
-            if (domain) 
-            {
-                cookieString += "; domain=" + domain;
-            }
-            cookieString += "; path=/";
-            document.cookie = cookieString;
+
+            localStorage.setItem(name,value);
+            
         }
 
-        function getCookie(name) 
+        function getCookie(name, realCookie) 
         {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) 
+            if(realCookie)
             {
-                var cookie = cookies[i].trim();
-                if (cookie.indexOf(name + "=") === 0) 
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) 
                 {
-                    return decodeURIComponent(cookie.substring(name.length + 1));
+                    var cookie = cookies[i].trim();
+                    if (cookie.indexOf(name + "=") === 0) 
+                    {
+                        return decodeURIComponent(cookie.substring(name.length + 1));
+                    }
                 }
+                return null;
             }
-            return null;
+
+            return localStorage.getItem(name);
+            
         }
 
         function getUsernameFromBrowser() {
@@ -62,28 +76,34 @@ var CookieManager = (function()
             return username;
         }
 
-        function deleteCookie(name) 
+        function deleteCookie(name, realCookie) 
         {
-            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            if(realCookie)
+            {
+                document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                return;
+            }
+
+            localStorage.removeItem(name)
         }
 
         this.getUsernameFromBrowser = function(){
             return getUsernameFromBrowser();
         }
 
-        this.setCookie = function(name, value, expirationDays, domain) 
+        this.setCookie = function(name, value, expirationDays, domain, realCookie) 
         {
-            setCookie(name, value, expirationDays, domain);
+            setCookie(name, value, expirationDays, domain, realCookie);
         };
 
-        this.getCookie = function(name) 
+        this.getCookie = function(name, realCookie) 
         {
-            return getCookie(name);
+            return getCookie(name, realCookie);
         };
 
-        this.deleteCookie = function(name) 
+        this.deleteCookie = function(name, realCookie) 
         {
-            deleteCookie(name);
+            deleteCookie(name, realCookie);
         };
     }
 

@@ -23,6 +23,14 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
+  const loginModal = document.getElementById("loginModal");
+  const body = document.body;
+  const loginButton = document.getElementById("loginSubmit");
+
+  if (localStorage.getItem('theme') === 'dark') 
+  {
+        body.classList.add('dark');
+  }
   try
   {
     errorManager();
@@ -90,7 +98,55 @@ document.addEventListener('DOMContentLoaded', async function()
     {
         if(CookieManager.getInstance().getCookie("swpKey") == null || CookieManager.getInstance().getCookie("profileID") == null)
         {
-            window.location.href = authenticationClientURI; 
+          loginModal.classList.remove("hidden");
+          loginButton.addEventListener('click', async function(event)
+            {
+                event.preventDefault();
+                 var raw =  {
+                    userName: document.getElementById("loginEmail").value,
+                    password: document.getElementById("loginPassword").value
+                };
+
+                const dataBlob = new Blob([JSON.stringify(raw)], {
+                    type: "application/json"});
+                
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("content-type", "application/json");
+                myHeaders.append("ngrok-skip-browser-warning","true");
+                const requestOptions = {
+                    method: "POST",
+                    content: "application/json",
+                    headers: myHeaders,
+                    header: myHeaders,
+                    body: JSON.stringify(raw),
+                    redirect: "follow"
+                };
+
+                await fetch("https://mutual-loved-filly.ngrok-free.app/api/v1/auth/login", requestOptions)
+                .then(response => {
+                    if (response.ok) {
+                    return response.json();
+                    } else {
+                    throw new Error("Login failed: " + response.body);
+                    }
+                })
+                .then(data => {
+                  localStorage.setItem("swpKey",data.apiKey,)
+                  localStorage.setItem("profileID",data.userId,)
+                    window.location.reload()
+                })
+                .catch(error => {
+                    console.error(error);
+                    showDialog({
+                    type: 'error',
+                    title: 'Login Error.',
+                    message: 'An error accoured while login you in: ' + error.message,
+                    mainButtonText: 'Reload Page',
+                    mainButtonAction: () => window.location.reload()
+                    });
+                });
+            });
         }
 
         await FillInContent();
@@ -200,7 +256,9 @@ function logoutMainUser()
 {
     CookieManager.getInstance().deleteCookie("swpKey")
     CookieManager.getInstance().deleteCookie("profileID")
-    window.location.href = "https://core.swapix.fun/pages/account/?action=logout"
+    CookieManager.getInstance().deleteCookie("__chachedProfile") 
+    CookieManager.getInstance().deleteCookie("profile-blob-uri")
+    window.location.reload();
 }
 
 function addPost()

@@ -1,0 +1,228 @@
+:root{
+    --bgc-dark: #1e1e1e;
+    --b-bgc-dark: #333333;
+    --b-bgc-gray: #4b4b4b;
+    --c-blue-900: #081030;
+    --c-blue-800: #111b40;
+    --c-blue-700: #152148;
+    --c-blue-500: #1d7bdb;
+    --c-blue-300: #293359;
+    --c-blue-200: #4e5985;
+    --c-blue-100: #dfe8ff;
+    --c-green-400: #4ade80;
+    --b-bgc-grayDark: #2e2e2e;
+    --b-bgc-grayDarker: #343434;
+    --text-color: #dedede;
+}
+
+.dark {
+    transition:  all 0.4s ease-in-out;
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6{
+    color: #ffffff !important;
+}
+
+.dark a,
+.dark p{
+    color: #e8e8e8 !important;
+}
+
+.dark .navbar{
+    background-color: var(--bgc-dark);
+    border-color: var(--b-bgc-gray);
+    color: #e0e0e0;
+}
+
+.dark .navbar .navbar-brand{
+    background-color: var(--bgc-dark);
+    color: #e0e0e0 !important;
+}
+
+.dark .navbar .span{
+    background-color: var(--bgc-dark);
+    color: #e0e0e0 !important;
+}
+
+.dark .navbar .a{
+    background-color: var(--bgc-dark);
+    color: #e0e0e0 !important;
+}
+.dark .bg-white {
+    background-color: #1e1e1e !important;
+}
+
+.dark .text-gray-800 {
+    color: #e0e0e0 !important;
+}
+.dark .text-gray-700{
+    color: #e0e0e0 !important;
+}
+.dark .border-gray-200 {
+    border-color: #333333 !important;
+}
+
+.dark .bg-gray-100 {
+    background-color: #1e1e1e !important;
+}
+
+.dark .text-gray-500 {
+    color: #818181 !important;
+}
+
+.dark .bg-gray-300{
+    background-color: #333333 !important;
+}
+
+.dark .bg-gray-50{
+    background-color: #2e2e2e !important;
+}
+
+.dark .bg-gray-200{
+    background-color: #2e2e2e !important;
+}
+
+.dark .bg-gray-300 {
+    background-color: #333333 !important;
+}
+
+.dark .bg-green-600 {
+    background-color: #2e7d32 !important;
+}
+
+.dark .bg-blue-600 {
+    background-color: #1565c0 !important;
+}
+
+.dark .bg-red-500 {
+    background-color: #c62828 !important;
+}
+
+.dark .error-container{
+    background-color: var(--b-bgc-grayDark) !important;  
+}
+
+.dark .error-message{
+    background-color: var(--bgc-dark);
+    border: 1px solid var(--b-bgc-gray);
+    color: white;
+}
+
+.dark .logout-button{
+    background: var(--b-bgc-grayDark);
+    border: 1px solid var(--b-bgc-grayDark);
+    color: white !important;
+}
+
+.dark .sidebar {
+    background-color: var(--bgc-dark);
+    border: 1px solid var(--b-bgc-gray);
+}
+
+.dark .letter{
+    color: var(--text-color) !important;
+}
+
+.dark .sidebar .sidebar-link {
+    background-color: var(--bgc-dark);
+    border: 1px solid var(--b-bgc-grayDarker);
+}
+
+.dark .loading-bar{
+    background: var(--b-bgc-grayDark);
+    border: 1px solid var(--b-bgc-grayDark);
+}
+
+.dark #loader-overlay{
+    background-color: var(--bgc-dark);
+    border: 1px solid var(--b-bgc-gray);
+}
+
+.dark .branding-ix{
+    background: linear-gradient(195deg, #649ff7, #515897);  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dark .bg-blue-500 {
+    background-color: #1e88e5 !important;
+}
+
+.dark .border-gray-300 {
+    border-color: #555555 !important;
+}
+
+.dark .bg-gray-900 {
+    background-color: #0d0d0d !important;
+}
+
+.dark .text-gray-200 {
+    color:  !important;
+}
+
+.dark .btn-primary {
+    background-color: #1e88e5;
+    color: #ffffff;
+}
+
+.dark .btn-secondary {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.dark .search-input {
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+    border-color: #555555;
+}
+
+.dark .progress-bar {
+    background-color: #444444;
+}
+
+.dark .progress-fill {
+    background-color: #1e88e5;
+}
+
+.dark .card {
+    background-color: #1e1e1e;
+    border-color: #333333;
+}
+
+.dark .widget-header {
+    border-bottom-color: #333333;
+}
+
+.dark .text-sm {
+    color: #b0b0b0;
+}
+
+.dark .text-lg {
+    color: #e0e0e0;
+}
+
+.dark .post{
+    background-color: rgb(35 35 35 / 90%);
+    border: 1px solid  #333333 !important;
+}
+
+.dark .post-description {
+    border: 1px solid #353535;
+}
+
+.dark .post-tag {
+    background-color: #383838;
+    color: #ddd;
+}
+
+.dark .chat-btn{
+    background-color: rgb(35 35 35 / 90%);
+    border: 1px solid  #333333 !important;
+}
