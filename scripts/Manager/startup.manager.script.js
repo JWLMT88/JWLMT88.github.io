@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', async function()
                 .then(data => {
                   localStorage.setItem("swpKey",data.apiKey,)
                   localStorage.setItem("profileID",data.userId,)
+                  CookieManager.getInstance().deleteCookie("__chachedProfile") 
                     window.location.reload()
                 })
                 .catch(error => {
@@ -190,6 +191,47 @@ document.addEventListener('DOMContentLoaded', async function()
       }, 1200);
   }
 });
+
+function showDialog({ type, title, message, mainButtonText, mainButtonAction }) 
+            {
+                const dialog = document.getElementById('customDialog');
+                const dialogTitle = document.getElementById('dialogTitle');
+                const dialogMessage = document.getElementById('dialogMessage');
+                const mainActionButton = document.getElementById('mainActionButton');
+                const dialogIcon = document.getElementById('dialogIcon');
+
+                // Set dialog content
+                dialogTitle.textContent = title;
+                dialogMessage.textContent = message;
+                mainActionButton.textContent = mainButtonText;
+
+                // Set dialog icon based on type
+                dialogIcon.innerHTML = '';
+                if (type === 'error') {
+                dialogIcon.classList.add('bg-red-100');
+                dialogIcon.innerHTML = `
+                    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                `;
+                } else if (type === 'success') {
+                dialogIcon.classList.add('bg-green-100');
+                dialogIcon.innerHTML = `
+                    <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                `;
+                }
+
+                // Set main action button event
+                mainActionButton.onclick = () => {
+                mainButtonAction();
+                dialog.classList.add('hidden');
+                };
+
+                // Show dialog
+                dialog.classList.remove('hidden');
+            }
 
 async function SetCachedProfile()
 {
