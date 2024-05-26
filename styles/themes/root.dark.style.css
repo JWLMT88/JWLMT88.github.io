@@ -164,7 +164,7 @@
 }
 
 .dark .text-gray-200 {
-    color:  !important;
+    color: #a7a7a7 !important;
 }
 
 .dark .btn-primary {
@@ -216,6 +216,18 @@
 .dark .post-description {
     border: 1px solid #353535;
 }
+.dark .search-container,
+.dark .notifications-container,
+.dark .goals-container{
+    background: rgb(35 35 35 / 90%);
+    border: 1px solid  #333333 !important;
+}
+
+.da
+
+.dark .navigate-to-goals-btn-top .material-icons{
+    color: #ddd;
+}
 
 .dark .post-tag {
     background-color: #383838;
@@ -239,6 +251,12 @@
 
 .dark .version-info {
     color: #f0f0f0;
+}
+
+
+
+.dark .notification{
+    border: 1px solid var(--b-bgc-grayDark)
 }
 
 .dark .username{

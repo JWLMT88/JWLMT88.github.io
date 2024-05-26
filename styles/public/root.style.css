@@ -45,6 +45,38 @@
     --pale-blue-color: #f4f7ff;
 }
 
+.toggle-checkbox {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  -webkit-appearance: none;
+  background-color: #cbd5e0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-checkbox:checked {
+  background-color: #4a5568;
+}
+
+.toggle-checkbox:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.toggle-checkbox:checked:before {
+  transform: translateX(20px);
+}
+
 .logout-button {
     background: linear-gradient(95deg, #ebebee, #f4f7fc);; /* Green button color */
     color: #2a2a2a; /* White text color */
@@ -123,7 +155,9 @@
     }
   }
 
-
+  .animation-slidein{
+    animation: slideIn 0.4s ease-in-out;
+  }
 
   @keyframes slideIn {
     0%{

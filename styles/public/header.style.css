@@ -67,19 +67,6 @@
     transform: scaleX(1); /* Unterstrich erscheint beim Hover */
 }
 
-
-.btn-primary {
-    background: linear-gradient(195deg, #252587, #284c9f); ;
-    transition: all 0.3s ease; /* Fließende Übergänge */
-    border-color: #425efc; /* Pink border on hover */
-    color: #fff; 
-    transition: all 0.5s ease-in-out; /* Fließende Übergänge */
-}
-
-.btn-primary:hover {
-    background: linear-gradient(95deg, #252587, #284c9f); 
-}
-
 /* SVG-Logo im Header */
 .svg-logo {
     width: 40px;

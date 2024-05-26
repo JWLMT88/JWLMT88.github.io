@@ -26,10 +26,62 @@ document.addEventListener('DOMContentLoaded', async function()
   const loginModal = document.getElementById("loginModal");
   const body = document.body;
   const loginButton = document.getElementById("loginSubmit");
+  const settingsBtn = document.getElementById('settingsBtn');
+  const settingsModal = document.getElementById('settingsModal');
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const darkModeToggleSettings = document.getElementById('darkModeToggleSettings');
 
+  settingsBtn.addEventListener('click', function () {
+    settingsModal.classList.remove('animate-out')
+    settingsModal.classList.add('animation-slidein')
+    
+    settingsModal.classList.remove('hidden');
+    showTab('general');
+  });
+
+  saveSettingsBtn.addEventListener('click', function () {
+    settingsModal.classList.remove('animation-slidein')
+    settingsModal.classList.add('animate-out')
+    setTimeout(() =>{settingsModal.classList.add('hidden');},500)
+    
+  });
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const tab = button.getAttribute('data-tab');
+        document.querySelectorAll('.tab-button').forEach(tab =>{
+            tab.classList.remove("bg-gray-200")
+        })
+
+        button.classList.add("bg-gray-200")
+        showTab(tab);
+    });
+  });
+  function showTab(tab) {
+    tabContents.forEach(content => {
+        content.classList.add('hidden');
+    });
+    document.getElementById(tab).classList.remove('hidden');
+  }
+
+  darkModeToggleSettings.addEventListener('click', function () 
+            {
+                if (darkModeToggleSettings.checked) 
+                {
+                    body.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } 
+                else
+                {
+                    body.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
   if (localStorage.getItem('theme') === 'dark') 
   {
         body.classList.add('dark');
+        darkModeToggleSettings.checked = true;
   }
   try
   {

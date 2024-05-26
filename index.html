@@ -179,7 +179,7 @@
                             <span id="header-dropdown-email" class="email"></span>
                         </div>
                         <a class="dropdown-item" target="_blank" href="https://core.swapix.fun/pages/account/?action=sub">Subscription</a>
-                        <a class="dropdown-item" target="_blank" href="https://core.swapix.fun/pages/account/?action=settings">Settings</a>
+                        <a class="dropdown-item" id="settingsBtn">Settings</a>
                         <a class="dropdown-item" target="_blank" href="https://developer.swapix.fun/">Developers</a>
                         <a class="dropdown-item" onclick="logoutMainUser()">Logout</a>
                         <div class="dropdown-divider"></div>
@@ -413,7 +413,7 @@
   </div>
 </div>
 
-<div id="customDialog" style="z-index: 10000;" class="hidden fixed inset-0 w-screen overflow-y-auto animation-slidein">
+<div id="customDialog" style="z-index: 10000;" class="hidden fixed inset-0 w-screen overflow-y-auto animate-in">
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
   <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
     <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
@@ -478,5 +478,117 @@
     </p>
   </div>
 </div>
-
+<div id="settingsModal" style="z-index: 3000;" class="border border-gray-200 fixed inset-0 overflow-y-auto hidden animation-slidein">
+  <div class="flex items-center justify-center min-h-screen px-4 py-12">
+      <div class="backdrop absolute inset-0 bg-gray-900 opacity-70"></div>
+      <div class="border border-gray-200 relative bg-white dark:bg-gray-800 dark:text-gray-200 rounded-lg overflow-hidden shadow-xl transform transition-all max-w-4xl w-full">
+          <div class="flex">
+              <!-- Sidebar Tabs -->
+              <div class="w-1/4 bg-gray-100 dark:bg-gray-900 p-4 border-r border-gray-200">
+                  <h2 class="text-xl font-semibold mb-4">Settings</h2>
+                  <ul class="space-y-2">
+                      <li>
+                          <button class="tab-button w-full text-left py-2 px-3 rounded bg-gray-200 hover:bg-gray-300 transition" data-tab="general">
+                              General
+                          </button>
+                      </li>
+                      <li>
+                          <button class="tab-button w-full text-left py-2 px-3 rounded hover:bg-gray-300 transition" data-tab="account">
+                              Account
+                          </button>
+                      </li>
+                      <li>
+                          <button class="tab-button w-full text-left py-2 px-3 rounded hover:bg-gray-300 transition" data-tab="buddy">
+                              SwapiX Buddy
+                          </button>
+                      </li>
+                      <li>
+                          <button class="tab-button w-full text-left py-2 px-3 rounded hover:bg-gray-300 transition" data-tab="notifications">
+                              Notifications
+                          </button>
+                      </li>
+                      <li>
+                          <button class="tab-button w-full text-left py-2 px-3 rounded hover:bg-gray-300 transition" data-tab="security">
+                              Security
+                          </button>
+                      </li>
+                      <!-- Add more tabs as needed -->
+                  </ul>
+              </div>
+              <!-- Tab Contents -->
+              <div class="w-3/4 p-6">
+                  <div id="general" class="tab-content hidden animation-slideTab">
+                      <h3 class="text-lg font-semibold">General Settings</h3>
+                      <p class="text-gray-200 mb-4">Best SwapiX Customization at youre fingertips.</p>
+                      <!-- General settings content -->
+                      <div class="flex items-center justify-between mb-4">
+                          <label for="darkModeToggleSettings" class="text-gray-700 dark:text-gray-300">Enable Dark Mode</label>
+                          <input id="darkModeToggleSettings" type="checkbox" class="toggle-checkbox">
+                      </div>
+                      <div class="flex items-center justify-between mb-4">
+                          <label for="settingGeneral2" class="text-gray-700 dark:text-gray-300">Language</label>
+                          <select id="settingGeneral2" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 p-2 rounded">
+                              <option value="en">English</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div id="account" class="tab-content hidden animation-slideTab">
+                      <div class="text-sm text-gray-500">
+                          <h3 class="text-lg font-semibold"> SwapiX Account</h3>
+                          <p class="text-gray-200 mb-4">Youre entrie point to the SwapiX Ecosystem.</p>
+                        <div class="mb-4">
+                          <p class="text-gray-700 dark:text-gray-300">Swapix Dev Key</p>
+                          <div class="mt-1 p-2 border border-gray-300 rounded-md">
+                            <code id="apiKeyDisplay">API_KEY_HERE</code>
+                          </div>
+                        </div>
+                   </div>
+                  </div>
+                  <div id="notifications" class="tab-content hidden animation-slideTab">
+                      <h3 class="text-lg font-semibold">Notifications</h3>
+                      <p class="text-gray-200 mb-4">Decide about what you should be informed.</p>
+                      <!-- Notifications settings content -->
+                      <div class="flex items-center justify-between mb-4">
+                          <label for="settingNotifications1" class="text-gray-700 dark:text-gray-300">Email Notifications</label>
+                          <input id="settingNotifications1" type="checkbox" class="toggle-checkbox">
+                      </div>
+                      <div class="flex items-center justify-between mb-4">
+                          <label for="settingNotifications2" class="text-gray-700 dark:text-gray-300">SMS Notifications</label>
+                          <input id="settingNotifications2" type="checkbox" class="toggle-checkbox">
+                      </div>
+                  </div>
+                  <div id="buddy" class="tab-content hidden animation-slideTab">
+                    <h3 class="text-lg font-semibold">SwapiX Buddy</h3>
+                    <p class="text-gray-200 mb-4">Youre Personal AI-Assitant that helps you develope and achieve youre Goals.</p>
+                    <!-- Notifications settings content -->
+                    <div class="flex items-center justify-between mb-4">
+                        <label for="settingNotifications1" class="text-gray-700 dark:text-gray-300">Enable youre personal Assitant</label>
+                        <input id="settingNotifications1" type="checkbox" class="toggle-checkbox">
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <label for="settingNotifications2" class="text-gray-700 dark:text-gray-300">SMS Notifications</label>
+                        <input id="settingNotifications2" type="checkbox" class="toggle-checkbox">
+                    </div>
+                </div>
+                  <div id="security" class="tab-content hidden animation-slideTab">
+                      <h3 class="text-lg font-semibold">Security Settings</h3>
+                      <p class="text-gray-200 mb-4">Secure youre future Success.</p>
+                      <!-- Security settings content -->
+                      <div class="flex items-center justify-between mb-4">
+                          <label for="settingSecurity1" class="text-gray-700 dark:text-gray-300">Two-Factor Authentication</label>
+                          <input id="settingSecurity1" type="checkbox" class="toggle-checkbox">
+                      </div>
+                      <div class="flex items-center justify-between mb-4">
+                          <label for="settingSecurity2" class="text-gray-700 dark:text-gray-300">Login Alerts</label>
+                          <input id="settingSecurity2" type="checkbox" class="toggle-checkbox">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex justify-end p-4 border-t border-gray-200 dark:border-gray-700">
+              <button id="saveSettingsBtn" class="btn btn-primary px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white">Save</button>
+          </div>
+      </div>
+  </div>
+</div>
 </html>
