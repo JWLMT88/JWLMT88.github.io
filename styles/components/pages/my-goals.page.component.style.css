@@ -6,36 +6,142 @@
     display: grid;
     justify-content: space-around;
   }
+
+  :root {
+    --primary-color: #1f6dc5;
+    --secondary-color: #333;
+    --background-color: #f9f9f9;
+    --border-color: #ddd;
+    --completed-color: #346dff;
+  }
   
-  /* Header */
+  .account-goals-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  .goals-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .goal-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .goal-title {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--primary-color);
+  }
+  
+  .goal-description {
+    color: var(--text-color);
+    margin: 10px 0;
+  }
+  
+  .goal-progress {
+    margin: 20px 0;
+    background-color: var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    background-color: var(--primary-color);
+    transition: width 0.4s ease;
+  }
+  
+  .progress-label {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--text-color);
+  }
+  
+  .due-date {
+    color: var(--secondary-color);
+  }
+  
+  .account-goals-container .step-plan-container {
+    margin-top: 20px;
+  }
+  
+  .account-goals-container .step-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .account-goals-container .step-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .account-goals-container .step-item label {
+    margin-left: 10px;
+    flex: 1;
+  }
+  
+  .account-goals-container input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .account-goals-container input[type="checkbox"]:checked {
+    background-color: var(--completed-color);
+    border-color: var(--completed-color);
+  }
+  
+  .account-goals-container input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  @media (max-width: 600px) {
+    .goal-item {
+      padding: 15px;
+    }
+  
+    .goal-title {
+      font-size: 1.2em;
+    }
+  
+    .goal-description,
+    .due-date {
+      font-size: 0.9em;
+    }
+  
+    .progress-label {
+      font-size: 0.9em;
+    }
+  }
+  
   .account-goals-container h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
   }
   
-  /* User Info */
-  .account-goals-container .user-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .account-goals-container .profile-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    margin-right: 10px;
-  }
-  
-  .account-goals-container .username {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  /* Goals List */
   .account-goals-container .goals-list {
     list-style-type: none;
     padding: 0;

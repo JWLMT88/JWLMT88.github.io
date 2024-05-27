@@ -23,6 +23,9 @@ var pager = null;
 
 document.addEventListener('DOMContentLoaded', async function() 
 {
+  window.addEventListener('hashchange', router);
+  window.addEventListener('load', router);
+
   const loginModal = document.getElementById("loginModal");
   const body = document.body;
   const loginButton = document.getElementById("loginSubmit");
@@ -30,7 +33,16 @@ document.addEventListener('DOMContentLoaded', async function()
   const settingsModal = document.getElementById('settingsModal');
   const tabButtons = document.querySelectorAll('.tab-button');
   const tabContents = document.querySelectorAll('.tab-content');
+  const apiKeySettings = document.getElementById("apiKeyDisplay");
   const darkModeToggleSettings = document.getElementById('darkModeToggleSettings');
+  const buddyActivatedSettings = document.getElementById("settingBuddyActivated");
+  const swapixBuddyButton = document.getElementById("chat-btn");
+
+  if(localStorage.getItem("swapixBuddy") != "denied")
+  {
+    buddyActivatedSettings.checked = true;
+    localStorage.setItem("swapixBuddy","activated");
+  }
 
   settingsBtn.addEventListener('click', function () {
     settingsModal.classList.remove('animate-out')
@@ -46,6 +58,8 @@ document.addEventListener('DOMContentLoaded', async function()
     setTimeout(() =>{settingsModal.classList.add('hidden');},500)
     
   });
+
+  apiKeySettings.innerText = localStorage.getItem("swpKey");
 
   tabButtons.forEach(button => {
     button.addEventListener('click', function () {
@@ -64,6 +78,20 @@ document.addEventListener('DOMContentLoaded', async function()
     });
     document.getElementById(tab).classList.remove('hidden');
   }
+
+  buddyActivatedSettings.addEventListener('click', function () 
+  {
+      if (buddyActivatedSettings.checked) 
+      {
+          swapixBuddyButton.style.display = "block";
+          localStorage.setItem('swapixBuddy', 'activated');
+      } 
+      else
+      {
+        swapixBuddyButton.style.display = "none";
+          localStorage.setItem('swapixBuddy', 'denied');
+      }
+  });
 
   darkModeToggleSettings.addEventListener('click', function () 
             {
@@ -211,8 +239,7 @@ document.addEventListener('DOMContentLoaded', async function()
         window.location.href ="/#/"
     }
 
-    window.addEventListener('hashchange', router);
-    window.addEventListener('load', router);
+   
 
     ModalManager.init();
     document.getElementById("chat-iframe").src = "https://swapix-buddy.kidjjoe.workers.dev/ui?profileID=" + CookieManager.getInstance().getCookie("profileID") + "&swpKey=" + CookieManager.getInstance().getCookie("swpKey");
