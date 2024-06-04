@@ -116,6 +116,10 @@
     border-width: 0 2px 2px 0;
     transform: translate(-50%, -50%) rotate(45deg);
   }
+
+  .goal-actBnt{
+    margin-right: -2px !important;
+  }
   
   @media (max-width: 600px) {
     .goal-item {

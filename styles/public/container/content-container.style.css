@@ -5,6 +5,13 @@
     transform: translateY(0);
     transition: all 0.5s ease-in-out;
   }
+
+  .content-container-margin{
+      margin-left: 288px !important;
+      margin-right: 26px !important;
+      margin-top: 14px;
+  
+  }
   
   
   .animate-in {
